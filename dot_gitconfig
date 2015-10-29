@@ -1,0 +1,72 @@
+[user]
+        name = shusso
+        email = shusso@iki.fi
+#[color]
+        #diff = true
+        #status = true
+        #branch = true
+[color]
+        ui = auto
+[color "branch"]
+       current = yellow reverse
+       local = yellow
+       remote = green
+[color "diff"]
+       meta = yellow bold
+       frag = magenta bold
+       old = red bold
+       new = green bold
+[color "status"]
+       added = yellow
+       changed = green
+       untracked = cyan
+#[color "grep"]
+#       match = normal
+
+
+#[commit]
+#       template = /home/shusso/.git-commit-template
+[alias]
+       lg = log --stat --pretty='format:%Cblue[%ad] %Cred<%h> %Creset(%an) %Cgreen%s' --date=short --graph
+       lg2 = log --stat -p --pretty='format:%Cblue[%ad] %Cred<%h> %Creset(%an) %Cgreen%s' --date=short --graph
+       lgp = log --stat -p --pretty='format:%Cblue[%ad] %Cred<%h> %Creset(%an) %Cgreen%s' --date=short --graph
+       logs = log --stat
+       logp = log --stat -p
+       logreview = log --stat --reverse -M
+       s = status
+       co = checkout
+       b = branch
+       br = branch --remote
+       r = remote
+       rv = remote -v
+       ba = branch -a
+       ui = update-index
+       sl = stash list
+       ss = stash show -p
+       sp = stash pop
+       whatchanged = log --stat -M --reverse
+       whatchangedp = log --stat -M -p --reverse
+       g = grep -in -E
+       cp = cherry-pick
+       dc = diff --cached -p --stat
+       d = diff -p --stat
+       wd = diff --word-diff
+       svnfetch = svn fetch --fetch-all
+       undo = reset --soft 'HEAD^'
+       clean = clean -d -x -f
+       pull = pull --ff-only
+       up = remote update -p
+       ss = stash save
+       sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+
+[log]
+	date = local
+[credential]
+	helper = store
+
+# [core]
+# 	autocrlf = false
+# 	whitespace = cr-at-eol
+
+[push]
+	default = simple

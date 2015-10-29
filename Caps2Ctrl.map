@@ -1,0 +1,4 @@
+## run with
+### sudo loadkeys us /usr/share/Caps2Ctrl.map
+keymaps 0-127
+keycode 58 = Control # Caps as CTRL key

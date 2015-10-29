@@ -1,0 +1,4 @@
+mkdir ~/Library/KeyBindings/
+cp DefaultKeyBinding.dict ~/Library/KeyBindings/
+restart your apps (e.g. xcode)
+

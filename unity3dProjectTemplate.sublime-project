@@ -1,0 +1,55 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/path/to/unity3d/project",
+			"file_exclude_patterns":
+			[
+				"*.dll",
+				"*.meta",
+				"*.*~",
+				".DS_Store",
+				"*.csproj",
+				"*.pidb",
+				"*.unityproj",
+				"*.sln",
+				"*.userprefs",
+				"*.booproj",
+				".gitignore",
+				"*.sublime-project",
+				"#*",
+				".#*"
+			],
+			"folder_exclude_patterns" :
+			[
+				"Temp",
+				"Library/",
+				"ProjectSettings",
+				"obj",
+				"Library",
+				"Assets/Gizmos"
+			]
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name" : "Unity3d Project",
+			"cmd" : [
+				"/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Commands/xbuild",
+				"${project_path}/${project_base_name}.sln"
+			],
+			"variants" : [
+				{ 
+					"name" : "Unity3d Clean Project",
+					"cmd" : [
+						"/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Commands/xbuild",
+						"${project_path}/${project_base_name}.sln",
+						"/target:Clean"
+					]
+				}
+			]
+		}
+	]
+}

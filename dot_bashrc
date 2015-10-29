@@ -1,0 +1,384 @@
+##############
+##  Common  ##
+##############
+
+
+#######
+# OSX #
+#######
+
+#########
+# Linux #
+#########
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoredups:ignorespace
+
+#export LANG=fi_FI.utf8
+# for fixing the stupid konsole ctrl-q/s thingy:
+stty -ixon
+export CONFIG_SCHED_AUTOGROUP=y
+
+
+
+shopt -s histappend
+# history on all terminals everywhere (http://briancarper.net/blog/248/)
+#shopt -s histappend
+#export PROMPT_COMMAND="history -n; history -a"
+
+## ssh options:
+##-o TCPKeepAlive=yes -o ServerAliveInterval=4
+
+############
+##  Path  ##
+############
+
+#to use mad-make and msp
+#export PATH=${PATH}:/home/shusso/bin:/usr/bin:/opt/msp430-gcc-4.4.5/bin
+
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export ADK_ROOT=/usr/local/android-sdk
+export PATH=$HOME/.bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/bin:/usr/local/mysql/bin:$PATH:$ADK_ROOT/build-tools/android-4.4/:$ADK_ROOT/platform-tools:$ADK_ROOT/tools
+
+alias unset_py="unset PYTHONPATH"
+
+alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.4/site-packages/'"
+alias python_2="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python2.7/site-packages/'"
+
+
+#############
+##  Alias  ##
+#############
+
+## setup prompt
+#PS1='[\[\033[01;33m\]\u@\h\[\033[00m\]]:\[\033[01;31m\]\w\[\033[00m\]\$ '
+PS1='[\[\033[01;31m\]\w\[\033[00m\]]\$ '
+alias shortPS="PS1='[\[\033[01;33m\]\u@\h\[\033[00m\]]:\[\033[01;31m\]\W\[\033[00m\]\$ '"
+alias sshortPS="PS1='[\[\033[01;31m\]\W\[\033[00m\]]\$ '"
+
+alias ssaver='j=0;a=1;x=1;y=1;xd=1;yd=1;while true;do for i in {1..2000} ; do if [[ $x == $LINES || $x == 0 ]]; then xd=$(( $xd *-1 )) ; fi ; if [[ $y == $COLUMNS || $y == 0 ]]; then yd=$(( $yd * -1 )) ; fi ; x=$(( $x + $xd )); <y=$(( $y + $yd )); printf "\33[%s;%sH\33[48;5;%sm . \33[0m" $x $y $(( $a % 8 + 16 + $j % 223 )) ;a=$(( $a + 1 )) ; done ; x=$(( x%$COLUMNS + 1 )) ; j=$(( $j + 8 )) ;done'
+
+function git_author_stats {
+    author=$1
+    git log --author="${author}" --pretty=tformat: --numstat \
+        | gawk "{ add += \$1 ; subs += \$2 ; loc += \$1 - \$2 } END { printf \"Author: ${author} added lines: %s removed lines: %s total lines: %s\n\",add,subs,loc }" -
+}
+
+alias tags="find . -name "*.py" -exec etags -a {} \;"
+alias tags_ruby="ripper-tags --tag-file TAGS -R --exclude=ign_* --exclude=patches --exclude=tests* --exclude=temp --exclude=image* --exclude=coverage --exclude=object*"
+alias tags_java="find . -name \"*.java\" -exec etags -o JTAGS -a {} \;"
+alias tags_c="ctags -e -a --Ruby-kinds=-fF -o TAGS -R ."
+alias tags_py="find . -name \"*.py\" -exec etags -o PTAGS -a {} \;"
+alias find_cpp_files="find . -type f -name '*.h' -o  -name '*.cpp'"
+
+alias t="tmux"
+
+# keychain stuff
+alias list_kc="security list-keychains"
+alias unlock_kc="security unlock-keychain"
+
+alias df='df -h'
+alias du='du -h'
+alias ll='ls -lFhGp'
+alias la='ls -AGp'
+alias l='ls -CFGp'
+
+#unity
+alias unity="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
+alias xbuild="/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Commands/xbuild"
+alias mcs="/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Versions/2.10.11/bin/mcs"
+alias mono="/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Versions/2.10.11/bin/mono"
+
+## mvn generate eclipse
+alias mvn_eclipse='mvn eclipse:eclipse -DdownloadJavadocs=true -DdownloadSources=true'
+
+## java7/8
+#export JAVA_HOME=$(/usr/libexec/java_home)
+alias java_7="unset JAVA_HOME && export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/"
+alias java_8="export JAVA_HOME=$(/usr/libexec/java_home)"
+
+# find
+function find_d {
+    if [ $# -gt 1 ]; then
+        find $2 -type d -iname $1
+    else
+        find . -type d -iname $1
+    fi
+}
+
+function find_f {
+    if [ $# -gt 1 ]; then
+        find $2 -iname $1
+    else
+        find . -iname $1
+    fi
+}
+
+## find_fg usage:  filePattern (location) grepPattern
+function find_fg {
+    echo "Finding files matching: '${@:1:($#-1)}' and grep '${@:($#)}'"
+    echo
+    find_f "${@:1:($#-1)}" | xargs -n1 grep -inH --color=auto "${@:($#)}"
+}
+
+## Todo: check arg count and pass path if it is present
+function find_fr {
+    find . -regex "$1"
+}
+
+alias test=treetree
+function treetree {
+    SEDMAGIC='s;[^/]*/;|____;g;s;____|; |;g'
+
+    if [ "$#" -gt 0 ] ; then
+        dirlist="$@"
+    else
+        dirlist="."
+    fi
+
+    for x in $dirlist; do
+        find "$x" -print | sed -e "$SEDMAGIC"
+    done
+}
+
+alias treeish=treeish
+function treeish {
+    if [ "$1" != "" ]
+    then
+        cd "$1"
+    fi
+    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'
+# 1st sed: remove colons
+# 2nd sed: replace higher level folder names with dashes
+# 3rd sed: indent graph three spaces
+# 4th sed: replace first dash with a vertical bar
+    if [ `ls -F -1 | grep "/" | wc -l` = 0 ] # check if no folders
+    then
+        echo " -> no sub-directories"
+    fi
+    cd - > /dev/null 1>&1
+}
+
+alias his="history -n; history -a"
+
+alias emacs="emacs-24.4"
+export EDITOR='emacs'
+alias e='emacs'
+alias editrc='e ~/.bashrc'
+alias editssh='e ~/.ssh/known_hosts'
+alias editreadme='e ~/README'
+alias editgit='e ~/.gitconfig'
+alias editemacs='e ~/.emacs'
+alias journal='e ~/Dropbox/work_log'
+
+alias viewrc='less ~/.bashrc'
+alias readme='less ~/README'
+
+alias c='cd ~/code/'
+
+alias p='cd -'
+alias b='cd ..'
+alias bb='cd ../..'
+alias bbb='cd ../../..'
+alias bbbb='cd ../../../..'
+
+# svn
+alias svndiff='svn diff | less'
+#svnmod:
+alias svnmod="svn status |egrep '^M|^C|^A|^D|^R|^!'"
+alias svnlog='svn log |less'
+#svn revision for git
+alias setsvn='SVN_REV=`git svn info | grep ^Revision | cut -d\  -f2` && echo r$SVN_REV'
+
+
+# git
+alias gitp='git --no-pager'
+alias gsr='git svn rebase'
+alias gl='git log'
+alias gls='git logs'
+alias glp='git logp'
+alias gl2='git lg'
+alias gl3='git lg2'
+alias gup='git upglogp'
+alias gucl='git conflog'
+alias gusl='git srclog'
+alias gs='git s'
+alias gco='git co'
+alias gsl='git sl'
+alias gss='git ss'
+alias gp='git gp'
+alias gcp='git cp'
+
+# ls
+alias ll='ls -lFhG'
+alias llh='ls -lhFG'
+alias la='ls -AhG'
+alias l='ls -CFhG'
+
+alias s='byobu'
+## #gis. Create new screen.. Dont ask why this works.. Add '-S _screen_name_' when calling this..
+alias sn='byobu -c /usr/share/byobu/profiles/byoburc'
+
+
+
+############
+##  Grep  ##
+############
+
+## About grep: to exclude dir use
+#### alias grep = grep --exclude-dir='some/folder*' -ri
+#grep options:
+#because we have antique grep which doesn't have "exclude-dir" we have to take off "entries"
+#GREP_OPTIONS="-rI --color --exclude="\*.svn\*" --exclude="*.*~" --exclude="*.*#" --exclude="*entries*""
+#export GREP_OPTIONS
+#GREP_COLOR=37
+#export GREP_COLOR
+#--exclude-dir='' needs to be first grep option inorder it to work
+#alias grep="grep -nH -ri --color=auto"
+alias egrep="grep -nH -ri --color=auto"
+alias fgrep="grep -nH -ri --color=auto"
+
+
+######################
+##  Man-pages|less  ##
+######################
+
+##alias less='less -i -R'
+##export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS='-R'
+export LESS=' -R -i'
+
+#man pages with color.
+export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m' # begin bold
+export LESS_TERMCAP_me=$'\E[0m' # end mode
+export LESS_TERMCAP_se=$'\E[0m' # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;5;246m' # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m' # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+#less with colours:
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+
+############
+##  Krow  ##
+############
+
+
+
+################## COMMON START #######################
+
+
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+#[ -z "$PS1" ] && return
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+#HISTSIZE=1000
+#HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+
+# if [ "$color_prompt" = yes ]; then
+#     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# else
+#     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# fi
+# unset color_prompt force_color_prompt
+# If this is an xterm set the title to user@host:dir
+# case "$TERM" in
+# xterm*|rxvt*)
+#     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#     ;;
+# *)
+#     ;;
+# esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    #alias ls='ls --color=auto'
+    #alias dir='dir --color=auto --format=vertical'
+    #alias vdir='vdir --color=auto --format=long'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
