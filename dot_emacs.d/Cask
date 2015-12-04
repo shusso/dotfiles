@@ -1,9 +1,0 @@
-(source "melpa" "http://melpa.milkbox.net/packages/")
-(source "gnu" "http://elpa.gnu.org/packages/")
-(source "marmelade" "http://marmalade-repo.org/packages/")
-
-(depends-on "auto-complete")
-(depends-on "enh-ruby-mode")
-(depends-on "pallet")
-(depends-on "robe")
-

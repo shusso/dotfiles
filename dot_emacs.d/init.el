@@ -125,11 +125,11 @@
 ;;           MODES start            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "/Users/shusso/.emacs.d/lisp")
+(add-to-list 'load-path "/Users/samuel/.emacs.d/lisp")
 ;;(add-to-list 'load-path (expand-file-name "~/.emacs.d") t)
 
 
-(add-to-list 'load-path "/Users/shusso/.emacs.d/auto_comp")
+;;(add-to-list 'load-path "/Users/samuel/.emacs.d/auto_comp")
 
 ;; package
 (require 'package)
@@ -137,8 +137,9 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-;;(require 'cask "/Users/shusso/.cask/cask.el")
+;;(require 'cask "/Users/samuel/.cask/cask.el")
 ;;(cask-initialize)
 ;;(require 'pallet)
 
@@ -152,7 +153,7 @@
 ;; requires
 ;; http://cx4a.org/software/auto-complete/
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/Users/shusso/.emacs.d/auto_comp/ac-dict")
+;;(add-to-list 'ac-dictionary-directories "/Users/samuel/.emacs.d/auto_comp/ac-dict")
 (ac-config-default)
 (setq ac-ignore-case nil)
 (add-to-list 'ac-modes 'enh-ruby-mode)
@@ -160,7 +161,7 @@
 (add-hook 'python-mode-hook 'auto-complete-mode)
 
 ;; requires  enh-ruby
-(setq enh-ruby-program "/Users/shusso/.rvm/rubies/default/bin/ruby")
+(setq enh-ruby-program "/Users/samuel/.rvm/rubies/default/bin/ruby")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
@@ -219,7 +220,7 @@
 
 ;; requires:
 ;; https://github.com/magit/magit
-(add-to-list 'load-path "/Users/shusso/.emacs.d/magit")
+(add-to-list 'load-path "/Users/samuel/.emacs.d/magit")
 (require 'magit)
 (require 'magit-svn)
 
@@ -257,6 +258,31 @@
            (paredit-mode +1)))
 
 
+;; clojure + cider ;;
+(add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
+(setq nrepl-popup-stacktraces nil)
+(add-to-list 'same-window-buffer-names "<em>nrepl</em>")
+
+;; auto complete
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(eval-after-load "auto-complete"
+  '(progn
+     (add-to-list 'ac-modes 'cider-mode)
+          (add-to-list 'ac-modes 'cider-repl-mode)))
+
+;; Poping-up contextual documentation
+(eval-after-load "cider"
+    '(define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
+
+;; paredit for formatting clojure s-expressions
+(add-hook 'clojure-mode-hook 'paredit-mode)
+
+(require 'rainbow-delimiters)
+;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
+(global-rainbow-delimiters-mode) ;; global
 
 
 
@@ -475,3 +501,15 @@
  ;;'(default ((t (:stipple nil :background "black" :foreground "green1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "xos4" :family "Terminus")))))
 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js-indent-level 4))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
