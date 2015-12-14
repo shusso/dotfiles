@@ -125,11 +125,7 @@
 ;;           MODES start            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "/Users/samuel/.emacs.d/lisp")
-;;(add-to-list 'load-path (expand-file-name "~/.emacs.d") t)
-
-
-;;(add-to-list 'load-path "/Users/samuel/.emacs.d/auto_comp")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; package
 (require 'package)
@@ -139,11 +135,6 @@
 (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-;;(require 'cask "/Users/samuel/.cask/cask.el")
-;;(cask-initialize)
-;;(require 'pallet)
-
-;; UnityJS mode for emacs
 ;; requires
 ;; http://blogs.unity3d.com/2010/01/15/emacs-mode-for-unity-javascript/
 (require 'unityjs-mode)
@@ -153,7 +144,7 @@
 ;; requires
 ;; http://cx4a.org/software/auto-complete/
 (require 'auto-complete-config)
-;;(add-to-list 'ac-dictionary-directories "/Users/samuel/.emacs.d/auto_comp/ac-dict")
+;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto_comp/ac-dict")
 (ac-config-default)
 (setq ac-ignore-case nil)
 (add-to-list 'ac-modes 'enh-ruby-mode)
@@ -161,7 +152,7 @@
 (add-hook 'python-mode-hook 'auto-complete-mode)
 
 ;; requires  enh-ruby
-(setq enh-ruby-program "/Users/samuel/.rvm/rubies/default/bin/ruby")
+(setq enh-ruby-program "~/.rvm/rubies/default/bin/ruby")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
@@ -220,7 +211,7 @@
 
 ;; requires:
 ;; https://github.com/magit/magit
-(add-to-list 'load-path "/Users/samuel/.emacs.d/magit")
+(add-to-list 'load-path "~/.emacs.d/magit")
 (require 'magit)
 (require 'magit-svn)
 
@@ -286,12 +277,9 @@
 ;; paredit for formatting clojure s-expressions
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
-
 (require 'rainbow-delimiters)
-;; (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
-(global-rainbow-delimiters-mode) ;; global
-
-
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
