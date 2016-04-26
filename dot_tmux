@@ -9,18 +9,22 @@ bind r source-file ~/.tmux.conf
  
 set -g history-limit 4096
 
-# Support mouse
-setw -g mode-mouse on
-set -g mouse-select-pane on
+# Support mouse tmux <2.1
+# setw -g mode-mouse on
+# set -g mouse-select-pane on
+# mouse mode on tmux >2.1
+set -g mouse on
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
 
 # THEME
 set -g status-bg black
 set -g status-fg white
 set -g status-interval 60
 set -g status-left-length 30
-set -g status-left '#[fg=green](#S) #(whoami)@#H#[default]'
-set -g status-right '#[fg=yellow]#(cut -d " " -f 1-3 /proc/loadavg)#[default] #[fg=red]%H:%M#[default]'
+set -g status-left '#[fg=green](#S) [#(whoami)@#H]#[default] '
+set -g status-right '#[fg=yellow]#(cut -d " " -f 1-3 /proc/loadavg)#[default] #[fg=red]%H:%M#[default] '
 set-window-option -g window-status-current-fg red
+set-option -g pane-active-border-fg blue
 
 # keys
 ##set-option -g mouse-select-pane on ## dis fucks up clicking things
