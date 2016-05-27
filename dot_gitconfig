@@ -51,6 +51,9 @@
        ss = stash save
        sshow = "!f() { git stash show stash^{/$*} -p; }; f"
        info = remote show origin
+       usrp = "!f() { git up && git stash && git rebase && git stash pop; }; f"
+       ur = "!f() { git up && git rebase; }; f"
+
 [log]
 	date = local
 [credential]
