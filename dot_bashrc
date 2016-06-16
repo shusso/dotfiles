@@ -11,6 +11,9 @@ source ~/.git-completion.bash
 # Linux #
 #########
 
+export FASTLANE_OPT_OUT_USAGE=1 ## don't track me fastlane
+export HOMEBREW_NO_ANALYTICS=1 ## don't track me brew
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
 HISTFILESIZE=200000
@@ -41,6 +44,8 @@ alias unset_py="unset PYTHONPATH"
 alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.5/site-packages/'"
 alias python_2="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python2.7/site-packages/'"
 
+# disble npm progress https://twitter.com/gavinjoyce/status/691783314261331969
+npm set progress=false
 
 #############
 ##  Alias  ##
@@ -62,6 +67,16 @@ function git_author_stats {
         | gawk "{ add += \$1 ; subs += \$2 ; loc += \$1 - \$2 } END { printf \"Author: ${author} added lines: %s removed lines: %s total lines: %s\n\",add,subs,loc }" -
 }
 
+function git_top_changed_files {
+    local count=$1
+    git rev-list --objects --all | awk '$2' | sort -k2 | uniq -cf1 | sort -rn |
+    while read frequency sample path
+    do
+       [ "blob" == "$(git cat-file -t $sample)" ] && echo -e "$frequency\t$path";
+    done | head -n $count
+}
+alias git_changed="git_top_changed_files $*"
+alias git_auth_stats="git_author_stats $*"
 alias tags="find . -name "*.py" -exec etags -a {} \;"
 alias tags_ruby="ripper-tags --tag-file TAGS -R --exclude=ign_* --exclude=patches --exclude=tests* --exclude=temp --exclude=image* --exclude=coverage --exclude=object*"
 alias tags_java="find . -name \"*.java\" -exec etags -o JTAGS -a {} \;"
