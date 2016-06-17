@@ -1,0 +1,6 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+
+    { "key": "alt+f",               "command": "cursorWordRight" },
+    { "key": "alt+b",               "command": "cursorWordLeft" }
+]
