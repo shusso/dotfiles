@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.wrappingColumn": 0,
+    "python.pythonPath": "/usr/local/bin/python3",
+    "editor.fontFamily": "Source code pro",
+    "files.trimTrailingWhitespace": true,
+    "workbench.editor.showTabs": false,
+    "files.insertFinalNewline": true
+}

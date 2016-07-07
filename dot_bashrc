@@ -86,6 +86,11 @@ alias find_cpp_files="find . -type f -name '*.h' -o  -name '*.cpp'"
 
 alias t="tmux"
 
+# idevice / adb
+alias id_l="idevice_id -l"
+alias ad_d="adb devices"
+alias ad_start="adb kill-server && adb start-server"
+
 # keychain stuff
 alias list_kc="security list-keychains"
 alias unlock_kc="security unlock-keychain"
@@ -222,6 +227,7 @@ alias gitp='git --no-pager'
 alias ll='ls -lFhG'
 alias llh='ls -lhFG'
 alias la='ls -AhG'
+alias lad='la -d */'
 alias l='ls -A1FG'
 
 alias s='byobu'
