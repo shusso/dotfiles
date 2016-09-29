@@ -2,6 +2,10 @@
 {
     "editor.wrappingColumn": 0,
     "python.pythonPath": "/usr/local/bin/python3",
+    "python.linting.enabled" : true,
+    "python.linting.pep8Enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": true,
     "editor.fontFamily": "Source code pro",
     "files.trimTrailingWhitespace": true,
     "workbench.editor.showTabs": false,
