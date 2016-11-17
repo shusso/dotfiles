@@ -62,8 +62,14 @@ bind-key S command-prompt -p "Send command to pane 1: " "send-keys -t 1 C-z '%%'
 set -g default-terminal screen-256color
 
 
-# Tmux resurrect
+# Tmux resurrect https://github.com/tmux-plugins/tmux-resurrect
 run-shell ~/.tmux-resurrect/resurrect.tmux
 # Keybinds for tmux-resurrect
 # Ctrl-s save
 # Ctrl-r restor
+
+# Tmux sidebar https://github.com/tmux-plugins/tmux-sidebar
+run-shell ~/.tmux-sidebar/sidebar.tmux
+# keybindings for tmux-sidebar
+# ctrl + Tab toggle sidebar
+# ctrl + backspace toggle sidebar and move cursor to it
