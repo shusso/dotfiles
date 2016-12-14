@@ -47,7 +47,7 @@
        clean-force = clean -fdx
        pull = pull --ff-only
        up = remote update -p
-       subs = submodule update --recursive --init
+       subs = submodule update --remote --init
        ss = stash save
        sshow = "!f() { git stash show stash^{/$*} -p; }; f"
        info = remote show origin
@@ -57,7 +57,6 @@
        up-mod-all = "!f() { git submodule foreach git ur; }; f"
        mod-master = "!f() { git submodule foreach 'git co master && git ur' ; }; f"
        mod-setup = "!f() { git subs && git mod-master; }; f"
-
 [log]
 	date = local
 [credential]
