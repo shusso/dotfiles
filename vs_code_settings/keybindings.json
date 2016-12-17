@@ -2,5 +2,6 @@
 [
 
     { "key": "alt+f",               "command": "cursorWordRight" },
-    { "key": "alt+b",               "command": "cursorWordLeft" }
+    { "key": "alt+b",               "command": "cursorWordLeft" },
+    { "key": "ctrl+shift+r", "command": "python.execInTerminal"}
 ]
