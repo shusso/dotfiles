@@ -1,6 +1,8 @@
 [user]
         name = Samuel Husso
         email = shusso@iki.fi
+[url "git@github.com:"]
+       insteadOf = https://github.com/
 [color]
         ui = auto
 [color "branch"]

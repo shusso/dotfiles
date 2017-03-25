@@ -2,9 +2,12 @@
 ##  KROW  ##
 ##############
 
+
+
 ##############
 ##  Common  ##
 ##############
+export GOPATH=$HOME/golang
 
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
@@ -22,7 +25,9 @@ export CONFIG_SCHED_AUTOGROUP=y
 
 shopt -s histappend
 # history on all terminals everywhere (http://briancarper.net/blog/248/)
-export PROMPT_COMMAND="history -n; history -a"
+#export PROMPT_COMMAND="history -n; history -a"
+export PROMPT_COMMAND="history -a"
+
 
 ## ssh options:
 ##-o TCPKeepAlive=yes -o ServerAliveInterval=4
@@ -113,10 +118,6 @@ alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
 ## mvn generate eclipse
 alias mvn_eclipse='mvn eclipse:eclipse -DdownloadJavadocs=true -DdownloadSources=true'
 
-## java7/8
-#export JAVA_HOME=$(/usr/libexec/java_home)
-#alias java_7="unset JAVA_HOME && export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/"
-#alias java_8="export JAVA_HOME=$(/usr/libexec/java_home)"
 
 # find
 function find_d {
@@ -135,19 +136,25 @@ function find_f {
     fi
 }
 
-## find_fg usage:  filePattern (location) grepPattern
-function find_fg {
-    echo "Finding files matching: '${@:1:($#-1)}' and grep '${@:($#)}'"
-    echo
-    find_f "${@:1:($#-1)}" | xargs -n1 grep -inH --color=auto "${@:($#)}"
+# find_fr usage: regex (find options e.g. print0 -xargs ..)
+# e.g. find_fr ".*\.cs" -print0
+function find_fr {
+    echo searching: $1
+    echo find_options: ${@:2:($#)}
+    echo "-----------------------------------------"
+    find . -iregex "$1" ${@:2:($#)}
 }
 
-## Todo: check arg count and pass path if it is present
-function find_fr {
-    find . -regex "$1"
+## find_fg usage:  filePattern (location) grepPattern
+function find_fg {
+    echo searching: ${@:1:($#-1)}
+    echo grepping: ${@:($#)}
+    echo "-----------------------------------------"
+    find_fr ${@:1:($#-1)} -exec /usr/bin/grep -nri --color=auto "${@:($#)}" {} \;
 }
 
 ## find and pass it to other command
+## find_fa usage: find_fa "some_file.cpp" "git logp"
 function find_fa {
     if [ ! $# -gt 1 ]; then
         echo "find_fa: too few args '$*' passed."
@@ -155,7 +162,6 @@ function find_fa {
     fi
     echo "Finding files matching: '${@:1:($#-1)}' and passing to command '${@:($#)}'"
     find_f "${@:1:($#-1)}" | xargs -n1 ${@:($#)}
-
 }
 
 
@@ -221,7 +227,7 @@ alias bbbb='cd ../../../..'
 # svn
 alias svndiff='svn diff | less'
 #svnmod:
-alias svnmod="svn status |egrep '^M|^C|^A|^D|^R|^!'"
+alias svnmod="svn status | /usr/bin/grep --color=auto -E '^M|^C|^A|^D|^R|^!'"
 alias svnlog='svn log |less'
 #svn revision for git
 alias setsvn='SVN_REV=`git svn info | grep ^Revision | cut -d\  -f2` && echo r$SVN_REV'
@@ -247,9 +253,7 @@ alias gcp='git cp'
 
 alias s='byobu'
 ## #gis. Create new screen.. Dont ask why this works.. Add '-S _screen_name_' when calling this..
-alias sn='byobu -c /usr/share/byobu/profiles/byoburc'
-
-
+#alias sn='byobu -c /usr/share/byobu/profiles/byoburc'
 
 ############
 ##  Grep  ##
