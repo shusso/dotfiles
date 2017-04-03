@@ -1,8 +1,28 @@
 // Place your key bindings in this file to overwrite the defaults
 [
 
-    { "key": "alt+f",               "command": "cursorWordRight" },
-    { "key": "alt+b",               "command": "cursorWordLeft" },
-    { "key": "ctrl+shift+r", "command": "python.execInTerminal"},
-    { "key": "ctrl+shift+c", "command": "workbench.action.terminal.focus"}
+    {
+        "key": "alt+f",
+        "command": "cursorWordRight"
+    },
+    {
+        "key": "alt+b",
+        "command": "cursorWordLeft"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "python.execInTerminal"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "shift+cmd+p",
+        "command": "workbench.actions.view.problems"
+    },
+    {
+        "key": "shift+cmd+m",
+        "command": "-workbench.actions.view.problems"
+    }
 ]
