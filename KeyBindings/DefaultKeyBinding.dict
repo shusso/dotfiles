@@ -1,6 +1,17 @@
+/*
+     Key Modifiers
+     ^ : Ctrl
+     $ : Shift
+     ~ : Option (Alt)
+     @ : Command (Apple)
+     # : Numeric Keypad
+*/
+
+
 {
   "~d" = "deleteWordForward:";
   "^w" = "deleteWordBackward:";
   "~f" = "moveWordForward:";
   "~b" = "moveWordBackward:";
+  "$@m" = "zoom";
 }
