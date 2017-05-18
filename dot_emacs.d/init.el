@@ -141,13 +141,12 @@
 (autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
 
 
-;; requires
-;; http://cx4a.org/software/auto-complete/
+;;requires
+;;http://cx4a.org/software/auto-complete/
 (require 'auto-complete-config)
 ;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto_comp/ac-dict")
 (ac-config-default)
 (setq ac-ignore-case nil)
-(add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'ac-modes 'web-mode)
 (add-hook 'python-mode-hook 'auto-complete-mode)
 
@@ -280,6 +279,15 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
+
+
+;; http://tkf.github.io/emacs-jedi/latest/
+(require 'jedi)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
+(require 'projectile)
+(setq-default projectile-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
@@ -501,7 +509,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(js-indent-level 4))
+ '(js-indent-level 4)
+ '(package-selected-packages
+   (quote
+    (go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
