@@ -17,7 +17,13 @@
     "python.jupyter.appendResults": true,
 
     "files.exclude": {
-        "**/.env": true
+        "**/.env": true,
+        "**/dist": true
     },
-    "go.formatOnSave": false
+    "go.formatOnSave": false,
+    "workbench.colorTheme": "Eden",
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "terminal.external.osxExec": "iTerm.app"
+
 }
