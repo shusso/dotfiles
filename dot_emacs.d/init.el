@@ -368,9 +368,8 @@
 (setq initial-scratch-message nil)
 
 
-(tool-bar-mode nil)
-;;(scroll-bar-mode nil)
-(menu-bar-mode nil)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 
 ;; Visual feedback on selections
 (setq-default transient-mark-mode t)
