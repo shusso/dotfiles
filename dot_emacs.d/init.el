@@ -323,6 +323,8 @@
 
 (require 'neotree)
 
+(require 'ace-window)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -420,6 +422,8 @@
 (with-eval-after-load 'go-mode
    (require 'go-autocomplete))
 
+;; better buffer switching
+(ido-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
@@ -498,6 +502,17 @@
 (global-set-key (kbd "C-c d") 'neotree-toggle)
 (global-set-key (kbd "C-c j") 'neotree-dir)
 
+;; ace-window ;;
+;x - delete window
+;m - swap (move) window
+;c - split window fairly, either vertically or horizontally
+;v - split window vertically
+;b - split window horizontally
+;n - select the previous window
+;i - maximize window (select which window)
+;o - maximize current window
+(global-set-key (kbd "M-p") 'ace-window)
+
 ;;
 ;; find-tags M-.
 ;;             list: tab or shift-/
@@ -564,10 +579,12 @@
  '(js-indent-level 4)
  '(package-selected-packages
    (quote
-    (neotree go-complete go-autocomplete go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete))))
+    (ace-window neotree go-complete go-autocomplete go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
