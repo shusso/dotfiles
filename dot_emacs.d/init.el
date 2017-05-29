@@ -142,8 +142,6 @@
   ;; Misc go stuff
   (auto-complete-mode 1))
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           FUNCTION end           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -178,63 +176,13 @@
 (add-to-list 'ac-modes 'web-mode)
 (add-hook 'python-mode-hook 'auto-complete-mode)
 
-;; requires  enh-ruby
-(setq enh-ruby-program "~/.rvm/rubies/default/bin/ruby")
-(autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
-(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
-
-;; requires robe
-;; use M-x robe-mode ;; M-x robe-start
-(add-hook 'ruby-mode-hook 'robe-mode)
-
-
 ;; requires ace-jump
 ;; https://github.com/winterTTr/ace-jump-mode
 (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (autoload 'ace-jump-pop-mark "ace-jump-mode" "Ace jump back" t)
 (eval-after-load "ace-jump-mode" '(ace-jump-mode-enable-mark-sync))
 
-;; requires webmode
-;; http://web-mode.org/
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
-;; requires
-;; http://www.emacswiki.org/emacs/CSharpMode
-;(require 'csharp-mode)
-
-(setq auto-mode-alist
-      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(defun my-csharp-mode-fn ()
-  "function that runs when csharp-mode is initialized for a buffer."
-; Set indentation level to 4 spaces (instead of 2)
-  (setq c-basic-offset 4)
-; Set the extra indentation before a substatement (e.g. the opening brace in
-; the consequent block of an if statement) to 0 (instead of '+)
-  (c-set-offset 'substatement-open 0)
-)
-(add-hook  'csharp-mode-hook 'my-csharp-mode-fn t)
-
-
-;; (setq auto-mode-alist
-;;       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-
-
 (require 'linum)
-
-;; requires
-;; http://chrispoole.com/project/ac-python/
-;;(require 'ac-python)
-
-
 
 ;; requires:
 ;; https://github.com/magit/magit
@@ -242,9 +190,6 @@
 (require 'magit)
 (require 'magit-svn)
 
-
-;; To use psvn.el put the following line in your .emacs:
-(require 'psvn)
 
 ;search case insensitive
 (setq case-fold-search t)
@@ -280,22 +225,6 @@
 (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
 (setq nrepl-popup-stacktraces nil)
 (add-to-list 'same-window-buffer-names "<em>nrepl</em>")
-
-;; auto complete
-;; (require 'ac-cider)
-;; (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-;; (add-hook 'cider-mode-hook 'ac-cider-setup)
-;; (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-;; (eval-after-load "auto-complete"
-;;   '(progn
-;;      (add-to-list 'ac-modes 'cider-mode)
-;;           (add-to-list 'ac-modes 'cider-repl-mode)))
-;; company (auto complete)
-
-(add-hook 'cider-repl-mode-hook #'company-mode)
-(add-hook 'cider-mode-hook #'company-mode)
-(global-set-key (kbd "C-i") #'company-complete)
-
 
 ;; Poping-up contextual documentation
 (eval-after-load "cider"
