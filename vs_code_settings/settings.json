@@ -9,7 +9,7 @@
     "files.trimTrailingWhitespace": true,
     "workbench.editor.showTabs": false,
     "files.insertFinalNewline": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "python.jupyter.defaultKernel": "Python 3",
     "python.jupyter.startupCode": [
         "%matplotlib inline"
@@ -24,6 +24,6 @@
     "workbench.colorTheme": "Eden",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
-    "terminal.external.osxExec": "iTerm.app"
-
+    "terminal.external.osxExec": "iTerm.app",
+    "editor.minimap.enabled" : false
 }
