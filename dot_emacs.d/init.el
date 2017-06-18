@@ -161,12 +161,6 @@
 (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-;; requires
-;; http://blogs.unity3d.com/2010/01/15/emacs-mode-for-unity-javascript/
-(require 'unityjs-mode)
-(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascript code." t)
-
-
 ;;requires
 ;;http://cx4a.org/software/auto-complete/
 (require 'auto-complete-config)
@@ -183,13 +177,7 @@
 (eval-after-load "ace-jump-mode" '(ace-jump-mode-enable-mark-sync))
 
 (require 'linum)
-
-;; requires:
-;; https://github.com/magit/magit
-(add-to-list 'load-path "~/.emacs.d/magit")
-(require 'magit)
-(require 'magit-svn)
-
+(setq linum-format "%4d \u2502 ")
 
 ;search case insensitive
 (setq case-fold-search t)
@@ -251,6 +239,16 @@
 (require 'go-guru)
 
 (require 'neotree)
+;; n next line ， p previous line。
+;; SPC or RET or TAB Open current item if it is a file. Fold/Unfold current item if it is a directory.
+;; g Refresh
+;; A Maximize/Minimize the NeoTree Window
+;; H Toggle display hidden files
+;; C-c C-n Create a file or create a directory if filename ends with a ‘/’
+;; C-c C-d Delete a file or a directory.
+;; C-c C-r Rename a file or a directory.
+;; C-c C-c Change the root directory.
+;; C-c C-p Copy a file or a directory.
 
 (require 'ace-window)
 
@@ -425,7 +423,8 @@
 ;;enable tags search mode (run etags before this)
 (global-set-key "\M-s" 'tags-search)
 
-
+;; comment out current line
+(global-set-key "\M-/" 'comment-line)
 
 ;; neotree
 (global-set-key (kbd "C-c d") 'neotree-toggle)
