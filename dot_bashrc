@@ -1,8 +1,6 @@
 ##############
-##  KROW  ##
+##   KROW   ##
 ##############
-
-
 
 ##############
 ##  Common  ##
@@ -36,13 +34,13 @@ export PROMPT_COMMAND="history -a"
 ##  Path  ##
 ############
 
-export ANDROID_HOME=/usr/local/android-sdk
-export ANDROID_NDK_HOME=/usr/local/android-ndk
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 
 export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin
 
 alias unset_py="unset PYTHONPATH"
-alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.5/site-packages/'"
+alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.6/site-packages/'"
 alias python_2="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python2.7/site-packages/'"
 
 
@@ -118,6 +116,23 @@ alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
 ## mvn generate eclipse
 alias mvn_eclipse='mvn eclipse:eclipse -DdownloadJavadocs=true -DdownloadSources=true'
 
+## java7/8
+#export JAVA_HOME=$(/usr/libexec/java_home)
+#alias java_7="unset JAVA_HOME && export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/"
+#alias java_8="export JAVA_HOME=$(/usr/libexec/java_home)"
+
+function start_docker_dep_containers {
+    local prefix=""
+    if [ $# -eq 0 ]; then
+        prefix="${PWD##*/}"
+    else
+        prefix=$1
+    fi
+
+    docker run -d --name=mongo-${prefix}  mongo:3
+    docker run -d --name=redis-${prefix} --net=container:mongo-${prefix} redis:3
+    docker run -d --name=nats-${prefix} --net=container:mongo-${prefix} nats:0.9.6
+}
 
 # find
 function find_d {
@@ -217,6 +232,8 @@ alias vg="vagrant global-status"
 alias c='cd ~/code/'
 alias gd="cd ~/GoogleDrive/"
 alias cgd='gd && cd code'
+alias go_code='cd $GOPATH'
+
 
 alias p='cd -'
 alias b='cd ..'
@@ -253,7 +270,9 @@ alias gcp='git cp'
 
 alias s='byobu'
 ## #gis. Create new screen.. Dont ask why this works.. Add '-S _screen_name_' when calling this..
-#alias sn='byobu -c /usr/share/byobu/profiles/byoburc'
+alias sn='byobu -c /usr/share/byobu/profiles/byoburc'
+
+
 
 ############
 ##  Grep  ##
