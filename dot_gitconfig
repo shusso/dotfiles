@@ -55,10 +55,10 @@
        info = remote show origin
        usrp = "!f() { git up && git stash && git rebase && git stash pop; }; f"
        ur = "!f() { git up && git rebase; }; f"
-       up-mod = "!f() { cd $1 && git ur; }; f"
-       up-mod-all = "!f() { git submodule foreach git ur; }; f"
-       mod-master = "!f() { git submodule foreach 'git co master && git ur' ; }; f"
-       mod-setup = "!f() { git subs && git mod-master; }; f"
+       ur-sub = "!f() { cd $1 && git ur; }; f"
+       ur-subs = "!f() { git submodule foreach git ur; }; f"
+       subs-master = "!f() { git submodule foreach 'git co master && git ur' ; }; f"
+       mod-setup = "!f() { git subs && git subs-master; }; f"
 [log]
 	date = local
 [credential]
