@@ -230,6 +230,11 @@
 (require 'jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
+;; C-c . Go to object definition
+;; <C-tab> Complete code
+;; C-? Show object documentation
+;; C-c , Goto last point where C-c . was called
+
 
 (require 'projectile)
 (setq-default projectile-mode t)
@@ -507,7 +512,7 @@
  '(js-indent-level 4)
  '(package-selected-packages
    (quote
-    (ace-window neotree go-complete go-autocomplete go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete))))
+    (assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme abyss-theme ahungry-theme ace-window neotree go-complete go-autocomplete go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

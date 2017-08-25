@@ -24,5 +24,15 @@
     {
         "key": "shift+cmd+m",
         "command": "-workbench.actions.view.problems"
+    },
+    {
+        "key": "cmd+k p",
+        "command": "markdown.showPreviewToSide",
+        "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "cmd+k v",
+        "command": "-markdown.showPreviewToSide",
+        "when": "editorLangId == 'markdown'"
     }
 ]

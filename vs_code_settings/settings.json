@@ -9,7 +9,7 @@
     "files.trimTrailingWhitespace": true,
     "workbench.editor.showTabs": false,
     "files.insertFinalNewline": true,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "python.jupyter.defaultKernel": "Python 3",
     "python.jupyter.startupCode": [
         "%matplotlib inline"
@@ -25,5 +25,6 @@
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",
-    "editor.minimap.enabled" : false
+    "editor.minimap.enabled": false,
+    "go.gopath": "/Users/shusso/golang"
 }
