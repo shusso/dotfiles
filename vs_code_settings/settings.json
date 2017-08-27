@@ -26,5 +26,6 @@
     "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",
     "editor.minimap.enabled": false,
-    "go.gopath": "/Users/shusso/golang"
+    "go.gopath": "/Users/shusso/golang",
+    "jupyter.appendResults": false
 }

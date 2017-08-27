@@ -1,14 +1,5 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-
-    {
-        "key": "alt+f",
-        "command": "cursorWordRight"
-    },
-    {
-        "key": "alt+b",
-        "command": "cursorWordLeft"
-    },
     {
         "key": "ctrl+shift+r",
         "command": "python.execInTerminal"
@@ -34,5 +25,49 @@
         "key": "cmd+k v",
         "command": "-markdown.showPreviewToSide",
         "when": "editorLangId == 'markdown'"
+    },
+    {
+        "key": "alt+d",
+        "command": "workbench.action.terminal.deleteWordRight",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+delete",
+        "command": "-workbench.action.terminal.deleteWordRight",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+f",
+        "command": "cursorWordEndRight",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+right",
+        "command": "cursorWordEndRight",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+b",
+        "command": "cursorWordStartLeft",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+left",
+        "command": "cursorWordStartLeft",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+d",
+        "command": "deleteWordRight",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+delete",
+        "command": "deleteWordRight",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "workbench.action.toggleMaximizedPanel"
     }
 ]
