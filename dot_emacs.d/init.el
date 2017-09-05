@@ -238,6 +238,20 @@
 
 (require 'projectile)
 (setq-default projectile-mode t)
+;; http://projectile.readthedocs.io/en/latest/usage/
+;; C-c p C-h Help
+;; C-c p f	Display a list of all files in the project. With a prefix argument it will clear the cache first.
+;; C-c p F	Display a list of all files in all known projects.
+;; C-c p 4 f	Jump to a project's file using completion and show it in another window.
+;; C-c p d	Display a list of all directories in the project. With a prefix argument it will clear the cache first.
+;; C-c p 4 d	Switch to a project directory and show it in another window.
+;; C-c p 5 d	Switch to a project directory and show it in another frame.
+;; C-c p T	Display a list of all test files(specs, features, etc) in the project.
+;; C-c p s g	Run grep on the files in the project.
+;; C-c p 4 b	Switch to a project buffer and show it in another window.
+;; C-c p 5 b	Switch to a project buffer and show it in another frame.
+
+
 
 (require 'go-mode)
 (require 'go-autocomplete)
@@ -410,8 +424,7 @@
 ;;frames
 (global-set-key (kbd "C-c 3 b") '3-buffers)
 (global-set-key (kbd "C-c 2 b") '2-buffers)
-(global-set-key (kbd "C-c o") 'other-frame)
-(global-set-key (kbd "C-c p") 'frame-back)
+(global-set-key (kbd "C-x 5 p") 'frame-back)
 
 ;;buffer stuff
 (global-set-key (kbd "C-x p") 'window-back)
