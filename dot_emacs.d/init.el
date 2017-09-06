@@ -10,7 +10,6 @@
 ;; c-x z   ;; repeat previous command
 ;;     z   ;; pressin this will repeat forever
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;               TEST               ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -20,7 +19,6 @@
 ;; (set-specifier left-toolbar-visible-p nil)
 ;; (set-specifier right-toolbar-visible-p nil)
 ;; (set-specifier top-toolbar-visible-p nil)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;          FUNCTION start          ;;
@@ -275,8 +273,6 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -331,8 +327,12 @@
 ;;show matching parenthesis
 (show-paren-mode t)
 
+;; autocomplete parenthesis
+;;(setq electric-pair-mode t)
+(electric-pair-mode t)
+
 ;; show current function in modeline
-(which-func-mode t)
+(which-function-mode t)
 
 (blink-cursor-mode t)
 
@@ -392,7 +392,6 @@
 ;;       (python-shell-completion-native-get-completions
 ;;        (get-buffer-process (current-buffer))
 ;;        nil "_"))))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
