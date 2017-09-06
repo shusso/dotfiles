@@ -238,7 +238,7 @@
 
 (require 'projectile)
 (setq-default projectile-mode t)
-;; http://projectile.readthedocs.io/en/latest/usage/
+;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
 ;; C-c p C-h Help
 ;; C-c p f	Display a list of all files in the project. With a prefix argument it will clear the cache first.
 ;; C-c p F	Display a list of all files in all known projects.
@@ -270,6 +270,12 @@
 ;; C-c C-p Copy a file or a directory.
 
 (require 'ace-window)
+
+
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
@@ -370,6 +376,23 @@
 
 ;; better buffer switching
 (ido-mode 1)
+
+;; ipython shell
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i") 
+
+;; patch python shell in emacs 25
+;; (with-eval-after-load 'python
+;;   (defun python-shell-completion-native-try ()
+;;     "Return non-nil if can trigger native completion."
+;;     (let ((python-shell-completion-native-enable t)
+;;           (python-shell-completion-native-output-timeout
+;;            python-shell-completion-native-try-output-timeout))
+;;       (python-shell-completion-native-get-completions
+;;        (get-buffer-process (current-buffer))
+;;        nil "_"))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
@@ -522,10 +545,39 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(beacon-color "#ff2f97")
+ '(custom-safe-themes
+   (quote
+    ("1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "5cd0afd0ca01648e1fff95a7a7f8abec925bd654915153fb39ee8e72a8b56a1f" "5a0eee1070a4fc64268f008a4c7abfda32d912118e080e18c3c865ef864d1bea" "c3e6b52caa77cb09c049d3c973798bc64b5c43cc437d449eacf35b3e776bf85c" "70f5a47eb08fe7a4ccb88e2550d377ce085fedce81cf30c56e3077f95a2909f2" "1177fe4645eb8db34ee151ce45518e47cc4595c3e72c55dc07df03ab353ad132" default)))
+ '(evil-emacs-state-cursor (quote ("#E57373" hbar)))
+ '(evil-insert-state-cursor (quote ("#E57373" bar)))
+ '(evil-normal-state-cursor (quote ("#FFEE58" box)))
+ '(evil-visual-state-cursor (quote ("#C5E1A5" box)))
+ '(fringe-mode 10)
+ '(highlight-indent-guides-auto-enabled nil)
+ '(highlight-symbol-colors
+   (quote
+    ("#FFEE58" "#C5E1A5" "#80DEEA" "#64B5F6" "#E1BEE7" "#FFCC80")))
+ '(highlight-symbol-foreground-color "#E0E0E0")
+ '(highlight-tail-colors (quote (("#ff2f97" . 0) ("#424242" . 100))))
  '(js-indent-level 4)
+ '(linum-format " %6d ")
+ '(main-line-color1 "#222912")
+ '(main-line-color2 "#09150F")
+ '(nrepl-message-colors
+   (quote
+    ("#336c6c" "#205070" "#0f2050" "#806080" "#401440" "#6c1f1c" "#6b400c" "#23733c")))
  '(package-selected-packages
    (quote
-    (assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme abyss-theme ahungry-theme ace-window neotree go-complete go-autocomplete go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete))))
+    (flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme abyss-theme ahungry-theme ace-window neotree go-complete go-autocomplete go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete)))
+ '(pdf-view-midnight-colors (quote ("#232333" . "#c7c7c7")))
+ '(pos-tip-background-color "#3c3c3c")
+ '(pos-tip-foreground-color "#9E9E9E")
+ '(powerline-color1 "#222912")
+ '(powerline-color2 "#09150F")
+ '(tabbar-background-color "#373737"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
