@@ -1,24 +1,7 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;               TODO               ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; grep option
-;;; path
-;;; exclude dirs
-; hide show
-
-;; c-x {}  ;; in/decrease split screen size
-;; c-x z   ;; repeat previous command
-;;     z   ;; pressin this will repeat forever
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;               TEST               ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;(set-specifier default-toolbar-visible-p nil)
-;;(set-specifier default-toolbar-visible-p nil)
-;;(set-specifier bottom-toolbar-visible-p nil)
-;; (set-specifier left-toolbar-visible-p nil)
-;; (set-specifier right-toolbar-visible-p nil)
-;; (set-specifier top-toolbar-visible-p nil)
+;;; notes ;;;
+;; C-h v major-mode RET
+;; M-x apropos-command -mode$ RET
+;; M-: major-mode RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;          FUNCTION start          ;;
@@ -481,18 +464,13 @@
 ;o - maximize current window
 (global-set-key (kbd "M-p") 'ace-window)
 
-;;
-;; find-tags M-.
-;;             list: tab or shift-/
-;; next hit M-,
 
-
-;; not worky yetii
-;; (defun open-from-remote (user ip)
-;;   "open file from remote server"
-;;   (interactive)
-;;   (find-file "/"))
-;; (global-set-key (kbd "C-c r f") 'open-from-remote)
+;; unbind shell ring history
+(define-key comint-mode-map (kbd "M-p") 'nil)
+(define-key comint-mode-map (kbd "M-n") 'nil)
+;; and rebind them
+(define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
+(define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;        KEYBINDINGS end           ;;
@@ -583,5 +561,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-
