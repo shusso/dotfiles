@@ -18,7 +18,8 @@
 
     "files.exclude": {
         "**/.env": true,
-        "**/dist": true
+        "**/dist": true,
+        "**/.git": true
     },
     "go.formatOnSave": false,
     "workbench.colorTheme": "Eden",
@@ -27,5 +28,5 @@
     "terminal.external.osxExec": "iTerm.app",
     "editor.minimap.enabled": false,
     "go.gopath": "/Users/shusso/golang",
-    "jupyter.appendResults": false
+    "editor.tabSize": 2
 }
