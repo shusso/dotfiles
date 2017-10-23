@@ -19,10 +19,10 @@
        changed = green
        untracked = cyan
 [alias]
-       lg = log --stat --pretty='format:%Cblue[%ad] %Cred<%h> %Creset(%an) %Cgreen%s' --date=short --graph
+       lg = log --stat --pretty='format:%Cblue[%ad] %Cred<%h> %Creset(%an) %Cgreen%s' --date=short --graph --decorate
        lg2 = log --stat -p --pretty='format:%Cblue[%ad] %Cred<%h> %Creset(%an) %Cgreen%s' --date=short --graph
        lgp = log --stat -p --pretty='format:%Cblue[%ad] %Cred<%h> %Creset(%an) %Cgreen%s' --date=short --graph
-       logs = log --stat
+       logs = log --stat --graph --decorate
        logp = log --stat -p
        logreview = log --stat --reverse -M
        s = status
