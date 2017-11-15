@@ -28,5 +28,7 @@
     "terminal.external.osxExec": "iTerm.app",
     "editor.minimap.enabled": false,
     "go.gopath": "/Users/shusso/golang",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "extensions.ignoreRecommendations": false,
+    "workbench.panel.location": "bottom"
 }
