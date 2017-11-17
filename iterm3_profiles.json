@@ -5614,7 +5614,7 @@
       "Green Component" : 1
     },
     "Use Cursor Guide" : true,
-    "Unlimited Scrollback" : false,
+    "Unlimited Scrollback" : true,
     "Custom Command" : "No",
     "Smart Selection Rules" : [
       {
@@ -9256,7 +9256,7 @@
       "Blue Component" : 0.8310782909393311
     },
     "Use Cursor Guide" : true,
-    "Unlimited Scrollback" : false,
+    "Unlimited Scrollback" : true,
     "Custom Command" : "No",
     "Smart Selection Rules" : [
       {
