@@ -232,8 +232,6 @@
 ;; C-c p 4 b	Switch to a project buffer and show it in another window.
 ;; C-c p 5 b	Switch to a project buffer and show it in another frame.
 
-
-
 (require 'go-mode)
 (require 'go-autocomplete)
 (require 'go-guru)
@@ -251,7 +249,14 @@
 ;; C-c C-p Copy a file or a directory.
 
 (require 'ace-window)
-
+;x - delete window
+;m - swap (move) window
+;c - split window fairly, either vertically or horizontally
+;v - split window vertically
+;b - split window horizontally
+;n - select the previous window
+;i - maximize window (select which window)
+;o - maximize current window
 
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -381,7 +386,11 @@
 ;;        nil "_"))))
 
 
+;; ace-window
+(setq aw-dispatch-always 1)
 
+;; auto-reload files
+(global-auto-revert-mode t)
   
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
@@ -464,14 +473,6 @@
 (global-set-key (kbd "C-c j") 'neotree-dir)
 
 ;; ace-window ;;
-;x - delete window
-;m - swap (move) window
-;c - split window fairly, either vertically or horizontally
-;v - split window vertically
-;b - split window horizontally
-;n - select the previous window
-;i - maximize window (select which window)
-;o - maximize current window
 (global-set-key (kbd "M-i") 'ace-window)
 
 
@@ -487,9 +488,11 @@
 (define-key term-mode-map (kbd "M-p") nil)
 
 
-;; gud debugger
+;; python pdb
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Commands-of-GUD.html
-
+;; M-x pdb <RET> Run pdb (like this): python3 -m pdb foo.py
+;; C-x C-a C-b breakpoint
+;; C-x C-a C-d remove breakpoint
 
 ;; M-a Move back to the beginning of the sentence (backward-sentence)
 ;; M-e Move forward to the end of the sentence (forward-sentence).
