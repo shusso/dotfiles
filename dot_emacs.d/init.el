@@ -479,14 +479,18 @@
 ;; unbind shell ring history
 (define-key comint-mode-map (kbd "M-p") 'nil)
 (define-key comint-mode-map (kbd "M-n") 'nil)
+
 ;; and rebind them
 (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
 (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 
-;; unbind in shell modes
+;; unbind common keys in shell modes
 (define-key term-raw-map (kbd "M-p") nil)
 (define-key term-mode-map (kbd "M-p") nil)
-
+(define-key term-raw-map (kbd "M-i") nil)
+(define-key term-mode-map (kbd "M-i") nil)
+(define-key term-raw-map (kbd "M-x") nil)
+(define-key term-mode-map (kbd "M-x") nil)
 
 ;; python pdb
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Commands-of-GUD.html
