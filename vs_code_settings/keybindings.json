@@ -5,8 +5,8 @@
         "command": "python.execInTerminal"
     },
     {
-        "key": "ctrl+shift+c",
-        "command": "workbench.action.terminal.focus"
+        "command": "workbench.action.terminal.toggleTerminal",
+        "key": "ctrl+shift+c"
     },
     {
         "key": "shift+cmd+p",

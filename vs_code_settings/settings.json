@@ -30,6 +30,6 @@
     "go.gopath": "/Users/shusso/golang",
     "editor.tabSize": 2,
     "extensions.ignoreRecommendations": false,
-    "workbench.panel.location": "bottom",
+    "workbench.panel.location": "right",
     "telemetry.enableTelemetry": false
 }
