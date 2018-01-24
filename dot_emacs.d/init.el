@@ -492,6 +492,7 @@
 (define-key term-raw-map (kbd "M-x") nil)
 (define-key term-mode-map (kbd "M-x") nil)
 
+(global-unset-key (kbd "M-s"))
 ;; python pdb
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Commands-of-GUD.html
 ;; M-x pdb <RET> Run pdb (like this): python3 -m pdb foo.py

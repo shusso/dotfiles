@@ -98,6 +98,7 @@ alias du='du -h'
 
 # ls
 alias ll='ls -lFhG'
+alias lld=ls_dirs
 alias llh='ls -lhFG'
 alias la='ls -AhG'
 alias lad='la -d */'
@@ -119,6 +120,14 @@ alias mvn_eclipse='mvn eclipse:eclipse -DdownloadJavadocs=true -DdownloadSources
 #export JAVA_HOME=$(/usr/libexec/java_home)
 #alias java_7="unset JAVA_HOME && export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/"
 #alias java_8="export JAVA_HOME=$(/usr/libexec/java_home)"
+
+
+function ls_dirs {
+    local cmd="ls -l -d */"
+    ${cmd} | awk '{ print $9}'
+}
+
+
 
 function start_docker_dep_containers {
     local prefix=""
@@ -210,6 +219,8 @@ function treeish {
     fi
     cd - > /dev/null 1>&1
 }
+
+
 
 alias his="history -n; history -a"
 
