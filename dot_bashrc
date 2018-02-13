@@ -22,6 +22,7 @@ export CONFIG_SCHED_AUTOGROUP=y
 
 export SCALA_HOME=/usr/local/Cellar/scala/2.12.4
 export SPARK_HOME=/usr/local/share/apache-spark/2.2.0
+export PYSPARK_PYTHON=python3
 
 shopt -s histappend
 # history on all terminals everywhere (http://briancarper.net/blog/248/)
