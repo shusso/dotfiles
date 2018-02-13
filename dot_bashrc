@@ -20,6 +20,8 @@ HISTCONTROL=ignoredups:ignorespace
 stty -ixon
 export CONFIG_SCHED_AUTOGROUP=y
 
+export SCALA_HOME=/usr/local/Cellar/scala/2.12.4
+export SPARK_HOME=/usr/local/share/apache-spark/2.2.0
 
 shopt -s histappend
 # history on all terminals everywhere (http://briancarper.net/blog/248/)
@@ -36,7 +38,7 @@ export PROMPT_COMMAND="history -a"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 
-export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin
+export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin
 
 alias unset_py="unset PYTHONPATH"
 alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.6/site-packages/'"
