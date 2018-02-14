@@ -219,6 +219,12 @@
 
 (require 'projectile)
 (setq-default projectile-mode t)
+
+
+'(projectile-globally-ignored-directories
+  (quote
+   (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work")))
+
 ;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
 ;; C-c p C-h Help
 ;; C-c p f	Display a list of all files in the project. With a prefix argument it will clear the cache first.
@@ -231,6 +237,12 @@
 ;; C-c p s g	Run grep on the files in the project.
 ;; C-c p 4 b	Switch to a project buffer and show it in another window.
 ;; C-c p 5 b	Switch to a project buffer and show it in another frame.
+;;
+;; Ignore dirs
+;; M-x customize-variable [RET]
+;; projectile-globally-ignored-files
+;; [INS]
+;; [ Apply and Save ]
 
 (require 'go-mode)
 (require 'go-autocomplete)
@@ -260,6 +272,9 @@
 
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+;; (eval-after-load 'flycheck (cons 'python-pylint (delq 'python-pylint flycheck-checkers)))
+(flycheck-add-next-checker 'python-flake8 'python-pylint)
+;; C-c ! s  flycheck-select-checker
 
 (require 'term)
 ;; C-c C-j  Terminal line-mode
@@ -492,6 +507,9 @@
 (define-key term-raw-map (kbd "M-x") nil)
 (define-key term-mode-map (kbd "M-x") nil)
 
+(define-key term-mode-map (kbd "C-c d") nil)
+(define-key term-raw-map (kbd "C-c d") nil)
+
 (global-unset-key (kbd "M-s"))
 ;; python pdb
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Commands-of-GUD.html
@@ -511,60 +529,16 @@
 ;;        KEYBINDINGS end           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (custom-set-variables
-;;   ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
-;;   ;; Your init file should contain only one such instance.
-;;  '(auto-compression-mode t nil (jka-compr))
-;;  '(case-fold-search t)
-;;  '(current-language-environment "UTF-8")
-;;  '(default-input-method "rfc1345")
-;;  '(global-font-lock-mode t nil (font-lock))
-;;  '(show-paren-mode t nil (paren))
-;;  '(tool-bar-mode nil nil (tool-bar))
-;;  '(transient-mark-mode t))
-;; (custom-set-faces
-;;   ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
-;;   ;; Your init file should contain only one such instance.
-;;  '(default ((t (:stipple nil :background "black" :foreground "green1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :family "adobe-courier"))))
-;;  '(region ((((class color) (background light)) (:background "white" :foreground "white" :box (:line-width 2 :color "grey75" :style released-button) :overline "white")))))
-
-
-
-;;;; TESTING
-;; (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- ;; '(column-number-mode t)
- ;; '(global-hl-line-mode t)
- ;; '(inhibit-startup-screen t)
- ;; '(mouse-highlight t)
- ;; '(show-paren-mode t))
- ;; '(setq initial-scratch-message nil)
- ;; '(setq-default transient-mark-mode t)
-
-;;(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- ;;'(default ((t (:stipple nil :background "black" :foreground "green1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "xos4" :family "Terminus")))))
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
  '(ansi-color-names-vector
-   ["#ded6c5" "#f71010" "#028902" "#ef8300" "#1111ff" "#a020f0" "#358d8d" "#262626"])
- '(beacon-color "#ff2f97")
+   ["#3f3f3f" "#ea3838" "#7fb07f" "#fe8b04" "#62b6ea" "#e353b9" "#1fb3b3" "#d5d2be"])
  '(custom-safe-themes
    (quote
-    ("ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "dd2346baba899fa7eee2bba4936cfcdf30ca55cdc2df0a1a4c9808320c4d4b22" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "87150cdc19854a979a51355b19775c2cd9e937733170270cd6d7cfaf991d0e1c" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "5cd0afd0ca01648e1fff95a7a7f8abec925bd654915153fb39ee8e72a8b56a1f" "5a0eee1070a4fc64268f008a4c7abfda32d912118e080e18c3c865ef864d1bea" "c3e6b52caa77cb09c049d3c973798bc64b5c43cc437d449eacf35b3e776bf85c" "70f5a47eb08fe7a4ccb88e2550d377ce085fedce81cf30c56e3077f95a2909f2" "1177fe4645eb8db34ee151ce45518e47cc4595c3e72c55dc07df03ab353ad132" default)))
+    ("6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dd2346baba899fa7eee2bba4936cfcdf30ca55cdc2df0a1a4c9808320c4d4b22" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
  '(diary-entry-marker (quote font-lock-variable-name-face))
  '(emms-mode-line-icon-image-cache
    (quote
@@ -573,7 +547,7 @@ static char *note[] = {
 /* width height num_colors chars_per_pixel */
 \"    10   11        2            1\",
 /* colors */
-\". c #358d8d\",
+\". c #1fb3b3\",
 \"# c None s None\",
 /* pixels */
 \"###...####\",
@@ -587,13 +561,8 @@ static char *note[] = {
 \"#######...\",
 \"######....\",
 \"#######..#\" };")))
- '(evil-emacs-state-cursor (quote ("#E57373" hbar)))
- '(evil-insert-state-cursor (quote ("#E57373" bar)))
- '(evil-normal-state-cursor (quote ("#FFEE58" box)))
- '(evil-visual-state-cursor (quote ("#C5E1A5" box)))
- '(fci-rule-color "#f6f0e1")
- '(fringe-mode 10)
- '(gnus-logo-colors (quote ("#0d7b72" "#adadad")))
+ '(fci-rule-color "#222222")
+ '(gnus-logo-colors (quote ("#2fdbde" "#c0c0c0")))
  '(gnus-mode-line-image-cache
    (quote
     (image :type xpm :ascent center :data "/* XPM */
@@ -601,7 +570,7 @@ static char *gnus-pointer[] = {
 /* width height num_colors chars_per_pixel */
 \"    18    13        2            1\",
 /* colors */
-\". c #358d8d\",
+\". c #1fb3b3\",
 \"# c None s None\",
 /* pixels */
 \"##################\",
@@ -617,51 +586,31 @@ static char *gnus-pointer[] = {
 \"###....####.######\",
 \"###..######.######\",
 \"###########.######\" };")))
- '(highlight-indent-guides-auto-enabled nil)
- '(highlight-symbol-colors
+ '(projectile-globally-ignored-directories
    (quote
-    ("#FFEE58" "#C5E1A5" "#80DEEA" "#64B5F6" "#E1BEE7" "#FFCC80")))
- '(highlight-symbol-foreground-color "#E0E0E0")
- '(highlight-tail-colors (quote (("#ff2f97" . 0) ("#424242" . 100))))
- '(js-indent-level 4)
- '(linum-format " %6d ")
- '(main-line-color1 "#222912")
- '(main-line-color2 "#09150F")
- '(nrepl-message-colors
-   (quote
-    ("#336c6c" "#205070" "#0f2050" "#806080" "#401440" "#6c1f1c" "#6b400c" "#23733c")))
- '(package-selected-packages
-   (quote
-    (flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme abyss-theme ahungry-theme ace-window neotree go-complete go-autocomplete go-projectile projectile go-mode jedi slime rainbow-delimiters auto-complete)))
- '(pdf-view-midnight-colors (quote ("#232333" . "#c7c7c7")))
- '(pos-tip-background-color "#3c3c3c")
- '(pos-tip-foreground-color "#9E9E9E")
- '(powerline-color1 "#222912")
- '(powerline-color2 "#09150F")
- '(red "#ffffff")
- '(tabbar-background-color "#373737")
- '(vc-annotate-background "#f6f0e1")
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work")))
+ '(vc-annotate-background "#222222")
  '(vc-annotate-color-map
    (quote
-    ((20 . "#e43838")
-     (40 . "#f71010")
-     (60 . "#ab9c3a")
-     (80 . "#9ca30b")
-     (100 . "#ef8300")
-     (120 . "#958323")
-     (140 . "#1c9e28")
-     (160 . "#3cb368")
-     (180 . "#028902")
-     (200 . "#008b45")
-     (220 . "#077707")
-     (240 . "#259ea2")
-     (260 . "#358d8d")
-     (280 . "#0eaeae")
-     (300 . "#2c53ca")
-     (320 . "#1111ff")
-     (340 . "#2020cc")
-     (360 . "#a020f0"))))
- '(vc-annotate-very-old-color "#a020f0"))
+    ((20 . "#db4334")
+     (40 . "#ea3838")
+     (60 . "#abab3a")
+     (80 . "#e5c900")
+     (100 . "#fe8b04")
+     (120 . "#e8e815")
+     (140 . "#3cb370")
+     (160 . "#099709")
+     (180 . "#7fb07f")
+     (200 . "#32cd32")
+     (220 . "#8ce096")
+     (240 . "#528d8d")
+     (260 . "#1fb3b3")
+     (280 . "#0c8782")
+     (300 . "#30a5f5")
+     (320 . "#62b6ea")
+     (340 . "#94bff3")
+     (360 . "#e353b9"))))
+ '(vc-annotate-very-old-color "#e353b9"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
