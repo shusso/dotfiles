@@ -216,14 +216,16 @@
 ;; C-? Show object documentation
 ;; C-c , Goto last point where C-c . was called
 
+;; https://github.com/tkf/emacs-jedi-direx
+(require 'jedi-direx)
+(eval-after-load "python"
+  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
+(add-hook 'jedi-mode-hook 'jedi-direx:setup)
+
+
 
 (require 'projectile)
 (setq-default projectile-mode t)
-
-
-'(projectile-globally-ignored-directories
-  (quote
-   (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work")))
 
 ;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
 ;; C-c p C-h Help
@@ -280,6 +282,14 @@
 ;; C-c C-j  Terminal line-mode
 ;; C-c C-k  Terminal mode
 
+
+(require 'ein)
+;; start jupyter notebook
+;; M-x ein:notebooklist-login (use the token as password)
+;; M-x ein:notebooklist-open
+(setq print-level 1)
+(setq print-length 1)
+(setq print-circle t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -388,6 +398,10 @@
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i") 
+;; C-c C-p    start shell
+;; C-c C-c    send current buffer to python
+;; C-c C-r    send selected code (C-SPC) to python
+
 
 ;; patch python shell in emacs 25
 ;; (with-eval-after-load 'python
@@ -586,9 +600,12 @@ static char *gnus-pointer[] = {
 \"###....####.######\",
 \"###..######.######\",
 \"###########.######\" };")))
+ '(package-selected-packages
+   (quote
+    (jedi-direx slime rainbow-delimiters neotree jedi go-projectile go-complete go-autocomplete flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes ahungry-theme afternoon-theme ace-window abyss-theme)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work")))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build")))
  '(vc-annotate-background "#222222")
  '(vc-annotate-color-map
    (quote
