@@ -290,6 +290,9 @@
 (setq print-level 1)
 (setq print-length 1)
 (setq print-circle t)
+
+
+(require 'yaml-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -616,10 +619,10 @@ static char *gnus-pointer[] = {
 \"###########.######\" };")))
  '(package-selected-packages
    (quote
-    (jedi-direx slime rainbow-delimiters neotree jedi go-projectile go-complete go-autocomplete flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes ahungry-theme afternoon-theme ace-window abyss-theme)))
+    (yaml-mode jedi-direx slime rainbow-delimiters neotree jedi go-projectile go-complete go-autocomplete flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes ahungry-theme afternoon-theme ace-window abyss-theme)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build")))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "")))
  '(vc-annotate-background "#222222")
  '(vc-annotate-color-map
    (quote
