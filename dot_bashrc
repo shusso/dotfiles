@@ -112,6 +112,33 @@ alias lt='ll -t'
 alias unity="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
 alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
 
+function kubectl-logs {
+    local pod=$1
+    kubectl logs -f ${pod}
+}
+
+function kubectl-get-pod {
+    local name=$1
+    kubectl get pods | grep ${name}
+}
+
+function kubectl-config {
+    kubectl config view
+}
+
+function kubectl-context {
+    kubectl config current-context
+}
+
+function kubectl-set-context {
+    local context=$1
+    kubectl config set-context ${context}
+}
+
+function kubectl-get-contexts {
+    local name=$1
+    kubectl config get-contexts ${name}
+}
 
 function set_tags_py {
     echo "Set tags $(pwd)"
@@ -332,3 +359,4 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # bash magic to call functions defined here
 # e.g. source ~/.bashrc activate_venv
 "$@"
+
