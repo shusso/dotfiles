@@ -140,31 +140,31 @@ function kubectl-get-contexts {
     kubectl config get-contexts ${name}
 }
 
-function set_tags_py {
+function set-tags-py {
     echo "Set tags $(pwd)"
     find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) | xargs etags
 }
 
-function venv_setup {
+function venv-setup {
     python3 -m venv .env
 }
 
-function venv_activate {
+function venv-activate {
     if [ -d .env ]; then
         source .env/bin/activate
     fi
 }
 
-function venv_install {
+function venv-install {
     if [ -f requirements.txt ]; then
         pip3 install -r requirements.txt
     fi
 }
 
-function set_pyenv {
-    venv_setup
-    venv_activate
-    venv_install
+function set-pyenv {
+    venv-setup
+    venv-activate
+    venv-install
 }
 
 function ls_dirs {
