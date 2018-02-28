@@ -221,26 +221,22 @@
 ;; C-? Show object documentation
 ;; C-c , Goto last point where C-c . was called
 
-;; https://github.com/tkf/emacs-jedi-direx
-(require 'jedi-direx)
-(eval-after-load "python"
-  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
-(add-hook 'jedi-mode-hook 'jedi-direx:setup)
-
-
 
 (require 'projectile)
 (setq-default projectile-mode t)
 
 ;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
-;; C-c p C-h Help
-;; C-c p f	Display a list of all files in the project. With a prefix argument it will clear the cache first.
-;; C-c p F	Display a list of all files in all known projects.
+;; C-c p C-h    Help
+;; C-c p f	    Display a list of all files in the project. With a prefix argument it will clear the cache first.
+;; C-c p F	    Display a list of all files in all known projects.
 ;; C-c p 4 f	Jump to a project's file using completion and show it in another window.
-;; C-c p d	Display a list of all directories in the project. With a prefix argument it will clear the cache first.
+;; C-c p d	    Display a list of all directories in the project. With a prefix argument it will clear the cache first.
 ;; C-c p 4 d	Switch to a project directory and show it in another window.
 ;; C-c p 5 d	Switch to a project directory and show it in another frame.
-;; C-c p T	Display a list of all test files(specs, features, etc) in the project.
+;; C-c p T	    Display a list of all test files(specs, features, etc) in the project.
+;; C-c p t      Toggle between implementation and test file
+;; C-c p 4 t    Jump to implementation/testfile in other window
+;; C-c p 5 t    -''- in other frame
 ;; C-c p s g	Run grep on the files in the project.
 ;; C-c p 4 b	Switch to a project buffer and show it in another window.
 ;; C-c p 5 b	Switch to a project buffer and show it in another frame.
@@ -298,6 +294,7 @@
 
 
 (require 'yaml-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -405,7 +402,8 @@
 ;; ipython shell
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 (setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i") 
+      python-shell-interpreter-args "-i")
+
 ;; C-c C-p    start shell
 ;; C-c C-c    send current buffer to python
 ;; C-c C-r    send selected code (C-SPC) to python
@@ -505,6 +503,8 @@
 ;; projectile
 (global-set-key (kbd "M-p") 'projectile-command-map)
 
+
+
 ;; neotree
 (global-set-key (kbd "C-c d") 'neotree-toggle)
 (global-set-key (kbd "C-c j") 'neotree-dir)
@@ -560,7 +560,6 @@
       (when (looking-at "^    ")
         (replace-match "")))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;        KEYBINDINGS end           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -570,13 +569,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#3f3f3f" "#ea3838" "#7fb07f" "#fe8b04" "#62b6ea" "#e353b9" "#1fb3b3" "#d5d2be"])
  '(custom-safe-themes
    (quote
-    ("551596f9165514c617c99ad6ce13196d6e7caa7035cea92a0e143dbe7b28be0e" "87150cdc19854a979a51355b19775c2cd9e937733170270cd6d7cfaf991d0e1c" "28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "5cd0afd0ca01648e1fff95a7a7f8abec925bd654915153fb39ee8e72a8b56a1f" "5a0eee1070a4fc64268f008a4c7abfda32d912118e080e18c3c865ef864d1bea" "1177fe4645eb8db34ee151ce45518e47cc4595c3e72c55dc07df03ab353ad132" "70f5a47eb08fe7a4ccb88e2550d377ce085fedce81cf30c56e3077f95a2909f2" "c3e6b52caa77cb09c049d3c973798bc64b5c43cc437d449eacf35b3e776bf85c" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dd2346baba899fa7eee2bba4936cfcdf30ca55cdc2df0a1a4c9808320c4d4b22" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
+    ("6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dd2346baba899fa7eee2bba4936cfcdf30ca55cdc2df0a1a4c9808320c4d4b22" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
  '(diary-entry-marker (quote font-lock-variable-name-face))
  '(emms-mode-line-icon-image-cache
    (quote
@@ -600,7 +597,6 @@ static char *note[] = {
 \"######....\",
 \"#######..#\" };")))
  '(fci-rule-color "#222222")
- '(fringe-mode 10)
  '(gnus-logo-colors (quote ("#2fdbde" "#c0c0c0")))
  '(gnus-mode-line-image-cache
    (quote
@@ -625,21 +621,12 @@ static char *gnus-pointer[] = {
 \"###....####.######\",
 \"###..######.######\",
 \"###########.######\" };")))
- '(linum-format " %6d ")
- '(main-line-color1 "#222912")
- '(main-line-color2 "#09150F")
- '(nrepl-message-colors
-   (quote
-    ("#336c6c" "#205070" "#0f2050" "#806080" "#401440" "#6c1f1c" "#6b400c" "#23733c")))
  '(package-selected-packages
    (quote
-    (yaml-mode jedi-direx slime rainbow-delimiters neotree jedi go-projectile go-complete go-autocomplete flycheck ein apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ace-window)))
- '(pdf-view-midnight-colors (quote ("#232333" . "#c7c7c7")))
- '(powerline-color1 "#222912")
- '(powerline-color2 "#09150F")
+    (yaml-mode slime rainbow-delimiters neotree jedi go-projectile go-complete go-autocomplete flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes ahungry-theme afternoon-theme ace-window abyss-theme)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build")))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "")))
  '(vc-annotate-background "#222222")
  '(vc-annotate-color-map
    (quote
