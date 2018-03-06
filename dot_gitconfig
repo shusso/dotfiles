@@ -24,7 +24,8 @@
        lp = log --stat -p --decorate --graph
        l = log --stat --graph --decorate
        logreview = log --stat --reverse -M
-       s = status
+       sa = status
+       s = status -uno
        sc = status .
        co = checkout
        b = branch
