@@ -112,6 +112,17 @@ alias lt='ll -t'
 alias unity="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
 alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
 
+
+function kubectl-connect {
+    local pod=$1
+    kubectl exec -it ${pod} -- /bin/bash
+}
+
+function kubectl-delete {
+    local pod=$1
+    kubectl delete pod ${pod}
+}
+
 function kubectl-logs {
     local pod=$1
     kubectl logs -f ${pod}
