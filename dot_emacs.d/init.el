@@ -135,7 +135,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/color-theme") ;; load themes
 
-;; color themes
+;; color themes http://www.nongnu.org/color-theme/
 (require 'color-theme)
 ;; M-x color-theme-select
 
@@ -227,6 +227,7 @@
 
 ;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
 ;; C-c p C-h    Help
+;; C-c p o       Multi Occur
 ;; C-c p f	    Display a list of all files in the project. With a prefix argument it will clear the cache first.
 ;; C-c p F	    Display a list of all files in all known projects.
 ;; C-c p 4 f	Jump to a project's file using completion and show it in another window.
@@ -426,7 +427,9 @@
 
 ;; auto-reload files
 (global-auto-revert-mode t)
-  
+
+(set-frame-parameter (selected-frame) 'alpha '(88 70))
+(add-to-list 'default-frame-alist '(alpha 88 70))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -569,11 +572,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#3f3f3f" "#ea3838" "#7fb07f" "#fe8b04" "#62b6ea" "#e353b9" "#1fb3b3" "#d5d2be"])
+ '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
-    ("6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dd2346baba899fa7eee2bba4936cfcdf30ca55cdc2df0a1a4c9808320c4d4b22" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
+    ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" "dd2346baba899fa7eee2bba4936cfcdf30ca55cdc2df0a1a4c9808320c4d4b22" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
  '(diary-entry-marker (quote font-lock-variable-name-face))
  '(emms-mode-line-icon-image-cache
    (quote
@@ -648,7 +654,7 @@ static char *gnus-pointer[] = {
      (320 . "#62b6ea")
      (340 . "#94bff3")
      (360 . "#e353b9"))))
- '(vc-annotate-very-old-color "#e353b9"))
+ '(vc-annotate-very-old-color "#e353b9" t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
