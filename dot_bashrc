@@ -112,6 +112,10 @@ alias lt='ll -t'
 alias unity="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
 alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
 
+function kubectl-edit {
+    local dep=$1
+    kubectl edit deployment/${dep}
+}
 
 function kubectl-connect {
     local pod=$1
@@ -143,7 +147,7 @@ function kubectl-context {
 
 function kubectl-set-context {
     local context=$1
-    kubectl config set-context ${context}
+    kubectl config use-context ${context}
 }
 
 function kubectl-get-contexts {
