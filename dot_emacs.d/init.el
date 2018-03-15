@@ -531,6 +531,8 @@
 (define-key term-mode-map (kbd "M-i") nil)
 (define-key term-raw-map (kbd "M-x") nil)
 (define-key term-mode-map (kbd "M-x") nil)
+(define-key term-mode-map (kbd "C-c SPC") nil)
+(define-key term-raw-map (kbd "C-c SPC") nil)
 
 (define-key term-mode-map (kbd "C-c d") nil)
 (define-key term-raw-map (kbd "C-c d") nil)
