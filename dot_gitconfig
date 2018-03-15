@@ -30,6 +30,7 @@
        co = checkout
        b = branch
        br = branch --remote
+       bn = rev-parse --abbrev-ref HEAD
        r = remote
        rv = remote -v
        ba = branch -a
@@ -43,6 +44,8 @@
        cp = cherry-pick
        dc = diff --cached -p --stat
        d = diff -p --stat
+       dm = "!f() { git d master; }; f" # diff to current master
+       dmc = "!f() { git d $(git merge-base $(git bn) master); }; f" # diff to master when branch was created
        wd = diff --word-diff
        svnfetch = svn fetch --fetch-all
        undo = reset --soft 'HEAD^'
