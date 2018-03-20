@@ -132,7 +132,6 @@
 ;;           MODES start            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/color-theme") ;; load themes
 
 ;; color themes http://www.nongnu.org/color-theme/
@@ -143,7 +142,7 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
@@ -296,6 +295,9 @@
 
 (require 'yaml-mode)
 
+(require 'markdown-mode)
+;; M-x markdown-export-and-preview RET
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -430,6 +432,18 @@
 
 (set-frame-parameter (selected-frame) 'alpha '(88 70))
 (add-to-list 'default-frame-alist '(alpha 88 70))
+
+;; winner mode
+;; https://www.emacswiki.org/emacs/WinnerMode
+;; C-x 1     1 window
+;; C-x 2     2 windows
+;; C-c left  go to previous (backward)
+;; C-c right go to previous (forward)
+
+(winner-mode 1)
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -533,9 +547,11 @@
 (define-key term-mode-map (kbd "M-x") nil)
 (define-key term-mode-map (kbd "C-c SPC") nil)
 (define-key term-raw-map (kbd "C-c SPC") nil)
-
 (define-key term-mode-map (kbd "C-c d") nil)
 (define-key term-raw-map (kbd "C-c d") nil)
+(define-key term-mode-map (kbd "C-c m") nil)
+(define-key term-raw-map (kbd "C-c m") nil)
+
 
 (global-unset-key (kbd "M-s"))
 ;; python pdb
@@ -578,6 +594,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#3f3f3f" "#ea3838" "#7fb07f" "#fe8b04" "#62b6ea" "#e353b9" "#1fb3b3" "#d5d2be"])
+ '(beacon-color "#ff2f97")
  '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
@@ -604,6 +621,10 @@ static char *note[] = {
 \"#######...\",
 \"######....\",
 \"#######..#\" };")))
+ '(evil-emacs-state-cursor (quote ("#E57373" hbar)))
+ '(evil-insert-state-cursor (quote ("#E57373" bar)))
+ '(evil-normal-state-cursor (quote ("#FFEE58" box)))
+ '(evil-visual-state-cursor (quote ("#C5E1A5" box)))
  '(fci-rule-color "#222222")
  '(gnus-logo-colors (quote ("#2fdbde" "#c0c0c0")))
  '(gnus-mode-line-image-cache
@@ -629,12 +650,27 @@ static char *gnus-pointer[] = {
 \"###....####.######\",
 \"###..######.######\",
 \"###########.######\" };")))
+ '(highlight-indent-guides-auto-enabled nil)
+ '(highlight-symbol-colors
+   (quote
+    ("#FFEE58" "#C5E1A5" "#80DEEA" "#64B5F6" "#E1BEE7" "#FFCC80")))
+ '(highlight-symbol-foreground-color "#E0E0E0")
+ '(highlight-tail-colors (quote (("#ff2f97" . 0) ("#424242" . 100))))
+ '(magit-log-arguments (quote ("--decorate" "--patch" "--stat" "-n30")))
+ '(markdown-command "pandoc -f markdown -t html")
+ '(nrepl-message-colors
+   (quote
+    ("#336c6c" "#205070" "#0f2050" "#806080" "#401440" "#6c1f1c" "#6b400c" "#23733c")))
  '(package-selected-packages
    (quote
-    (yaml-mode slime rainbow-delimiters neotree jedi go-projectile go-complete go-autocomplete flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes ahungry-theme afternoon-theme ace-window abyss-theme)))
+    (markdown-mode csharp-mode magit ace-jump-mode yaml-mode slime rainbow-delimiters neotree jedi go-projectile go-complete go-autocomplete flycheck ein assemblage-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes ahungry-theme afternoon-theme ace-window abyss-theme)))
+ '(pdf-view-midnight-colors (quote ("#232333" . "#c7c7c7")))
+ '(pos-tip-background-color "#3c3c3c")
+ '(pos-tip-foreground-color "#9E9E9E")
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "")))
+ '(tabbar-background-color "#373737")
  '(vc-annotate-background "#222222")
  '(vc-annotate-color-map
    (quote
