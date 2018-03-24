@@ -296,6 +296,8 @@
 (require 'yaml-mode)
 
 (require 'markdown-mode)
+;; C-c C-c e  export
+;; C-C C-c v  export & preview
 ;; M-x markdown-export-and-preview RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

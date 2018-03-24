@@ -1,6 +1,7 @@
 ##############
 ##   KROW   ##
 ##############
+test -f ${HOME}/.krow.rc && source ${HOME}/.krow.rc
 
 ##############
 ##  Common  ##
