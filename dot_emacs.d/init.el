@@ -555,7 +555,11 @@
 (define-key term-raw-map (kbd "C-c d") nil)
 (define-key term-mode-map (kbd "C-c m") nil)
 (define-key term-raw-map (kbd "C-c m") nil)
-
+(define-key markdown-mode-map (kbd "M-p") nil)
+(define-key markdown-mode-map (kbd "M-i") nil)
+(define-key markdown-mode-map (kbd "C-c SPC") nil)
+(define-key markdown-mode-map (kbd "C-c d") nil)
+(define-key markdown-mode-map (kbd "C-c m") nil)
 
 (global-unset-key (kbd "M-s"))
 ;; python pdb
