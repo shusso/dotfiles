@@ -66,15 +66,7 @@ function git_author_stats {
         | gawk "{ add += \$1 ; subs += \$2 ; loc += \$1 - \$2 } END { printf \"Author: ${author} added lines: %s removed lines: %s total lines: %s\n\",add,subs,loc }" -
 }
 
-alias tags="find . -name "*.py" -exec etags -a {} \;"
-alias tags_ruby="ripper-tags --tag-file TAGS -R --exclude=ign_* --exclude=patches --exclude=tests* --exclude=temp --exclude=image* --exclude=coverage --exclude=object*"
-alias tags_java="find . -name \"*.java\" -exec etags -o JTAGS -a {} \;"
-alias tags_c="ctags -e -a --Ruby-kinds=-fF -o TAGS -R ."
-alias tags_py="find . -name \"*.py\" -exec etags -o PTAGS -a {} \;"
-alias find_cpp_files="find . -type f -name '*.h' -o  -name '*.cpp'"
-
 alias t="tmux"
-
 
 # docker
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
@@ -158,7 +150,13 @@ function kubectl-get-contexts {
 
 function set-tags-py {
     echo "Set tags $(pwd)"
-    find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) | xargs etags
+    find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) | xargs ctags
+}
+
+
+function set-cscope-py {
+    echo "Set cscope $(pwd)"
+    find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) > cscope.files
 }
 
 function venv-setup {
