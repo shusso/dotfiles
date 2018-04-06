@@ -149,13 +149,13 @@
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ;;requires
-;;http://cx4a.org/software/auto-complete/
-(require 'auto-complete-config)
-;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto_comp/ac-dict")
-(ac-config-default)
-(setq ac-ignore-case nil)
-(add-to-list 'ac-modes 'web-mode)
-(add-hook 'python-mode-hook 'auto-complete-mode)
+;; ;;http://cx4a.org/software/auto-complete/
+;; (require 'auto-complete-config)
+;; ;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto_comp/ac-dict")
+;; (ac-config-default)
+;; (setq ac-ignore-case nil)
+;; (add-to-list 'ac-modes 'web-mode)
+;; (add-hook 'python-mode-hook 'auto-complete-mode)
 
 ;; requires ace-jump
 ;; https://github.com/winterTTr/ace-jump-mode
@@ -189,8 +189,8 @@
 (slime-setup)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-(eval-after-load "auto-complete"
- '(add-to-list 'ac-modes 'slime-repl-mode))
+;; (eval-after-load "auto-complete"
+;;  '(add-to-list 'ac-modes 'slime-repl-mode))
 (add-hook 'lisp-mode-hook 
          (lambda ()
            (paredit-mode +1)))
@@ -212,16 +212,19 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
 
+;; https://github.com/proofit404/anaconda-mode
+(require 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-mode)
+;; C-M-i	anaconda-mode-complete
+;; M-.	    anaconda-mode-find-definitions
+;; M-,	    anaconda-mode-find-assignments
+;; M-r	    anaconda-mode-find-references
+;; M-*	    anaconda-mode-go-back
+;; M-?	    anaconda-mode-show-doc
 
-;; http://tkf.github.io/emacs-jedi/latest/
-(require 'jedi)
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-;; C-c . Go to object definition
-;; <C-tab> Complete code
-;; C-? Show object documentation
-;; C-c , Goto last point where C-c . was called
 
+;; company
+(require 'company)
 
 (require 'projectile)
 (setq-default projectile-mode t)
@@ -250,7 +253,7 @@
 ;; [ Apply and Save ]
 
 (require 'go-mode)
-(require 'go-autocomplete)
+;;(require 'go-autocomplete)
 (require 'go-guru)
 
 (require 'neotree)
@@ -398,10 +401,10 @@
 ;; hook for golang compile
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-(add-hook 'go-mode-hook 'auto-complete-for-go)
+;;(add-hook 'go-mode-hook 'auto-complete-for-go)
 
-(with-eval-after-load 'go-mode
-   (require 'go-autocomplete))
+;; (with-eval-after-load 'go-mode
+;;    (require 'go-autocomplete))
 
 ;; better buffer switching
 (ido-mode 1)
@@ -447,6 +450,16 @@
 (winner-mode 1)
 (when (fboundp 'winner-mode)
   (winner-mode 1))
+
+
+(setq company-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
+
+(eval-after-load "company"
+  '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
+
+;; (eval-after-load "company"
+;;   '(add-to-list 'company-backends 'company-anaconda))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
@@ -523,8 +536,8 @@
 
 ;; projectile
 (global-set-key (kbd "M-p") 'projectile-command-map)
-
-
+(define-key projectile-mode-map (kbd "?\s-d") 'projectile-find-dir)
+(define-key projectile-mode-map [?\s-g] 'projectile-grep)
 
 ;; neotree
 (global-set-key (kbd "C-c d") 'neotree-toggle)
