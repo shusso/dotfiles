@@ -34,55 +34,6 @@
         ("ON_HOLD" . (:foreground "purple" :weight bold))
         ("INVALID" . (:foreground "orange" :weight bold))))
 
-
-(defun hs-hide-leafs-recursive (minp maxp)
-  "Hide blocks that do not contain further blocks in region (MINP MAXP)."
-  (hs-minor-mode t)
-  (when (hs-find-block-beginning)
-    (setq minp (1+ (point)))
-    (funcall hs-forward-sexp-func 1)
-    (setq maxp (1- (point))))
-  (unless hs-allow-nesting
-    (hs-discard-overlays minp maxp))
-  (goto-char minp)
-  (let ((leaf t))
-    (while (progn
-             (forward-comment (buffer-size))
-             (and (< (point) maxp)
-                  (re-search-forward hs-block-start-regexp maxp t)))
-      (setq pos (match-beginning hs-block-start-mdata-select))
-      (if (hs-hide-leafs-recursive minp maxp)
-          (save-excursion
-            (goto-char pos)
-            (hs-hide-block-at-point t)))
-      (setq leaf nil))
-    (goto-char maxp)
-    leaf))
-
-
-(defun hs-hide-leafs ()
-  "Hide all blocks that do not contain further blocks. The hook `hs-hide-hook' is run; see `run-hooks'."
-  (interactive)
-  (hs-minor-mode t)
-  (hs-life-goes-on
-   (save-excursion
-     (message "Hiding blocks ...")
-     (save-excursion
-       (goto-char (point-min))
-       (hs-hide-leafs-recursive (point-min) (point-max)))
-     (message "Hiding blocks ... done"))
-   (run-hooks 'hs-hide-hook)))
-
-;;function un/fold set to f11. ;was f3
-(defun jao-toggle-selective-display ()
-  (interactive)
-  (set-selective-display (if selective-display nil 1)))
-
-(defun jao-toogle-selective-display (column)
-  (interactive "P")
-  (set-selective-display
-   (if selective-display nil (or column 1))))
-
 ;; Open buffers with follow mode
 (defun 3-buffers ()
   (interactive)
@@ -136,8 +87,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           MODES start            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 
 ;; modern color theme
 ;; https://github.com/emacs-jp/replace-colorthemes
@@ -320,11 +269,6 @@
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
 
-;; to fix the stupid python.el 8 tab crap
-;; (setq tab-width 4)
-;;             (set-variable 'py-indent-offset 4)
-;;             (set-variable 'python-indent-guess-indent-offset nil)
-
 ;; Are we running XEmacs or Emacs?
 (defvar running-xemacs (string-match "XEmacs\\|Lucid" emacs-version))
 
@@ -431,6 +375,9 @@
 (set-frame-parameter (selected-frame) 'alpha '(88 70))
 (add-to-list 'default-frame-alist '(alpha 88 70))
 
+(winner-mode 1)
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
 ;; winner mode
 ;; https://www.emacswiki.org/emacs/WinnerMode
 ;; C-x 1     1 window
@@ -438,19 +385,16 @@
 ;; C-c left  go to previous (backward)
 ;; C-c right go to previous (forward)
 
-(winner-mode 1)
-(when (fboundp 'winner-mode)
-  (winner-mode 1))
-
 (setq company-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
-
 ;; (eval-after-load 'company
 ;;   '(add-to-list 'company-backends 'company-anaconda))
 (eval-after-load 'company
   '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
-
 (setq auto-complete-mode 1)
+
+;; hs-mode
+(add-hook 'prog-mode-hook #'hs-minor-mode)
 
 ;search case insensitive
 (setq case-fold-search t)
@@ -471,10 +415,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; move around in buffers
-(global-set-key (kbd "C-c <left>") 'windmove-left) 
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>") 'windmove-up)
-(global-set-key (kbd "C-c <down>") 'windmove-down)
+;; (global-set-key (kbd "C-c <left>") 'windmove-left) 
+;; (global-set-key (kbd "C-c <right>") 'windmove-right)
+;; (global-set-key (kbd "C-c <up>") 'windmove-up)
+;; (global-set-key (kbd "C-c <down>") 'windmove-down)
 
 ;; switch to previous in buffer
 (global-set-key (kbd "C-c l") 'switch-to-previous-buffer)
@@ -486,17 +430,19 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
-;; hide/show blocks
-(global-set-key (kbd "C-c k") 'hs-hide-leafs-recursive)
-(global-set-key (kbd "C-c h") 'hs-hide-leafs)
-(global-set-key (kbd "C-c a") 'hs-show-all)
-(global-set-key [f11] 'jao-toggle-selective-display)
 
-;;grep
-(global-set-key (kbd "C-c g") 'grep)
-(global-set-key (kbd "C-c n") 'occur-next-error)
-(global-set-key (kbd "C-c b n") 'next-buffer)
-(global-set-key (kbd "C-c b p") 'previous-buffer)
+;; hide-show-mode
+(global-set-key (kbd "C-c a") 'hs-show-all)
+(global-set-key (kbd "C-c h l") 'hs-hide-level)
+(global-set-key (kbd "C-c h a") 'hs-hide-all)
+(global-set-key (kbd "C-c h b") 'hs-hide-block)
+(global-set-key (kbd "C-c h s") 'hs-show-block)
+
+;; hide/show blocks
+;; (global-set-key (kbd "C-c k") 'hs-hide-leafs-recursive)
+;; (global-set-key (kbd "C-c h") 'hs-hide-leafs)
+;; (global-set-key (kbd "C-c a") 'hs-show-all)
+;; (global-set-key [f11] 'jao-toggle-selective-display)
 
 ;;magit
 (global-set-key (kbd "C-c m") 'magit-status)
@@ -544,7 +490,6 @@
 ;; ace-window ;;
 (global-set-key (kbd "M-i") 'ace-window)
 
-
 ;; unbind shell ring history
 (define-key comint-mode-map (kbd "M-p") 'nil)
 (define-key comint-mode-map (kbd "M-n") 'nil)
@@ -566,6 +511,8 @@
 (define-key term-raw-map (kbd "C-c d") nil)
 (define-key term-mode-map (kbd "C-c m") nil)
 (define-key term-raw-map (kbd "C-c m") nil)
+(define-key term-mode-map (kbd "C-c l") nil)
+(define-key term-raw-map (kbd "C-c l") nil)
 (define-key markdown-mode-map (kbd "M-p") nil)
 (define-key markdown-mode-map (kbd "M-i") nil)
 (define-key markdown-mode-map (kbd "C-c SPC") nil)
@@ -628,7 +575,7 @@
     (yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi go-projectile go-complete go-autocomplete flycheck ein csharp-mode company-anaconda color-theme-modern ace-window ace-jump-mode)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "dist"))))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "dist" ".parquet"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
