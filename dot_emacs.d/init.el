@@ -438,12 +438,6 @@
 (global-set-key (kbd "C-c h b") 'hs-hide-block)
 (global-set-key (kbd "C-c h s") 'hs-show-block)
 
-;; hide/show blocks
-;; (global-set-key (kbd "C-c k") 'hs-hide-leafs-recursive)
-;; (global-set-key (kbd "C-c h") 'hs-hide-leafs)
-;; (global-set-key (kbd "C-c a") 'hs-show-all)
-;; (global-set-key [f11] 'jao-toggle-selective-display)
-
 ;;magit
 (global-set-key (kbd "C-c m") 'magit-status)
 
@@ -575,7 +569,7 @@
     (yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi go-projectile go-complete go-autocomplete flycheck ein csharp-mode company-anaconda color-theme-modern ace-window ace-jump-mode)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "dist" ".parquet"))))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "dist" "parquet" ".pyc" "__pychache__"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
