@@ -30,6 +30,10 @@ shopt -s histappend
 # history on all terminals everywhere (http://briancarper.net/blog/248/)
 export PROMPT_COMMAND="history -a"
 
+# pipenv
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PIPENV_VENV_IN_PROJECT=1
 
 ## ssh options:
 ##-o TCPKeepAlive=yes -o ServerAliveInterval=4
