@@ -245,6 +245,7 @@
 
 (require 'org)
 
+;;(require ')
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -352,7 +353,6 @@
 ;; C-c C-p    start shell
 ;; C-c C-c    send current buffer to python
 ;; C-c C-r    send selected code (C-SPC) to python
-
 
 ;; patch python shell in emacs 25
 ;; (with-eval-after-load 'python
@@ -566,10 +566,10 @@
  '(markdown-command "pandoc")
  '(package-selected-packages
    (quote
-    (yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi go-projectile go-complete go-autocomplete flycheck ein csharp-mode company-anaconda color-theme-modern ace-window ace-jump-mode)))
+    (pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi go-projectile go-complete go-autocomplete flycheck ein csharp-mode company-anaconda color-theme-modern ace-window ace-jump-mode)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "dist" "parquet" ".pyc" "__pychache__"))))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "dist" "parquet" ".pyc" "__pychache__" "resources"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
