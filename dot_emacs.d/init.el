@@ -569,7 +569,7 @@
     (pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi go-projectile go-complete go-autocomplete flycheck ein csharp-mode company-anaconda color-theme-modern ace-window ace-jump-mode)))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" "build" "dist" "parquet" ".pyc" "__pychache__" "resources"))))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" ".venv" "build" "dist" "parquet" ".pyc" "__pychache__" "resources"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
