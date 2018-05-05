@@ -10,7 +10,7 @@ bind r source-file ~/.tmux.conf
 set -g history-limit 4096
 
 # Support mouse tmux <2.1
-# setw -g mode-mouse on
+# set -g mode-mouse on
 # set -g mouse-select-pane on
 # mouse mode on tmux >2.1
 set -g mouse on
@@ -49,18 +49,17 @@ bind-key l join-pane -s !
 bind-key a command-prompt -p "join pane from:" "join-pane -s '%%'"
 ## send pane to existing session
 bind-key A command-prompt -p "send-pane to:" "join-pane -t '%%'"
-
+# Send bash command to pane 1
+bind-key S command-prompt -p "Send command to pane 1: " "send-keys -t 1 C-z '%%' Enter"
+# send window to another session
+bind-key u command-prompt -p "send window to another <session>:<number>" "move-window -t '%%'"
 
 ## swap panes
 bind-key N swap-pane -D
 bind-key P swap-pane -U
 
-# Send bash command to pane 1
-bind-key S command-prompt -p "Send command to pane 1: " "send-keys -t 1 C-z '%%' Enter"
-
 # set correct term
 set -g default-terminal screen-256color
-
 
 # Tmux resurrect https://github.com/tmux-plugins/tmux-resurrect
 run-shell ~/.tmux-resurrect/resurrect.tmux
