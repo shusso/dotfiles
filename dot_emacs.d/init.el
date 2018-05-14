@@ -346,8 +346,12 @@
 (ido-mode 1)
 
 ;; ipython shell
-(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-(setq python-shell-interpreter "ipython"
+;; disabled 14.05.20180 for corrupting ipython.sqlite
+;; (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+;; (setq python-shell-interpreter "ipython"
+;;       python-shell-interpreter-args "-i")
+
+(setq python-shell-interpreter "python3"
       python-shell-interpreter-args "-i")
 
 ;; C-c C-p    start shell
