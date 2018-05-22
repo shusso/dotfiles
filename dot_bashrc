@@ -16,6 +16,8 @@ HISTSIZE=1000000
 HISTFILESIZE=2000000
 HISTCONTROL=ignoredups:ignorespace
 
+export PYTHONSTARTUP=~/.pythonrc
+
 #export LANG=fi_FI.utf8
 # for fixing the stupid konsole ctrl-q/s thingy:
 stty -ixon
