@@ -869,8 +869,8 @@
       "Green Component" : 0.2272884044796228
     },
     "Blur" : true,
-    "Normal Font" : "InputMono-Regular 12",
-    "Vertical Spacing" : 1.1,
+    "Normal Font" : "SourceCodePro-Regular 12",
+    "Vertical Spacing" : 1.00535344503012,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
       "Green Component" : 0.8780335783958435,
@@ -914,9 +914,9 @@
     },
     "Columns" : 80,
     "Visual Bell" : false,
-    "Custom Directory" : "No",
+    "ASCII Ligatures" : false,
     "Thin Strokes" : 4,
-    "ASCII Ligatures" : false
+    "Custom Directory" : "No"
   },
   {
     "Ansi 5 Color" : {
@@ -1319,8 +1319,8 @@
       "Red Component" : 0.1333333333333333
     },
     "Blur" : true,
-    "Normal Font" : "InputMono-Regular 12",
-    "Vertical Spacing" : 1.091108574924699,
+    "Normal Font" : "SourceCodePro-Regular 12",
+    "Vertical Spacing" : 1.010965737951807,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
       "Green Component" : 0.7137254901960784,
@@ -1767,8 +1767,8 @@
       "Blue Component" : 0
     },
     "Blur" : true,
-    "Normal Font" : "InputMono-Regular 12",
-    "Vertical Spacing" : 1.090755600527108,
+    "Normal Font" : "SourceCodePro-Regular 12",
+    "Vertical Spacing" : 1.010965737951807,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
       "Green Component" : 0.7590993046760559,
@@ -2245,8 +2245,8 @@
       "Green Component" : 0.1137254908680916
     },
     "Blur" : true,
-    "Normal Font" : "InputMono-Regular 12",
-    "Vertical Spacing" : 1.105968797063253,
+    "Normal Font" : "SourceCodePro-Regular 12",
+    "Vertical Spacing" : 1.010965737951807,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
       "Red Component" : 0.7757260101010102,
@@ -3162,8 +3162,8 @@
       "Blue Component" : 0
     },
     "Blur" : true,
-    "Normal Font" : "InputMono-Regular 12",
-    "Vertical Spacing" : 1.090755600527108,
+    "Normal Font" : "SourceCodePro-Regular 12",
+    "Vertical Spacing" : 1.001523672816265,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
       "Green Component" : 0.800000011920929,
@@ -4066,8 +4066,8 @@
       "Blue Component" : 0.2431372553110123
     },
     "Blur" : true,
-    "Normal Font" : "InputMono-Regular 12",
-    "Vertical Spacing" : 1.090755600527108,
+    "Normal Font" : "SourceCodePro-Regular 12",
+    "Vertical Spacing" : 1.009871517319277,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
       "Green Component" : 1,
