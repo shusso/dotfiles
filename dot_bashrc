@@ -165,6 +165,11 @@ function set-cscope-py {
     find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) > cscope.files
 }
 
+
+function elpy-requirements {
+    pip3 install jedi flake8 autopep8 rope
+}
+
 function venv-setup {
     python3 -m venv .env
 }
