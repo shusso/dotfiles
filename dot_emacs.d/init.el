@@ -378,6 +378,7 @@
 
 
 ;; default
+(setq python-shell-completion-native-enable nil) 
 (setq python-shell-interpreter "python3"
       python-shell-interpreter-args "-i")
 
@@ -421,6 +422,13 @@
 
 (setq company-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; make autocomplete work in python shell
+(add-hook 'elpy-mode-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '((company-dabbrev-code company-yasnippet elpy-company-backend)))))
+
 ;; old
 ;; (eval-after-load 'company
 ;;   '(add-to-list 'company-backends 'company-anaconda))
