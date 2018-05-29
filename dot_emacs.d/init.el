@@ -1,4 +1,4 @@
-;;; notes ;;;
+;;; notes: ;;;
 ;; C-h v major-mode RET
 ;; M-x apropos-command -mode$ RET
 ;; M-: major-mode RET
@@ -99,7 +99,7 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
+;;(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (require 'auto-complete)
@@ -151,14 +151,43 @@
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
 
 ;; https://github.com/proofit404/anaconda-mode
-(require 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-mode)
+;; (require 'anaconda-mode)
+;; (add-hook 'python-mode-hook 'anaconda-mode)
 ;; C-M-i	anaconda-mode-complete
 ;; M-.	    anaconda-mode-find-definitions
 ;; M-,	    anaconda-mode-find-assignments
 ;; M-r	    anaconda-mode-find-references
 ;; M-*	    anaconda-mode-go-back
 ;; M-?	    anaconda-mode-show-doc
+
+
+;;elpy
+(require 'elpy)
+(elpy-enable)
+;; http://elpy.readthedocs.io/en/latest/ide.html
+;; M-x elpy-config                check config
+;; M-x pyenv-activate/deactivate  activate venv
+;; M-x pyenv-workon               autocomplete existing venvs
+
+;; Keys
+;; C-c C-f (elpy-find-file)
+;; C-c C-s (elpy-rgrep-symbol)
+;; C-x 4 M-. (elpy-goto-definition-other-window)
+;; C-c C-o (elpy-occur-definitions)  list of definitions of classes and functions.
+;; M-. (xref-find-definitions)
+;; C-x 4 . (xref-find-definition-other-window)
+;; M-, (xref-pop-marker-stack)
+;; M-? (xref-find-references)
+;; C-M-. (xref-find-apropos)
+;; C-c C-z (elpy-shell-switch-to-shell)
+;; M-x elpy-shell-toggle-dedicated-shell
+;; C-c C-y e (elpy-shell-send-statement)
+;; C-c C-y C-e (elpy-shell-send-statement-and-step)
+;; C-c C-y E (elpy-shell-send-statement-and-go)
+;; C-c C-y r (elpy-shell-send-region-or-buffer)
+;; C-c C-d (elpy-doc)
+;; C-c C-t (elpy-test)
+;; M-x elpy-profile-buffer-or-region
 
 
 ;; company
@@ -189,10 +218,6 @@
 ;; projectile-globally-ignored-files
 ;; [INS]
 ;; [ Apply and Save ]
-
-(require 'go-mode)
-(require 'go-autocomplete)
-(require 'go-guru)
 
 (require 'neotree)
 ;; n next line ， p previous line。
@@ -332,25 +357,27 @@
 ;; 24.4. wrap lines
 (global-visual-line-mode 1)
 
-;; hook for golang
-(add-hook 'go-mode-hook 'my-go-mode-hook)
-;; hook for golang compile
-(add-hook 'go-mode-hook 'my-go-mode-hook)
-
-(add-hook 'go-mode-hook 'auto-complete-for-go)
-
-;; (with-eval-after-load 'go-mode
-;;    (require 'go-autocomplete))
-
 ;; better buffer switching
 (ido-mode 1)
 
 ;; ipython shell
 ;; disabled 14.05.20180 for corrupting ipython.sqlite
-;; (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 ;; (setq python-shell-interpreter "ipython"
-;;       python-shell-interpreter-args "-i")
+;;       python-shell-interpreter-args "-i --simple-prompt")
 
+;; multiline editing for ipython
+;; (setq python-shell-interpreter "ipython"
+;;       python-shell-interpreter-args "-i --TerminalIPythonApp.interactive_shell_class=rlipython.TerminalInteractiveShell")
+
+;; jupyter
+;; (setq python-shell-interpreter "jupyter"
+;;       python-shell-interpreter-args "console --simple-prompt"
+;;       python-shell-prompt-detect-failure-warning nil)
+;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+;;              "jupyter")
+
+
+;; default
 (setq python-shell-interpreter "python3"
       python-shell-interpreter-args "-i")
 
@@ -368,6 +395,9 @@
 ;;       (python-shell-completion-native-get-completions
 ;;        (get-buffer-process (current-buffer))
 ;;        nil "_"))))
+
+;; elpy ;;
+(delete `elpy-module-highlight-indentation elpy-modules)
 
 
 ;; ace-window
@@ -391,11 +421,13 @@
 
 (setq company-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
+;; old
 ;; (eval-after-load 'company
 ;;   '(add-to-list 'company-backends 'company-anaconda))
-(eval-after-load 'company
-  '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
-(setq auto-complete-mode 1)
+
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
+;; (setq auto-complete-mode 1)
 
 ;; hs-mode
 (add-hook 'prog-mode-hook #'hs-minor-mode)
@@ -570,7 +602,7 @@
  '(markdown-command "pandoc")
  '(package-selected-packages
    (quote
-    (pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi go-projectile go-complete go-autocomplete flycheck ein csharp-mode company-anaconda color-theme-modern ace-window ace-jump-mode)))
+    (elpy pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi flycheck ein company-anaconda color-theme-modern ace-window ace-jump-mode)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" ".venv" "build" "dist" "parquet" ".pyc" "__pychache__" "resources"))))
