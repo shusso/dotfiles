@@ -253,9 +253,11 @@
 
 
 (require 'ein)
-;; start jupyter notebook
-;; M-x ein:notebooklist-login (use the token as password)
-;; M-x ein:notebooklist-open
+;; https://github.com/millejoh/emacs-ipython-notebook#keybindings---notebook
+;; Usage:
+;;   start jupyter notebook (jupyter-notebook)
+;;   M-x ein:notebooklist-login (use the token as password from above command)
+;;   M-x ein:notebooklist-open
 (setq print-level 1)
 (setq print-length 1)
 (setq print-circle t)
@@ -360,14 +362,17 @@
 ;; better buffer switching
 (ido-mode 1)
 
+
+;; python shells
+(setq python-shell-completion-native-enable nil) 
 ;; ipython shell
 ;; disabled 14.05.20180 for corrupting ipython.sqlite
 ;; (setq python-shell-interpreter "ipython"
 ;;       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; multiline editing for ipython
-;; (setq python-shell-interpreter "ipython"
-;;       python-shell-interpreter-args "-i --TerminalIPythonApp.interactive_shell_class=rlipython.TerminalInteractiveShell")
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --TerminalIPythonApp.interactive_shell_class=rlipython.TerminalInteractiveShell")
 
 ;; jupyter
 ;; (setq python-shell-interpreter "jupyter"
@@ -378,9 +383,8 @@
 
 
 ;; default
-(setq python-shell-completion-native-enable nil) 
-(setq python-shell-interpreter "python3"
-      python-shell-interpreter-args "-i")
+;; (setq python-shell-interpreter "python3"
+;;       python-shell-interpreter-args "-i")
 
 ;; C-c C-p    start shell
 ;; C-c C-c    send current buffer to python
