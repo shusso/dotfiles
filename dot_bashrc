@@ -347,8 +347,9 @@ alias gitp='git --no-pager'
 #alias grep="grep -nH -ri --color=auto"
 alias egrep="grep -nH -ri --color=auto"
 alias fgrep="grep -nH -ri --color=auto"
-alias g="grep -nH -i --color=auto"
-alias gr="grep -nH -ir --color=auto"
+alias g="grep -H -i --color=auto"
+alias gn="grep -nH -i --color=auto"
+alias gr="grep -H -ir --color=auto"
 alias gv="grep -v -i --color=auto"
 alias gi="grep -nH -i --color=auto"
 
