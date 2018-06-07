@@ -335,8 +335,6 @@ alias gitp='git --no-pager'
 ##  Grep  ##
 ############
 
-## About grep: to exclude dir use
-#### alias grep = grep --exclude-dir='some/folder*' -ri
 #grep options:
 #because we have antique grep which doesn't have "exclude-dir" we have to take off "entries"
 #GREP_OPTIONS="-rI --color --exclude="\*.svn\*" --exclude="*.*~" --exclude="*.*#" --exclude="*entries*""
@@ -344,14 +342,10 @@ alias gitp='git --no-pager'
 #GREP_COLOR=37
 #export GREP_COLOR
 #--exclude-dir='' needs to be first grep option inorder it to work
-#alias grep="grep -nH -ri --color=auto"
-alias egrep="grep -nH -ri --color=auto"
-alias fgrep="grep -nH -ri --color=auto"
-alias g="grep -H -i --color=auto"
-alias gn="grep -nH -i --color=auto"
-alias gr="grep -H -ir --color=auto"
+alias g="grep -i --color=auto"
+alias gr="grep -ir --color=auto"
 alias gv="grep -v -i --color=auto"
-alias gi="grep -nH -i --color=auto"
+alias gn="grep -nH -i --color=auto"
 
 alias xg="xargs -n1"
 ######################
