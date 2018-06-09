@@ -192,6 +192,14 @@ function set-pyenv {
     venv-install
 }
 
+function py_run_checks {
+    local against=${1}
+    echo "**Running pycodestyle ${against}**"
+    pycodestyle ${against}
+    echo "**Running flake8 ${against}**"
+    flake8 ${against}
+}
+
 function ls_dirs {
     local cmd="ls -l -d */"
     ${cmd} | awk '{ print $9}'
