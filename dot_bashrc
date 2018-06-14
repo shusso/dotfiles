@@ -171,12 +171,12 @@ function elpy-requirements {
 }
 
 function venv-setup {
-    python3 -m venv .env
+    python3 -m venv .venv
 }
 
 function venv-activate {
-    if [ -d .env ]; then
-        source .env/bin/activate
+    if [ -d .venv ]; then
+        source .venv/bin/activate
     fi
 }
 
@@ -192,7 +192,7 @@ function set-pyenv {
     venv-install
 }
 
-function py_run_checks {
+function py-run-checks {
     local against=${1}
     echo "**Running pycodestyle ${against}**"
     pycodestyle ${against}
@@ -200,12 +200,12 @@ function py_run_checks {
     flake8 ${against}
 }
 
-function ls_dirs {
+function ls-dirs {
     local cmd="ls -l -d */"
     ${cmd} | awk '{ print $9}'
 }
 
-function start_docker_dep_containers {
+function start-docker-dep-containers {
     local prefix=""
     if [ $# -eq 0 ]; then
         prefix="${PWD##*/}"
