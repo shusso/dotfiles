@@ -11,10 +11,13 @@ export GOPATH=$HOME/golang
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000000
 HISTFILESIZE=2000000
 HISTCONTROL=ignoredups:ignorespace
+shopt -s histappend
+# history on all terminals everywhere (http://briancarper.net/blog/248/)
+export PROMPT_COMMAND="history -a"
+alias his="history -n; history -a"
 
 export PYTHONSTARTUP=~/.pythonrc
 
@@ -27,10 +30,6 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export SCALA_HOME=/usr/local/Cellar/scala/2.12.4
 export SPARK_HOME=/usr/local/share/apache-spark/2.2.0
 export PYSPARK_PYTHON=python3
-
-shopt -s histappend
-# history on all terminals everywhere (http://briancarper.net/blog/248/)
-export PROMPT_COMMAND="history -a"
 
 # pipenv
 export LC_ALL=en_US.UTF-8
@@ -298,7 +297,7 @@ function treeish {
 
 
 
-alias his="history -n; history -a"
+
 
 alias emacs="emacs-25.1"
 export EDITOR='emacs'
