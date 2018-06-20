@@ -79,7 +79,7 @@ alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=sta
 alias docker_clean_cache='docker rmi $(docker images -a -q)'
 
 # start OSX screensaver
-alias ssaver="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias ssaver="open -a /System/Library/CoreServices/ScreenSaverEngine.app"
 
 alias open_ports="sudo lsof -iTCP -sTCP:LISTEN -n -P"
 
