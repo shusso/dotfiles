@@ -10,6 +10,8 @@ export GOPATH=$HOME/golang
 
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
+# shell completion
+eval "$(pipenv --completion)"
 
 HISTSIZE=1000000
 HISTFILESIZE=2000000
