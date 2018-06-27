@@ -1,32 +1,23 @@
-;;; notes: ;;;
-;; C-h v major-mode RET
-;; M-x apropos-command -mode$ RET
-;; M-: major-mode RET
-;; C-h k <key> describe function bound to <key>
-;; C-h b list the current key-bindings for the focus buffer
-;; C-h m describe mode
-;; C-h l show the keys you have pressed
-;; <prefix> C-h sho all key-bindings beginning with <prefix>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;          FUNCTION start          ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; Code:
 (defun frame-back ()
-  "move to the previous frame"
+  "Move to the previous frame."
   (interactive)
   (other-frame -1))
 
 (defun window-back ()
-  "move to previous window in current buffer"
+  "Move to previous window in current buffer."
   (interactive)
   (other-window -1))
 
 (defun toggle-comment-on-line()
-  "comment or uncomment current line"
+  "Comment or uncomment current line."
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
-
 
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning) 
@@ -34,8 +25,8 @@
         ("ON_HOLD" . (:foreground "purple" :weight bold))
         ("INVALID" . (:foreground "orange" :weight bold))))
 
-;; Open buffers with follow mode
 (defun 3-buffers ()
+  "Open buffers with follow mode."
   (interactive)
   (delete-other-windows)
   (split-window-horizontally)
@@ -44,6 +35,7 @@
   (follow-mode t))
 
 (defun 2-buffers ()
+  "Open buffers with follow mode."
   (interactive)
   (delete-other-windows)
   (split-window-horizontally)
@@ -51,15 +43,17 @@
   (follow-mode t))
 
 (defun switch-to-previous-buffer ()
+  "Switch to previous buffer."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-
 ;; GOLANG ;;
 (defun auto-complete-for-go ()
+  "Enable auto-complete for go."
   (auto-complete-mode 1))
 
-(defun my-go-mode-hook ()  
+(defun my-go-mode-hook ()
+  "My go mode hook."
   ; Call Gofmt before saving
   ; (add-hook 'before-save-hook 'gofmt-before-save)
   (setq gofmt-command "goimports")                ; gofmt uses invokes goimports
@@ -133,7 +127,6 @@
          (lambda ()
            (paredit-mode +1)))
 
-
 ;; clojure + cider ;;
 (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
 (setq nrepl-popup-stacktraces nil)
@@ -150,129 +143,43 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
 
-;; https://github.com/proofit404/anaconda-mode
-;; (require 'anaconda-mode)
-;; (add-hook 'python-mode-hook 'anaconda-mode)
-;; C-M-i	anaconda-mode-complete
-;; M-.	    anaconda-mode-find-definitions
-;; M-,	    anaconda-mode-find-assignments
-;; M-r	    anaconda-mode-find-references
-;; M-*	    anaconda-mode-go-back
-;; M-?	    anaconda-mode-show-doc
-
-
 ;;elpy
 (require 'elpy)
 (elpy-enable)
 ;; http://elpy.readthedocs.io/en/latest/ide.html
-;; M-x elpy-config                check config
-;; M-x pyenv-activate/deactivate  activate venv
-;; M-x pyenv-workon               autocomplete existing venvs
-
-;; Keys
-;; C-c C-f (elpy-find-file)
-;; C-c C-s (elpy-rgrep-symbol)
-;; C-x 4 M-. (elpy-goto-definition-other-window)
-;; C-c C-o (elpy-occur-definitions)  list of definitions of classes and functions.
-;; M-. (xref-find-definitions)
-;; C-x 4 . (xref-find-definition-other-window)
-;; M-, (xref-pop-marker-stack)
-;; M-? (xref-find-references)
-;; C-M-. (xref-find-apropos)
-;; C-c C-z (elpy-shell-switch-to-shell)
-;; M-x elpy-shell-toggle-dedicated-shell
-;; C-c C-y e (elpy-shell-send-statement)
-;; C-c C-y C-e (elpy-shell-send-statement-and-step)
-;; C-c C-y E (elpy-shell-send-statement-and-go)
-;; C-c C-y r (elpy-shell-send-region-or-buffer)
-;; C-c C-d (elpy-doc)
-;; C-c C-t (elpy-test)
-;; M-x elpy-profile-buffer-or-region
-
 
 ;; company
 (require 'company)
 
+;; https://github.com/bbatsov/projectile
 (require 'projectile)
 (setq-default projectile-mode t)
 
-;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
-;; C-c p C-h    Help
-;; C-c p o       Multi Occur
-;; C-c p f	    Display a list of all files in the project. With a prefix argument it will clear the cache first.
-;; C-c p F	    Display a list of all files in all known projects.
-;; C-c p 4 f	Jump to a project's file using completion and show it in another window.
-;; C-c p d	    Display a list of all directories in the project. With a prefix argument it will clear the cache first.
-;; C-c p 4 d	Switch to a project directory and show it in another window.
-;; C-c p 5 d	Switch to a project directory and show it in another frame.
-;; C-c p T	    Display a list of all test files(specs, features, etc) in the project.
-;; C-c p t      Toggle between implementation and test file
-;; C-c p 4 t    Jump to implementation/testfile in other window
-;; C-c p 5 t    -''- in other frame
-;; C-c p s g	Run grep on the files in the project.
-;; C-c p 4 b	Switch to a project buffer and show it in another window.
-;; C-c p 5 b	Switch to a project buffer and show it in another frame.
-;;
-;; Ignore dirs
-;; M-x customize-variable [RET]
-;; projectile-globally-ignored-files
-;; [INS]
-;; [ Apply and Save ]
-
+;; https://github.com/jaypei/emacs-neotree
 (require 'neotree)
-;; n next line ， p previous line。
-;; SPC or RET or TAB Open current item if it is a file. Fold/Unfold current item if it is a directory.
-;; g Refresh
-;; A Maximize/Minimize the NeoTree Window
-;; H Toggle display hidden files
-;; C-c C-n Create a file or create a directory if filename ends with a ‘/’
-;; C-c C-d Delete a file or a directory.
-;; C-c C-r Rename a file or a directory.
-;; C-c C-c Change the root directory.
-;; C-c C-p Copy a file or a directory.
 
+;; https://github.com/abo-abo/ace-window
 (require 'ace-window)
-;x - delete window
-;m - swap (move) window
-;c - split window fairly, either vertically or horizontally
-;v - split window vertically
-;b - split window horizontally
-;n - select the previous window
-;i - maximize window (select which window)
-;o - maximize current window
 
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 ;; (eval-after-load 'flycheck (cons 'python-pylint (delq 'python-pylint flycheck-checkers)))
 (flycheck-add-next-checker 'python-flake8 'python-pylint)
-;; C-c ! s  flycheck-select-checker
 
 (require 'term)
-;; C-c C-j  Terminal line-mode
-;; C-c C-k  Terminal mode
-
 
 (require 'ein)
-;; https://github.com/millejoh/emacs-ipython-notebook#keybindings---notebook
-;; Usage:
-;;   start jupyter notebook (jupyter-notebook)
-;;   M-x ein:notebooklist-login (use the token as password from above command)
-;;   M-x ein:notebooklist-open
+
 (setq print-level 1)
 (setq print-length 1)
 (setq print-circle t)
 
-
 (require 'yaml-mode)
 
 (require 'markdown-mode)
-;; C-c C-c e  export
-;; C-C C-c v  export & preview
-;; M-x markdown-export-and-preview RET
 
 (require 'org)
 
-;;(require ')
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -280,8 +187,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;          CUSTOMS start           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 
 ;; set default auto intend to 4 spaces
 ;; Note! intend for modes have to be set seperately
@@ -311,7 +216,6 @@
 (global-hl-line-mode t)
 
 (setq initial-scratch-message nil)
-
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -355,13 +259,11 @@
 ;; winmove
 (windmove-default-keybindings)
 
-
 ;; 24.4. wrap lines
 (global-visual-line-mode 1)
 
 ;; better buffer switching
 (ido-mode 1)
-
 
 ;; python shells
 (setq python-shell-completion-native-enable nil) 
@@ -381,14 +283,9 @@
 ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
 ;;              "jupyter")
 
-
 ;; default
 ;; (setq python-shell-interpreter "python3"
 ;;       python-shell-interpreter-args "-i")
-
-;; C-c C-p    start shell
-;; C-c C-c    send current buffer to python
-;; C-c C-r    send selected code (C-SPC) to python
 
 ;; patch python shell in emacs 25
 ;; (with-eval-after-load 'python
@@ -404,7 +301,6 @@
 ;; elpy ;;
 (delete `elpy-module-highlight-indentation elpy-modules)
 
-
 ;; ace-window
 (setq aw-dispatch-always 1)
 
@@ -414,15 +310,10 @@
 (set-frame-parameter (selected-frame) 'alpha '(88 70))
 (add-to-list 'default-frame-alist '(alpha 88 70))
 
+;; https://www.emacswiki.org/emacs/WinnerMode
 (winner-mode 1)
 (when (fboundp 'winner-mode)
   (winner-mode 1))
-;; winner mode
-;; https://www.emacswiki.org/emacs/WinnerMode
-;; C-x 1     1 window
-;; C-x 2     2 windows
-;; C-c left  go to previous (backward)
-;; C-c right go to previous (forward)
 
 (setq company-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -453,6 +344,10 @@
 (set-variable 'scroll-conservatively 1000)
 (setq xterm-mouse-mode 1)
 
+(setq print-level 1)
+(setq print-length 1)
+(setq print-circle t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -465,8 +360,8 @@
 ;; move around in buffers
 ;; (global-set-key (kbd "C-c <left>") 'windmove-left) 
 ;; (global-set-key (kbd "C-c <right>") 'windmove-right)
-;; (global-set-key (kbd "C-c <up>") 'windmove-up)
-;; (global-set-key (kbd "C-c <down>") 'windmove-down)
+(global-set-key (kbd "C-c <up>") 'windmove-up)
+(global-set-key (kbd "C-c <down>") 'windmove-down)
 
 ;; switch to previous in buffer
 (global-set-key (kbd "C-c l") 'switch-to-previous-buffer)
@@ -477,7 +372,6 @@
 ;; keybindings for ace jump
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
-
 
 ;; hide-show-mode
 (global-set-key (kbd "C-c a") 'hs-show-all)
@@ -531,6 +425,19 @@
 
 ;; ace-window ;;
 (global-set-key (kbd "M-i") 'ace-window)
+(defvar aw-dispatch-alist
+  '((?x aw-delete-window "Delete Window")
+	(?m aw-swap-window "Swap Windows")
+	(?M aw-move-window "Move Window")
+	(?j aw-switch-buffer-in-window "Select Buffer")
+	(?n aw-flip-window)
+	(?u aw-switch-buffer-other-window "Switch Buffer Other Window")
+	(?c aw-split-window-fair "Split Fair Window")
+	(?v aw-split-window-vert "Split Vert Window")
+	(?b aw-split-window-horz "Split Horz Window")
+	(?o delete-other-windows "Delete Other Windows")
+	(?? aw-show-dispatch-help))
+  "List of actions for `aw-dispatch-default'.")
 
 ;; unbind shell ring history
 (define-key comint-mode-map (kbd "M-p") 'nil)
@@ -568,32 +475,22 @@
 
 
 (global-unset-key (kbd "M-s"))
-;; python pdb
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Commands-of-GUD.html
-;; M-x pdb <RET> Run pdb (like this): python3 -m pdb foo.py
-;; C-x C-a C-b breakpoint
-;; C-x C-a C-d remove breakpoint
 
-;; M-a Move back to the beginning of the sentence (backward-sentence)
-;; M-e Move forward to the end of the sentence (forward-sentence).
-;; M-k Kill forward to the end of the sentence (kill-sentence).
-;; C-x <del> Kill back to the beginning of the sentence (backward-kill-sentence)
+;; (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
+;; (defun un-indent-by-removing-4-spaces ()
+;;   "remove 4 spaces from beginning of of line"
+;;   (interactive)
+;;   (save-excursion
+;;     (save-match-data
+;;       (beginning-of-line)
+;;       ;; get rid of tabs at beginning of line
+;;       (when (looking-at "^\\s-+")
+;;         (untabify (match-beginning 0) (match-end 0)))
+;;       (when (looking-at "^    ")
+;;         (replace-match "")))))
 
-;; M-c capitalize
-;; M-; comment end of the line
 
-(global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
-(defun un-indent-by-removing-4-spaces ()
-  "remove 4 spaces from beginning of of line"
-  (interactive)
-  (save-excursion
-    (save-match-data
-      (beginning-of-line)
-      ;; get rid of tabs at beginning of line
-      (when (looking-at "^\\s-+")
-        (untabify (match-beginning 0) (match-end 0)))
-      (when (looking-at "^    ")
-        (replace-match "")))))
+;;(electric-indent-mode +1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;        KEYBINDINGS end           ;;
@@ -614,7 +511,7 @@
  '(markdown-command "pandoc")
  '(package-selected-packages
    (quote
-    (elpy pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi flycheck ein company-anaconda color-theme-modern ace-window ace-jump-mode)))
+    (cython-mode elpy pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi flycheck ein company-anaconda color-theme-modern ace-window ace-jump-mode)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" ".venv" "build" "dist" "parquet" ".pyc" "__pychache__" "resources"))))
