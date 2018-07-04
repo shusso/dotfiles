@@ -51,7 +51,7 @@ export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin
 
 alias unset_py="unset PYTHONPATH"
-alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.6/site-packages/'"
+alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.7/site-packages/'"
 alias python_2="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python2.7/site-packages/'"
 
 #############
@@ -167,8 +167,12 @@ function set-cscope-py {
 }
 
 
-function elpy-requirements {
-    pip3 install jedi flake8 autopep8 rope
+function py-elpy-requirements {
+    pip3 install --force-reinstall jedi flake8 autopep8 rope
+}
+
+function py-ipython-requirements {
+    pip3 install --force-reinstall ipython rlipython
 }
 
 function venv-setup {
