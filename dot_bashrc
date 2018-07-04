@@ -201,6 +201,12 @@ function py-run-checks {
     flake8 ${against}
 }
 
+
+function py-unset-pipenv-project {
+    unset PIPENV_VENV_IN_PROJECT
+}
+
+
 function ls-dirs {
     local cmd="ls -l -d */"
     ${cmd} | awk '{ print $9}'
@@ -318,7 +324,6 @@ alias c='cd ~/code/'
 alias gd="cd ~/GoogleDrive/"
 alias cgd='gd && cd code'
 alias go_code='cd $GOPATH'
-
 
 alias p='cd -'
 alias b='cd ..'
