@@ -175,6 +175,10 @@ function py-ipython-requirements {
     pip3 install --force-reinstall ipython rlipython
 }
 
+function py-lint-requirements {
+    pip3 install --force-reinstall pycodestyle flake8 mypy
+}
+
 function venv-setup {
     python3 -m venv .venv
 }
@@ -203,6 +207,8 @@ function py-run-checks {
     pycodestyle ${against}
     echo "** Running flake8 ${against} **"
     flake8 ${against}
+    echo "** Running mypy ${against} **"
+    mypy ${against}
 }
 
 
