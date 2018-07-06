@@ -75,6 +75,7 @@
 ;; C-c C-y r (elpy-shell-send-region-or-buffer)
 ;; C-c C-d (elpy-doc)
 ;; C-c C-t (elpy-test)
+;; M-x elpy-set-test-runner
 ;; M-x elpy-profile-buffer-or-region
 
 

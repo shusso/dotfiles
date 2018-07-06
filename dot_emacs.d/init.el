@@ -348,6 +348,8 @@
 (setq print-length 1)
 (setq print-circle t)
 
+(setq compilation-scroll-output 'first-error)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -462,6 +464,12 @@
 (define-key term-raw-map (kbd "C-c m") nil)
 (define-key term-mode-map (kbd "C-c l") nil)
 (define-key term-raw-map (kbd "C-c l") nil)
+(define-key shell-mode-map (kbd "C-c C-t") 'elpy-test)
+(define-key compilation-mode-map (kbd "M-p") nil)
+(define-key compilation-mode-map (kbd "M-n") nil)
+(define-key compilation-mode-map (kbd "M-n n") 'compilation-next-error)
+(define-key compilation-mode-map (kbd "M-p p") 'compilation-previous-error)
+(define-key compilation-mode-map (kbd "M-p x s") 'projectile-run-shell)
 (define-key markdown-mode-map (kbd "M-p") nil)
 (define-key markdown-mode-map (kbd "M-i") nil)
 (define-key markdown-mode-map (kbd "C-c SPC") nil)
