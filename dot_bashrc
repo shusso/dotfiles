@@ -168,7 +168,7 @@ function set-cscope-py {
 
 
 function py-elpy-requirements {
-    pip3 install --force-reinstall jedi flake8 autopep8 rope
+    pip3 install --force-reinstall jedi autopep8 rope flake8
 }
 
 function py-ipython-requirements {
