@@ -519,6 +519,8 @@
  '(elpy-project-ignored-directories
    (quote
     (".tox" "build" "dist" ".cask" ".ipynb_checkpoints" ".pytest_cache" ".mypy_cache" ".venv" "build" "dist" ".pyc" "__pycache__")))
+ '(elpy-test-nose-runner-command (quote ("nosetests" "--nologcapture" "--nocapture" "-s")))
+ '(elpy-test-pytest-runner-command (quote ("py.test" "--tb=short")))
  '(markdown-command "pandoc")
  '(package-selected-packages
    (quote
