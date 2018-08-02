@@ -34,8 +34,8 @@ export SPARK_HOME=/usr/local/share/apache-spark/2.2.0
 export PYSPARK_PYTHON=python3
 
 # pipenv
-#export LC_ALL=en_US.UTF-8
-#export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export PIPENV_VENV_IN_PROJECT=1
 
 ## ssh options:
@@ -172,6 +172,7 @@ function py-elpy-requirements {
 }
 
 function py-ipython-requirements {
+    # python3.6 requires rlipython==0.1.1
     pip3 install --force-reinstall ipython rlipython
 }
 
