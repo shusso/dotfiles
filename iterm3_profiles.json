@@ -405,7 +405,7 @@
       "Green Component" : 0.22728840447962281
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.00535344503012,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -855,7 +855,7 @@
       "Blue Component" : 0.2470588235294118
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0022296216114457,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -1299,7 +1299,7 @@
       "Red Component" : 0.092074669021711367
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0054416886295181,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -1747,7 +1747,7 @@
       "Red Component" : 0
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0054416886295181,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -2197,7 +2197,7 @@
       "Blue Component" : 0
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -2645,7 +2645,7 @@
       "Red Component" : 0
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0015236728162651,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -3557,7 +3557,7 @@
       "Green Component" : 0
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0054416886295181,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -4009,7 +4009,7 @@
       "Red Component" : 0.1647058823529412
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0054416886295181,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -4457,7 +4457,7 @@
       "Red Component" : 0.18431372549019609
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0054416886295181,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -4909,7 +4909,7 @@
       "Red Component" : 0.10051589459180831
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 0.99282285391566272,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -5357,7 +5357,7 @@
       "Red Component" : 0.2431372553110123
     },
     "Blur" : true,
-    "Normal Font" : "SourceCodePro-Regular 13",
+    "Normal Font" : "SourceCodePro-Regular 12",
     "Vertical Spacing" : 1.0098715173192769,
     "Disable Printing" : false,
     "Ansi 7 Color" : {
@@ -5806,7 +5806,7 @@
       "Red Component" : 0.10051589459180831
     },
     "Blur" : true,
-    "Normal Font" : "InputMono-Regular 12",
+    "Normal Font" : "InputMono-Regular 11",
     "Vertical Spacing" : 1.0996505553463856,
     "Disable Printing" : false,
     "Ansi 7 Color" : {

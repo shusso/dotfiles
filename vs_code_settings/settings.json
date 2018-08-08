@@ -33,5 +33,7 @@
     "extensions.ignoreRecommendations": false,
     "workbench.panel.location": "right",
     "telemetry.enableTelemetry": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.quickOpen.closeOnFocusLost": false,
+    "workbench.editor.enablePreview": false
 }
