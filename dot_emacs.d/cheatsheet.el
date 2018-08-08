@@ -115,6 +115,28 @@
 ;;   start jupyter notebook (jupyter-notebook)
 ;;   M-x ein:notebooklist-login (use the token as password from above command)
 ;;   M-x ein:notebooklist-open
+;;
+;; Keybindings:
+;; C-c C-a         ein:worksheet-insert-cell-above
+;; C-c C-b         ein:worksheet-insert-cell-below
+;; C-c C-c         ein:worksheet-execute-cell
+
+;; C-c C-k         ein:worksheet-kill-cell
+;; C-c C-l         ein:worksheet-clear-output
+;; C-c RET         ein:worksheet-merge-cell
+;; C-c C-n         ein:worksheet-goto-next-input
+
+;; C-c C-o         ein:console-open
+;; C-c C-p         ein:worksheet-goto-prev-input
+
+;; C-c <down>      ein:worksheet-move-cell-down
+;; C-c <up>        ein:worksheet-move-cell-up
+
+;; C-c M-+         ein:notebook-worksheet-insert-prev
+;; C-c M-w         ein:worksheet-copy-cell
+;; C-c M-{         ein:notebook-worksheet-move-prev
+;; C-c M-}         ein:notebook-worksheet-move-next
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
