@@ -169,3 +169,9 @@
 ;;<prefix> b Split Horz Window
 ;;<prefix> o Delete Other Windows
 ;;<prefix> ? aw-show-dispatch-help
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                   MAGIT                     ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; https://github.com/magit/magit/wiki/Cheatsheet
