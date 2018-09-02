@@ -36,5 +36,5 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.editor.enablePreview": false,
-    "terminal.integrated.fontFamily": "'Menlo'"
+    "terminal.integrated.fontFamily": "'Monaco'"
 }

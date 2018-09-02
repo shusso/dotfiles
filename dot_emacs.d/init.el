@@ -93,7 +93,7 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-;;(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (require 'auto-complete)
@@ -179,6 +179,10 @@
 (require 'markdown-mode)
 
 (require 'org)
+
+(require 'octave)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
@@ -349,6 +353,17 @@
 (setq print-circle t)
 
 (setq compilation-scroll-output 'first-error)
+
+;; octave
+(autoload 'octave-mode "octave-mod" nil t)
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (abbrev-mode 1)
+            (auto-fill-mode 1)
+            (if (eq window-system 'x)
+                (font-lock-mode 1))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;

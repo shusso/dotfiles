@@ -99,7 +99,9 @@
 ;; C-c p s g    Run grep on the files in the project.
 ;; C-c p 4 b    Switch to a project buffer and show it in another window.
 ;; C-c p 5 b    Switch to a project buffer and show it in another frame.
-;; C-c x s      Run term
+;; C-p x e         projectile-run-eshell
+;; C-p x s         projectile-run-shell
+;; C-p x t         projectile-run-term
 ;;
 ;; Ignore dirs
 ;; M-x customize-variable [RET]
