@@ -435,6 +435,7 @@
 
 ;; projectile
 (global-set-key (kbd "M-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "M-s") 'projectile-switch-project)
 
 ;; neotree
 (global-set-key (kbd "C-c d") 'neotree-toggle)

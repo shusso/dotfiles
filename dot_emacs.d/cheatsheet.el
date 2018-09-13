@@ -85,7 +85,8 @@
 
 ;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
 ;; C-c p C-h    Help
-;; C-c p o       Multi Occur
+;; M-x          projectile-discover-projects-in-directory
+;; C-c p o      Multi Occur
 ;; C-c p f          Display a list of all files in the project. With a prefix argument it will clear the cache first.
 ;; C-c p F          Display a list of all files in all known projects.
 ;; C-c p 4 f    Jump to a project's file using completion and show it in another window.
