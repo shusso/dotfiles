@@ -36,5 +36,8 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.editor.enablePreview": false,
-    "terminal.integrated.fontFamily": "'Monaco'"
+    "terminal.integrated.fontFamily": "'Monaco'",
+    "editor.cursorStyle": "block",
+    "editor.formatOnPaste": true,
+    "workbench.settings.editor": "json"
 }
