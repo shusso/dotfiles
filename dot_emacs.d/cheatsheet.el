@@ -54,6 +54,7 @@
 
 ;; http://elpy.readthedocs.io/en/latest/ide.html
 ;; M-x elpy-config                check config
+;; M-x elpy-rpc-restart           restart elpy backend
 ;; M-x pyenv-activate/deactivate  activate venv
 ;; M-x pyenv-workon               autocomplete existing venvs
 
