@@ -55,8 +55,8 @@
 ;; http://elpy.readthedocs.io/en/latest/ide.html
 ;; M-x elpy-config                check config
 ;; M-x elpy-rpc-restart           restart elpy backend
-;; M-x pyenv-activate/deactivate  activate venv
-;; M-x pyenv-workon               autocomplete existing venvs
+;; M-x pyvenv-activate/deactivate  activate venv
+;; M-x pyvenv-workon               autocomplete existing venvs
 
 ;; Keys
 ;; C-c C-f (elpy-find-file)
@@ -87,6 +87,7 @@
 ;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
 ;; C-c p C-h    Help
 ;; M-x          projectile-discover-projects-in-directory
+;; M-x          projectile-discover-projects-in-directory ;; reload projects (e.g. after a new project has been added)
 ;; C-c p o      Multi Occur
 ;; C-c p f          Display a list of all files in the project. With a prefix argument it will clear the cache first.
 ;; C-c p F          Display a list of all files in all known projects.
