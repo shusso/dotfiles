@@ -541,7 +541,7 @@
  '(markdown-command "pandoc")
  '(package-selected-packages
    (quote
-    (pyvenv pyenv-mode-auto ac-octave realgud cython-mode elpy pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi flycheck company-anaconda color-theme-modern ace-window ace-jump-mode)))
+    (pyvenv ac-octave realgud cython-mode elpy pipenv yaml-mode slime rainbow-delimiters neotree markdown-mode magit jedi flycheck company-anaconda color-theme-modern ace-window ace-jump-mode)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" ".venv" "build" "dist" "parquet" ".pyc" "__pychache__" "resources" ".pytest_cache" ".mypy_cache"))))
