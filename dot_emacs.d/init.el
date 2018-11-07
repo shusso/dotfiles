@@ -322,20 +322,6 @@
 (setq company-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; make autocomplete work in python shell
-(add-hook 'elpy-mode-hook
-          (lambda ()
-            (set (make-local-variable 'company-backends)
-                 '((company-dabbrev-code company-yasnippet elpy-company-backend)))))
-
-;; old
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-anaconda))
-
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
-;; (setq auto-complete-mode 1)
-
 ;; hs-mode
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 
