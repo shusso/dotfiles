@@ -86,7 +86,6 @@
 
 ;; https://github.com/bbatsov/projectile/blob/master/doc/usage.md
 ;; C-c p C-h    Help
-;; M-x          projectile-discover-projects-in-directory
 ;; M-x          projectile-discover-projects-in-directory ;; reload projects (e.g. after a new project has been added)
 ;; C-c p o      Multi Occur
 ;; C-c p f          Display a list of all files in the project. With a prefix argument it will clear the cache first.
@@ -125,14 +124,13 @@
 ;; C-c C-a         ein:worksheet-insert-cell-above
 ;; C-c C-b         ein:worksheet-insert-cell-below
 ;; C-c C-c         ein:worksheet-execute-cell
+;; C-c C-n>        ein:worksheet-goto-next-input
+;; C-c C-p         ein:worksheet-goto-prev-input
+;; C-c C-o         ein:console-open
 
 ;; C-c C-k         ein:worksheet-kill-cell
 ;; C-c C-l         ein:worksheet-clear-output
 ;; C-c RET         ein:worksheet-merge-cell
-;; C-c C-n         ein:worksheet-goto-next-input
-
-;; C-c C-o         ein:console-open
-;; C-c C-p         ein:worksheet-goto-prev-input
 
 ;; C-c <down>      ein:worksheet-move-cell-down
 ;; C-c <up>        ein:worksheet-move-cell-up
