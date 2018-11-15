@@ -451,9 +451,12 @@
 (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
 (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 
-;; unbind common keys in shell modes
+;; unbind common keys ;;
+;; term/shell
 (define-key term-raw-map (kbd "M-p") nil)
 (define-key term-mode-map (kbd "M-p") nil)
+(define-key term-mode-map (kbd "C-x p") nil)
+(define-key term-mode-map (kbd "C-x o") nil)
 (define-key term-raw-map (kbd "M-i") nil)
 (define-key term-mode-map (kbd "M-i") nil)
 (define-key term-raw-map (kbd "M-x") nil)
@@ -467,21 +470,27 @@
 (define-key term-mode-map (kbd "C-c l") nil)
 (define-key term-raw-map (kbd "C-c l") nil)
 (define-key shell-mode-map (kbd "C-c C-t") 'elpy-test)
+;; compilation
 (define-key compilation-mode-map (kbd "M-p") nil)
 (define-key compilation-mode-map (kbd "M-n") nil)
 (define-key compilation-mode-map (kbd "M-n n") 'compilation-next-error)
 (define-key compilation-mode-map (kbd "M-p p") 'compilation-previous-error)
 (define-key compilation-mode-map (kbd "M-p x s") 'projectile-run-shell)
+;; markdown
 (define-key markdown-mode-map (kbd "M-p") nil)
 (define-key markdown-mode-map (kbd "M-i") nil)
 (define-key markdown-mode-map (kbd "C-c SPC") nil)
 (define-key markdown-mode-map (kbd "C-c d") nil)
 (define-key markdown-mode-map (kbd "C-c m") nil)
+;; org
 (define-key org-mode-map (kbd "M-p") nil)
 (define-key org-mode-map (kbd "M-i") nil)
 (define-key org-mode-map (kbd "C-c SPC") nil)
 (define-key org-mode-map (kbd "C-c d") nil)
 (define-key org-mode-map (kbd "C-c m") nil)
+;; grep
+(define-key grep-mode-map (kbd "M-p") nil)
+
 
 
 (global-unset-key (kbd "M-s"))

@@ -37,7 +37,7 @@
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.editor.enablePreview": false,
     "terminal.integrated.fontFamily": "'Monaco'",
-    "editor.cursorStyle": "block",
+    "editor.cursorStyle": "underline",
     "editor.formatOnPaste": true,
     "workbench.settings.editor": "json"
 }
