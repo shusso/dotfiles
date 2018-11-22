@@ -21,6 +21,8 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a"
 alias his="history -n; history -a"
 
+shopt -s checkwinsize
+
 export PYTHONSTARTUP=~/.pythonrc
 
 #export LANG=fi_FI.utf8
@@ -170,7 +172,7 @@ function gcloud-activate {
 
 function gcloud-ssh {
     local user_at_node=${1}
-    gcloud compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --internal-ip ${user_at_node}
+    gcloud compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --internal-ip ${user_at_node}
 }
 
 function gcloud-addresses {
