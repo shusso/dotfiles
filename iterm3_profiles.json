@@ -384,8 +384,8 @@
       "Smart Cursor Color": false,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "text": "",
-        "action": "best editor"
+        "action": "best editor",
+        "text": ""
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -831,8 +831,8 @@
       "Smart Cursor Color": false,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "text": "",
-        "action": "best editor"
+        "action": "best editor",
+        "text": ""
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -1280,8 +1280,8 @@
       "Smart Cursor Color": false,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "text": "",
-        "action": "best editor"
+        "action": "best editor",
+        "text": ""
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -1727,8 +1727,8 @@
       "Smart Cursor Color": false,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "text": "",
-        "action": "best editor"
+        "action": "best editor",
+        "text": ""
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -2180,8 +2180,8 @@
       "Smart Cursor Color": false,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "text": "",
-        "action": "best editor"
+        "action": "best editor",
+        "text": ""
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -2287,7 +2287,7 @@
         "telnet"
       ],
       "Scrollback With Status Bar": false,
-      "Scrollback Lines": 1000,
+      "Scrollback Lines": 0,
       "Scrollback in Alternate Screen": true,
       "Hide After Opening": false,
       "Flashing Bell": false,
@@ -2593,9 +2593,9 @@
         "Green Component": 0.37355604652566399
       },
       "Disable Smcup Rmcup": false,
-      "Name": "andale_mono",
+      "Name": "monaco",
       "Blinking Cursor": true,
-      "Guid": "E4F3DE70-DBF5-418A-8931-B19141065C88",
+      "Guid": "0C2DCD6C-D3DD-4DFF-8132-BF92B1460A96",
       "Ansi 1 Color": {
         "Green Component": 0.12918477910938611,
         "Blue Component": 0.29093818085335638,
@@ -2623,8 +2623,8 @@
       "Smart Cursor Color": false,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "text": "",
-        "action": "best editor"
+        "action": "best editor",
+        "text": ""
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -2635,8 +2635,8 @@
         "Red Component": 0
       },
       "Blur": true,
-      "Normal Font": "AndaleMono 13",
-      "Vertical Spacing": 0.99188747176204828,
+      "Normal Font": "Monaco 12",
+      "Vertical Spacing": 0.83994964231927716,
       "Disable Printing": false,
       "Ansi 7 Color": {
         "Green Component": 0.74901962280273438,
@@ -2645,7 +2645,7 @@
       },
       "Command": "",
       "Terminal Type": "xterm-256color",
-      "Horizontal Spacing": 0.78573277484939763,
+      "Horizontal Spacing": 0.89771390248493976,
       "Option Key Sends": 2,
       "Blink Allowed": false,
       "Minimum Contrast": 0.39057555379746828,
@@ -3040,9 +3040,9 @@
         "Green Component": 0.37355604652566399
       },
       "Disable Smcup Rmcup": false,
-      "Name": "monaco",
+      "Name": "sf_mono",
       "Blinking Cursor": true,
-      "Guid": "0C2DCD6C-D3DD-4DFF-8132-BF92B1460A96",
+      "Guid": "A9B77C5A-71D9-461E-B249-F58A0C2C0433",
       "Ansi 1 Color": {
         "Green Component": 0.12918477910938611,
         "Blue Component": 0.29093818085335638,
@@ -3070,8 +3070,8 @@
       "Smart Cursor Color": false,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "text": "",
-        "action": "best editor"
+        "action": "best editor",
+        "text": ""
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -3082,8 +3082,8 @@
         "Red Component": 0
       },
       "Blur": true,
-      "Normal Font": "Monaco 12",
-      "Vertical Spacing": 0.83994964231927716,
+      "Normal Font": "SFMono-Regular 12",
+      "Vertical Spacing": 0.99561135165662651,
       "Disable Printing": false,
       "Ansi 7 Color": {
         "Green Component": 0.74901962280273438,
@@ -3092,7 +3092,7 @@
       },
       "Command": "",
       "Terminal Type": "xterm-256color",
-      "Horizontal Spacing": 0.89771390248493976,
+      "Horizontal Spacing": 0.9044380647590361,
       "Option Key Sends": 2,
       "Blink Allowed": false,
       "Minimum Contrast": 0.39057555379746828,
