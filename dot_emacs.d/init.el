@@ -455,8 +455,6 @@
 ;; term/shell
 (define-key term-raw-map (kbd "M-p") nil)
 (define-key term-mode-map (kbd "M-p") nil)
-(define-key term-mode-map (kbd "C-x p") nil)
-(define-key term-mode-map (kbd "C-x o") nil)
 (define-key term-raw-map (kbd "M-i") nil)
 (define-key term-mode-map (kbd "M-i") nil)
 (define-key term-raw-map (kbd "M-x") nil)
