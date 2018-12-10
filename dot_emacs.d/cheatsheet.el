@@ -175,6 +175,25 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                   ORG-MODE                  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; C-c C-n         jump to next heading
+;; C-c C-p         jump to previous heading
+;; M-up/down       move heading up/down
+;; C-c '           render code block in new buffer
+;; C-c C-e h o     export html
+
+;; USAGE
+
+;; Render wich
+;; #+BEGIN_SRC sh
+;;   echo "Hello $USER! Today is `date`"
+;;   exit
+;; #+END_SRC
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                   MAGIT                     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; https://github.com/magit/magit/wiki/Cheatsheet
