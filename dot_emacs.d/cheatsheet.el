@@ -177,7 +177,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                   ORG-MODE                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; https://orgmode.org/manual/index.html
+;;
 
+;; C-c $           Archive subtee
 ;; C-c C-n         jump to next heading
 ;; C-c C-p         jump to previous heading
 ;; M-up/down       move heading up/down
@@ -185,6 +188,13 @@
 ;; C-c C-e h o     export html
 
 ;; USAGE
+
+;; FORMATTING
+;; /italiced text/
+;; *bold text*
+;; _underlines_
+;; =literal text=
+;; ~code~
 
 ;; Render wich
 ;; #+BEGIN_SRC sh

@@ -21,9 +21,19 @@
 
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning) 
-        ("ONGOING" . "yellow")
+        ("ONGOING" . "color-178")
         ("ON_HOLD" . (:foreground "purple" :weight bold))
-        ("INVALID" . (:foreground "orange" :weight bold))))
+        ("INVALID" . (:foreground "orange" :weight bold))
+        ("BLOCKED" . (:foreground "color-124" :weight bold))
+        ("ON_REVIEW" . (:foreground "color-184" :weight normal))
+
+        ("BUG" . (:foreground "color-230" :background "brightred" :weight normal))
+
+        ("IMPORTANT_DUE_SOON" . (:foreground "color-195" :background "brightred" :weight bold))
+        ("IMPORTANT_NOT_DUE_SOON" . (:foreground "color-211" :weight bold))
+        ("NOT_IMPORTANT_DUE_SOON" . (:foreground "color-203" :weight normal))
+        ("NOT_IMPORTANT_NOT_DUE_SOON" . (:foreground "color-222" :weight normal))
+        ))
 
 (defun 3-buffers ()
   "Open buffers with follow mode."
@@ -179,10 +189,9 @@
 (require 'markdown-mode)
 
 (require 'org)
+(require 'org-agenda)
 
 (require 'octave)
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
@@ -351,6 +360,12 @@
             (if (eq window-system 'x)
                 (font-lock-mode 1))))
 
+;; org-mode settings
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;;(setq org-agenda-files '("~/GoogleDrive/org"))
+(setq org-log-done t)
+(setq org-agenda-window-setup 'current-window)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -486,6 +501,7 @@
 (define-key org-mode-map (kbd "C-c SPC") nil)
 (define-key org-mode-map (kbd "C-c d") nil)
 (define-key org-mode-map (kbd "C-c m") nil)
+(global-set-key "\C-ca" 'org-agenda)
 ;; grep
 (define-key grep-mode-map (kbd "M-p") nil)
 
