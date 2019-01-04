@@ -26,9 +26,11 @@
         ("INVALID" . (:foreground "orange" :weight bold))
         ("BLOCKED" . (:foreground "color-124" :weight bold))
         ("ON_REVIEW" . (:foreground "color-184" :weight normal))
-
+        ("RESEARCH" . (:background "color-186" :weight bold))
+        ("LEARNING" . (:foreground "color-58" :weight normal))
+        ("ASSIGNMENTS" . (:foreground "color-38" :weight normal))
+        ("VIDEOS" . (:foreground "color-44" :weight normal))
         ("BUG" . (:foreground "color-230" :background "brightred" :weight normal))
-
         ("IMPORTANT_DUE_SOON" . (:foreground "color-195" :background "brightred" :weight bold))
         ("IMPORTANT_NOT_DUE_SOON" . (:foreground "color-211" :weight bold))
         ("NOT_IMPORTANT_DUE_SOON" . (:foreground "color-203" :weight normal))
