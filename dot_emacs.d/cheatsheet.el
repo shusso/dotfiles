@@ -5,11 +5,13 @@
 ;; C-h v         major-mode RET
 ;; M-x           apropos-command -mode$ RET
 ;; M-:           major-mode RET
+;; C-u C-x =     what-cursor-position (e.g. what faces)
 ;; C-h k <key>   describe function bound to <key>
 ;; C-h b         list the current key-bindings for the focus buffer
 ;; C-h m         describe mode
 ;; C-h l         show the keys you have pressed
 ;; <prefix> C-h  show all key-bindings beginning with <prefix>
+;; M-x list-colors-display  list all colors supported by emacs
 ;; M-c capitalize
 ;; M-; comment end of the line
 ;; M-a Move back to the beginning of the sentence (backward-sentence)

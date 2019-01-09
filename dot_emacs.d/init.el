@@ -20,13 +20,13 @@
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
 (setq org-todo-keyword-faces
-      '(("TODO" . org-warning) 
+      '(("TODO" . (:background "color-197" :foreground "color-231"))
         ("ONGOING" . "color-178")
         ("ON_HOLD" . (:foreground "purple" :weight bold))
         ("INVALID" . (:foreground "orange" :weight bold))
         ("BLOCKED" . (:foreground "color-124" :weight bold))
         ("ON_REVIEW" . (:foreground "color-184" :weight normal))
-        ("RESEARCH" . (:background "color-186" :weight bold))
+        ("RESEARCH" . (:background "color-185" :weight bold))
         ("LEARNING" . (:foreground "color-58" :weight normal))
         ("ASSIGNMENTS" . (:foreground "color-38" :weight normal))
         ("VIDEOS" . (:foreground "color-44" :weight normal))
@@ -85,6 +85,10 @@
   ;; Misc go stuff
   (auto-complete-mode 1))
 
+(defun org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           FUNCTION end           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -367,6 +371,7 @@
 ;;(setq org-agenda-files '("~/GoogleDrive/org"))
 (setq org-log-done t)
 (setq org-agenda-window-setup 'current-window)
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
