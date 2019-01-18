@@ -188,6 +188,8 @@
 ;; M-up/down       move heading up/down
 ;; C-c '           render code block in new buffer
 ;; C-c C-e h o     export html
+;; C-c C-x o       (org-toggle-ordered-property)
+
 
 ;; USAGE
 
