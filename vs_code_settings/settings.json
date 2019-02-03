@@ -22,7 +22,7 @@
         "**/.git": true
     },
     "go.formatOnSave": false,
-    "workbench.colorTheme": "Eden",
+    "workbench.colorTheme": "United Ubuntu",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",

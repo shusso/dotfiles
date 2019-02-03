@@ -6,7 +6,7 @@ test -f ${HOME}/.krow.rc && source ${HOME}/.krow.rc
 ##############
 ##  Common  ##
 ##############
-export GOPATH=$HOME/golang
+#export GOPATH=$HOME/golang
 
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
@@ -30,7 +30,7 @@ export PYTHONSTARTUP=~/.pythonrc
 stty -ixon
 export CONFIG_SCHED_AUTOGROUP=y
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+#export JAVA_HOME=$(/usr/libexec/java_home)
 export SCALA_HOME=/usr/local/Cellar/scala/2.12.4
 export SPARK_HOME=/usr/local/share/apache-spark/2.2.0
 export PYSPARK_PYTHON=python3
@@ -88,10 +88,10 @@ alias ssaver="open -a /System/Library/CoreServices/ScreenSaverEngine.app"
 alias open_ports="sudo lsof -iTCP -sTCP:LISTEN -n -P"
 
 # idevice / adb
-alias id_l="idevice_id -l"
-alias ad_d="adb devices"
-alias ad_start="adb kill-server && adb start-server"
-alias sim_booted="echo "$(xcrun simctl list | grep -i booted | awk '{print $3}' | tr -d '(|)')""
+#alias id_l="idevice_id -l"
+#alias ad_d="adb devices"
+#alias ad_start="adb kill-server && adb start-server"
+#alias sim_booted="echo "$(xcrun simctl list | grep -i booted | awk '{print $3}' | tr -d '(|)')""
 
 # keychain stuff
 alias list_kc="security list-keychains"
@@ -358,7 +358,6 @@ alias vg="vagrant global-status"
 alias c='cd ~/code/'
 alias gd="cd ~/GoogleDrive/"
 alias cgd='gd && cd code'
-alias go_code='cd $GOPATH'
 
 alias p='cd -'
 alias b='cd ..'
