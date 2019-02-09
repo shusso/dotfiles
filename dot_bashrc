@@ -350,8 +350,9 @@ alias editgit='e ~/.gitconfig'
 alias editemacs='e ~/.emacs'
 alias journal='e ~/GoogleDrive/work_log'
 
-alias viewrc='less ~/.bashrc'
-alias readme='less ~/README'
+alias view-rc='less ~/.bashrc'
+alias view-emacscheat='less ~/.emacs.d/cheatsheet.el'
+alias view-emacs='less ~/.emacs.d/init.el'
 
 alias vg="vagrant global-status"
 
