@@ -7,6 +7,11 @@
     "editor.fontSize": 12,
     "editor.fontFamily": "'Office Code Pro'",
     "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "files.trimTrailingWhitespace": false,
+        "editor.quickSuggestions": false
+    },
     "workbench.editor.showTabs": false,
     "files.insertFinalNewline": true,
     "window.zoomLevel": 0,
@@ -37,7 +42,7 @@
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.editor.enablePreview": false,
     "terminal.integrated.fontFamily": "'Monaco'",
-    "editor.cursorStyle": "underline",
+    "editor.cursorStyle": "block",
     "editor.formatOnPaste": true,
     "workbench.settings.editor": "json"
 }
