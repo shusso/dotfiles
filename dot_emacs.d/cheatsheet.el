@@ -18,6 +18,19 @@
 ;; M-e Move forward to the end of the sentence (forward-sentence).
 ;; M-k Kill forward to the end of the sentence (kill-sentence).
 ;; C-x <del> Kill back to the beginning of the sentence (backward-kill-sentence)
+;;
+;; change encoding ;;
+;; C-x RET f unix RE
+;; M-x set-buffer-file-coding-system RET undecided-dos/undecided-unix
+;; 
+;; change file ending ;;
+;; M-%
+;; C-q C-m RET
+;; C-q C-j RET
+;;
+;; repeat command n times
+;; M-n
+;; C-u n
 
 
 ;;;; TERM ;;;;
@@ -189,6 +202,11 @@
 ;; C-c '           render code block in new buffer
 ;; C-c C-e h o     export html
 ;; C-c C-x o       (org-toggle-ordered-property)
+;; C-c /           search tags
+;; C-c \           search tags
+;; C-c //          to regexp
+;; M-g n           next hit
+;; M-g p           previous hit
 
 
 ;; USAGE
