@@ -11,6 +11,10 @@ test -f ${HOME}/.krow.rc && source ${HOME}/.krow.rc
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
 
+# swift
+## swift package completion-tool generate-bash-script > ~/.swift-package-complete.bash
+source ~/.swift-package-complete.bash
+
 # shell completion
 eval "$(pipenv --completion)"
 
