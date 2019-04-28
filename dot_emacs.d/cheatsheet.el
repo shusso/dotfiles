@@ -195,6 +195,8 @@
 ;; https://orgmode.org/manual/index.html
 ;;
 
+;; C-a             Agenda
+
 ;; C-c $           Archive subtee
 ;; C-c C-n         jump to next heading
 ;; C-c C-p         jump to previous heading

@@ -19,10 +19,11 @@
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
+;; M-x list-colors-display
 (setq org-todo-keyword-faces
-      '(("TODO" . (:background "color-197" :foreground "color-231"))
-        ("ONGOING" . "color-178")
-        ("ON_HOLD" . (:foreground "purple" :weight bold))
+      '(("TODO" . (:background "color-197" :foreground "color-229" :weight demibold :slant italic))
+        ("ONGOING" . "color-100")
+        ("ON_HOLD" . (:foreground "color-131" :weight bold))
         ("INVALID" . (:foreground "orange" :weight bold))
         ("BLOCKED" . (:foreground "color-124" :weight bold))
         ("ON_REVIEW" . (:foreground "color-184" :weight normal))
@@ -30,6 +31,7 @@
         ("LEARNING" . (:foreground "color-58" :weight normal))
         ("ASSIGNMENTS" . (:foreground "color-38" :weight normal))
         ("VIDEOS" . (:foreground "color-44" :weight normal))
+        ("MISC" . (:background "color-220" :foreground "color-196" :weight bold))
         ("BUG" . (:foreground "color-230" :background "brightred" :weight normal))
         ("IMPORTANT_DUE_SOON" . (:foreground "color-195" :background "brightred" :weight bold))
         ("IMPORTANT_NOT_DUE_SOON" . (:foreground "color-211" :weight bold))

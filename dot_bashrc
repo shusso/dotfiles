@@ -96,6 +96,7 @@ alias vg="vagrant global-status"
 alias c='cd ~/code/'
 alias gd="cd ~/GoogleDrive/"
 alias testing='cd ~/testing'
+alias org='cd ~/org'
 
 alias p='cd -'
 alias b='cd ..'
