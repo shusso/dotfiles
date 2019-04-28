@@ -510,7 +510,10 @@
 (define-key org-mode-map (kbd "C-c SPC") nil)
 (define-key org-mode-map (kbd "C-c d") nil)
 (define-key org-mode-map (kbd "C-c m") nil)
+(define-key org-mode-map (kbd "C-c l") 'org-store-link)
+(define-key org-mode-map (kbd "C-c C-l") 'org-insert-link)
 (global-set-key "\C-ca" 'org-agenda)
+
 ;; grep
 (define-key grep-mode-map (kbd "M-p") nil)
 
