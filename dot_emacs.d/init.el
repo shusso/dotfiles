@@ -39,6 +39,16 @@
         ("NOT_IMPORTANT_NOT_DUE_SOON" . (:foreground "color-222" :weight normal))
         ))
 
+(defun toggle-org-html-export-on-save ()
+  (interactive)
+  (if (memq 'org-html-export-to-html after-save-hook)
+      (progn
+        (remove-hook 'after-save-hook 'org-html-export-to-html t)
+        (message "Disabled org html export on save for current buffer..."))
+    (add-hook 'after-save-hook 'org-html-export-to-html nil t)
+    (message "Enabled org html export on save for current buffer...")))
+
+
 (defun 3-buffers ()
   "Open buffers with follow mode."
   (interactive)

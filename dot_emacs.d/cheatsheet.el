@@ -200,7 +200,8 @@
 ;; C-c l           Store link location (under cursor)
 ;; C-c C-l         Insert link to location
 ;; C-c C-o         Open link at point
-
+;;
+;; C-c C-e h h     org-html-export-to-html
 ;; C-c $           Archive subtee
 ;; C-c C-n         jump to next heading
 ;; C-c C-p         jump to previous heading
