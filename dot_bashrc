@@ -18,9 +18,12 @@ source ~/.swift-package-complete.bash
 # shell completion
 eval "$(pipenv --completion)"
 
+# disable the bash session mumbo jumbo and use one history file, also
+##               touch ~/.bash_sessions_disable
+SHELL_SESSION_HISTORY=0
 # BASH History
-HISTSIZE=1000000
-HISTFILESIZE=2000000
+HISTSIZE=10000000
+HISTFILESIZE=20000000
 HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 # history on all terminals everywhere (http://briancarper.net/blog/248/)

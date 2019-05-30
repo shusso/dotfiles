@@ -1,12 +1,8 @@
 {
   "Profiles": [
     {
-      "Ansi 5 Color": {
-        "Green Component": 0,
-        "Red Component": 0.69803923368453979,
-        "Blue Component": 0.69803923368453979
-      },
-      "Set Local Environment Vars": true,
+      "Thin Strokes": 3,
+      "ASCII Ligatures": false,
       "Working Directory": "\/Users\/shusso",
       "Prompt Before Closing 2": 0,
       "Dynamic Profile Filename": "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -54,7 +50,7 @@
         "telnet"
       ],
       "Scrollback With Status Bar": false,
-      "Scrollback Lines": 1000,
+      "Scrollback Lines": 0,
       "Scrollback in Alternate Screen": true,
       "Hide After Opening": false,
       "Flashing Bell": false,
@@ -345,22 +341,14 @@
       },
       "Window Type": 0,
       "Allow Title Reporting": false,
-      "Use Bright Bold": true,
       "Has Hotkey": false,
+      "Use Bright Bold": true,
       "Cursor Text Color": {
         "Green Component": 0,
         "Red Component": 1,
         "Blue Component": 0.0940093994140625
       },
-      "Ansi 1 Color": {
-        "Green Component": 0.12918477910938611,
-        "Red Component": 0.7144372171945701,
-        "Blue Component": 0.29093818085335638
-      },
       "Default Bookmark": "No",
-      "Disable Smcup Rmcup": false,
-      "Name": "source_code_pro",
-      "Blinking Cursor": true,
       "Cursor Color": {
         "Red Component": 0.629058837890625,
         "Color Space": "sRGB",
@@ -368,7 +356,15 @@
         "Alpha Component": 1,
         "Green Component": 0.37355604652566399
       },
+      "Disable Smcup Rmcup": false,
+      "Name": "source_code_pro",
       "Guid": "ACA3BC88-316D-4171-A9D1-E0C655EE5A92",
+      "Blinking Cursor": true,
+      "Ansi 1 Color": {
+        "Green Component": 0.12918477910938611,
+        "Red Component": 0.7144372171945701,
+        "Blue Component": 0.29093818085335638
+      },
       "Ansi 8 Color": {
         "Green Component": 0.40000000596046448,
         "Red Component": 0.40000000596046448,
@@ -390,8 +386,8 @@
       "Automatically Log": false,
       "Smart Cursor Color": false,
       "Semantic History": {
-        "action": "best editor",
         "text": "",
+        "action": "best editor",
         "editor": "com.sublimetext.3"
       },
       "Ambiguous Double Width": false,
@@ -404,7 +400,7 @@
       "Cursor Type": 2,
       "Blur": true,
       "Normal Font": "SourceCodePro-Regular 12",
-      "Vertical Spacing": 0.90000000000000002,
+      "Vertical Spacing": 0.89266636859939763,
       "Disable Printing": false,
       "Ansi 7 Color": {
         "Green Component": 0.74901962280273438,
@@ -413,7 +409,7 @@
       },
       "Command": "",
       "Terminal Type": "xterm-256color",
-      "Horizontal Spacing": 0.90059064382530118,
+      "Horizontal Spacing": 0.90000000000000002,
       "Option Key Sends": 2,
       "Blink Allowed": false,
       "Minimum Contrast": 0.39057555379746828,
@@ -444,17 +440,17 @@
       },
       "Columns": 80,
       "Visual Bell": false,
-      "ASCII Ligatures": false,
-      "Thin Strokes": 3,
-      "Custom Directory": "No"
-    },
-    {
+      "Custom Directory": "No",
       "Ansi 5 Color": {
         "Green Component": 0,
         "Red Component": 0.69803923368453979,
         "Blue Component": 0.69803923368453979
       },
-      "Set Local Environment Vars": true,
+      "Set Local Environment Vars": true
+    },
+    {
+      "Thin Strokes": 3,
+      "ASCII Ligatures": false,
       "Working Directory": "\/Users\/shusso",
       "Prompt Before Closing 2": 0,
       "Dynamic Profile Filename": "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -793,30 +789,30 @@
       },
       "Window Type": 0,
       "Allow Title Reporting": false,
-      "Use Bright Bold": true,
       "Has Hotkey": false,
+      "Use Bright Bold": true,
       "Cursor Text Color": {
         "Green Component": 0,
         "Red Component": 1,
         "Blue Component": 0.0940093994140625
       },
-      "Ansi 1 Color": {
-        "Green Component": 0.12918477910938611,
-        "Red Component": 0.7144372171945701,
-        "Blue Component": 0.29093818085335638
-      },
       "Default Bookmark": "No",
+      "Cursor Color": {
+        "Red Component": 0.629058837890625,
+        "Color Space": "sRGB",
+        "Blue Component": 0.036244601011276252,
+        "Alpha Component": 1,
+        "Green Component": 0.37355604652566399
+      },
       "Disable Smcup Rmcup": false,
       "Name": "sf_mono",
-      "Blinking Cursor": true,
-      "Cursor Color": {
-        "Red Component": 0.629058837890625,
-        "Color Space": "sRGB",
-        "Blue Component": 0.036244601011276252,
-        "Alpha Component": 1,
-        "Green Component": 0.37355604652566399
-      },
       "Guid": "A9B77C5A-71D9-461E-B249-F58A0C2C0433",
+      "Blinking Cursor": true,
+      "Ansi 1 Color": {
+        "Green Component": 0.12918477910938611,
+        "Red Component": 0.7144372171945701,
+        "Blue Component": 0.29093818085335638
+      },
       "Ansi 8 Color": {
         "Green Component": 0.40000000596046448,
         "Red Component": 0.40000000596046448,
@@ -838,8 +834,8 @@
       "Automatically Log": false,
       "Smart Cursor Color": false,
       "Semantic History": {
-        "action": "best editor",
         "text": "",
+        "action": "best editor",
         "editor": "com.sublimetext.3"
       },
       "Ambiguous Double Width": false,
@@ -851,8 +847,8 @@
       },
       "Cursor Type": 2,
       "Blur": true,
-      "Normal Font": "SFMono-Regular 12",
-      "Vertical Spacing": 0.99561135165662651,
+      "Normal Font": "SourceCodePro-Regular 12",
+      "Vertical Spacing": 0.88903073230421681,
       "Disable Printing": false,
       "Ansi 7 Color": {
         "Green Component": 0.74901962280273438,
@@ -861,7 +857,7 @@
       },
       "Command": "",
       "Terminal Type": "xterm-256color",
-      "Horizontal Spacing": 0.9044380647590361,
+      "Horizontal Spacing": 0.89349585843373491,
       "Option Key Sends": 2,
       "Blink Allowed": false,
       "Minimum Contrast": 0.39057555379746828,
@@ -892,17 +888,17 @@
       },
       "Columns": 80,
       "Visual Bell": false,
-      "ASCII Ligatures": false,
-      "Thin Strokes": 3,
-      "Custom Directory": "No"
-    },
-    {
+      "Custom Directory": "No",
       "Ansi 5 Color": {
         "Green Component": 0,
         "Red Component": 0.69803923368453979,
         "Blue Component": 0.69803923368453979
       },
-      "Set Local Environment Vars": true,
+      "Set Local Environment Vars": true
+    },
+    {
+      "Thin Strokes": 3,
+      "ASCII Ligatures": false,
       "Working Directory": "\/Users\/shusso",
       "Prompt Before Closing 2": 0,
       "Dynamic Profile Filename": "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -1241,22 +1237,14 @@
       },
       "Window Type": 0,
       "Allow Title Reporting": false,
-      "Use Bright Bold": true,
       "Has Hotkey": false,
+      "Use Bright Bold": true,
       "Cursor Text Color": {
         "Green Component": 0,
         "Red Component": 1,
         "Blue Component": 0.0940093994140625
       },
-      "Ansi 1 Color": {
-        "Green Component": 0.12918477910938611,
-        "Red Component": 0.7144372171945701,
-        "Blue Component": 0.29093818085335638
-      },
       "Default Bookmark": "No",
-      "Disable Smcup Rmcup": false,
-      "Name": "monaco",
-      "Blinking Cursor": true,
       "Cursor Color": {
         "Red Component": 0.629058837890625,
         "Color Space": "sRGB",
@@ -1264,7 +1252,15 @@
         "Alpha Component": 1,
         "Green Component": 0.37355604652566399
       },
+      "Disable Smcup Rmcup": false,
+      "Name": "monaco",
       "Guid": "0C2DCD6C-D3DD-4DFF-8132-BF92B1460A96",
+      "Blinking Cursor": true,
+      "Ansi 1 Color": {
+        "Green Component": 0.12918477910938611,
+        "Red Component": 0.7144372171945701,
+        "Blue Component": 0.29093818085335638
+      },
       "Ansi 8 Color": {
         "Green Component": 0.40000000596046448,
         "Red Component": 0.40000000596046448,
@@ -1286,8 +1282,8 @@
       "Automatically Log": false,
       "Smart Cursor Color": false,
       "Semantic History": {
-        "action": "best editor",
         "text": "",
+        "action": "best editor",
         "editor": "com.sublimetext.3"
       },
       "Ambiguous Double Width": false,
@@ -1299,8 +1295,8 @@
       },
       "Cursor Type": 2,
       "Blur": true,
-      "Normal Font": "Monaco 12",
-      "Vertical Spacing": 0.83994964231927716,
+      "Normal Font": "SourceCodePro-Regular 12",
+      "Vertical Spacing": 0.89436064570783125,
       "Disable Printing": false,
       "Ansi 7 Color": {
         "Green Component": 0.74901962280273438,
@@ -1340,17 +1336,17 @@
       },
       "Columns": 80,
       "Visual Bell": false,
-      "ASCII Ligatures": false,
-      "Thin Strokes": 3,
-      "Custom Directory": "No"
-    },
-    {
+      "Custom Directory": "No",
       "Ansi 5 Color": {
         "Green Component": 0,
         "Red Component": 0.69803923368453979,
         "Blue Component": 0.69803923368453979
       },
-      "Set Local Environment Vars": true,
+      "Set Local Environment Vars": true
+    },
+    {
+      "Thin Strokes": 3,
+      "ASCII Ligatures": false,
       "Working Directory": "\/Users\/shusso",
       "Prompt Before Closing 2": 0,
       "Dynamic Profile Filename": "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -1689,22 +1685,14 @@
       },
       "Window Type": 0,
       "Allow Title Reporting": false,
-      "Use Bright Bold": true,
       "Has Hotkey": false,
+      "Use Bright Bold": true,
       "Cursor Text Color": {
         "Green Component": 0,
         "Red Component": 1,
         "Blue Component": 0.0940093994140625
       },
-      "Ansi 1 Color": {
-        "Green Component": 0.12918477910938611,
-        "Red Component": 0.7144372171945701,
-        "Blue Component": 0.29093818085335638
-      },
       "Default Bookmark": "No",
-      "Disable Smcup Rmcup": false,
-      "Name": "office_code_pro",
-      "Blinking Cursor": true,
       "Cursor Color": {
         "Red Component": 0.629058837890625,
         "Color Space": "sRGB",
@@ -1712,7 +1700,15 @@
         "Alpha Component": 1,
         "Green Component": 0.37355604652566399
       },
+      "Disable Smcup Rmcup": false,
+      "Name": "office_code_pro",
       "Guid": "C5AA3539-8512-44E4-A41D-4B00089B0054",
+      "Blinking Cursor": true,
+      "Ansi 1 Color": {
+        "Green Component": 0.12918477910938611,
+        "Red Component": 0.7144372171945701,
+        "Blue Component": 0.29093818085335638
+      },
       "Ansi 8 Color": {
         "Green Component": 0.40000000596046448,
         "Red Component": 0.40000000596046448,
@@ -1734,8 +1730,8 @@
       "Automatically Log": false,
       "Smart Cursor Color": false,
       "Semantic History": {
-        "action": "best editor",
         "text": "",
+        "action": "best editor",
         "editor": "com.sublimetext.3"
       },
       "Ambiguous Double Width": false,
@@ -1788,17 +1784,17 @@
       },
       "Columns": 80,
       "Visual Bell": false,
-      "ASCII Ligatures": false,
-      "Thin Strokes": 3,
-      "Custom Directory": "No"
+      "Custom Directory": "No",
+      "Ansi 5 Color": {
+        "Green Component": 0,
+        "Red Component": 0.69803923368453979,
+        "Blue Component": 0.69803923368453979
+      },
+      "Set Local Environment Vars": true
     },
     {
-      "Ansi 5 Color": {
-        "Green Component": 0.71280097961425781,
-        "Red Component": 0.72722584009170532,
-        "Blue Component": 0.98932766914367676
-      },
-      "Set Local Environment Vars": true,
+      "Thin Strokes": 4,
+      "Custom Directory": "No",
       "Working Directory": "\/Users\/shusso",
       "Prompt Before Closing 2": 0,
       "Dynamic Profile Filename": "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -2148,21 +2144,21 @@
         "Red Component": 0.08235294371843338,
         "Blue Component": 0.08235294371843338
       },
-      "Ansi 1 Color": {
-        "Green Component": 0.37254901959999998,
-        "Red Component": 0.99215686270000003,
-        "Blue Component": 0.94509803920000002
-      },
       "Default Bookmark": "No",
-      "Disable Smcup Rmcup": false,
-      "Name": "old_backup",
-      "Blinking Cursor": true,
       "Cursor Color": {
         "Green Component": 0.81568628549575806,
         "Red Component": 0.81568628549575806,
         "Blue Component": 0.81568628549575806
       },
+      "Disable Smcup Rmcup": false,
+      "Name": "old_backup",
       "Guid": "A4F3BD6E-0480-43BB-BDF6-EDA7C9D50CF7",
+      "Blinking Cursor": true,
+      "Ansi 1 Color": {
+        "Green Component": 0.37254901959999998,
+        "Red Component": 0.99215686270000003,
+        "Blue Component": 0.94509803920000002
+      },
       "Ansi 8 Color": {
         "Green Component": 0,
         "Red Component": 0,
@@ -2184,8 +2180,8 @@
       "Automatically Log": false,
       "Smart Cursor Color": false,
       "Semantic History": {
-        "action": "best editor",
         "text": "",
+        "action": "best editor",
         "editor": "com.sublimetext.3"
       },
       "Ambiguous Double Width": false,
@@ -2238,17 +2234,17 @@
       },
       "Columns": 80,
       "Visual Bell": false,
-      "Custom Directory": "No",
-      "Thin Strokes": 4,
-      "ASCII Ligatures": false
+      "ASCII Ligatures": false,
+      "Ansi 5 Color": {
+        "Green Component": 0.71280097961425781,
+        "Red Component": 0.72722584009170532,
+        "Blue Component": 0.98932766914367676
+      },
+      "Set Local Environment Vars": true
     },
     {
-      "Ansi 5 Color": {
-        "Green Component": 0,
-        "Blue Component": 0.69803923368453979,
-        "Red Component": 0.69803923368453979
-      },
-      "Set Local Environment Vars": true,
+      "Thin Strokes": 3,
+      "ASCII Ligatures": false,
       "Working Directory": "\/Users\/shusso",
       "Prompt Before Closing 2": 0,
       "Dynamic Profile Filename": "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -2587,28 +2583,28 @@
       },
       "Window Type": 0,
       "Allow Title Reporting": false,
-      "Use Bright Bold": true,
       "Has Hotkey": false,
+      "Use Bright Bold": true,
       "Cursor Text Color": {
         "Green Component": 0,
         "Blue Component": 0,
         "Red Component": 0
       },
-      "Ansi 1 Color": {
-        "Green Component": 0,
-        "Blue Component": 0,
-        "Red Component": 0.80000001192092896
-      },
       "Default Bookmark": "No",
-      "Disable Smcup Rmcup": false,
-      "Name": "org-mode",
-      "Blinking Cursor": true,
       "Cursor Color": {
         "Green Component": 0.49803921580314636,
         "Blue Component": 0.49803921580314636,
         "Red Component": 0.49803921580314636
       },
+      "Disable Smcup Rmcup": false,
+      "Name": "org-mode",
       "Guid": "97ABF0F2-FA10-4F01-9F32-568A076E9C07",
+      "Blinking Cursor": true,
+      "Ansi 1 Color": {
+        "Green Component": 0,
+        "Blue Component": 0,
+        "Red Component": 0.80000001192092896
+      },
       "Ansi 8 Color": {
         "Green Component": 0.40000000596046448,
         "Blue Component": 0.40000000596046448,
@@ -2630,8 +2626,8 @@
       "Automatically Log": false,
       "Smart Cursor Color": false,
       "Semantic History": {
-        "action": "best editor",
         "text": "",
+        "action": "best editor",
         "editor": "com.sublimetext.3"
       },
       "Ambiguous Double Width": false,
@@ -2643,7 +2639,7 @@
       },
       "Cursor Type": 2,
       "Blur": true,
-      "Normal Font": "SFMono-Regular 12",
+      "Normal Font": "SFMono-Regular 11",
       "Vertical Spacing": 0.99561135165662651,
       "Disable Printing": false,
       "Ansi 7 Color": {
@@ -2684,9 +2680,13 @@
       },
       "Columns": 80,
       "Visual Bell": false,
-      "ASCII Ligatures": false,
-      "Thin Strokes": 3,
-      "Custom Directory": "No"
+      "Custom Directory": "No",
+      "Ansi 5 Color": {
+        "Green Component": 0,
+        "Blue Component": 0.69803923368453979,
+        "Red Component": 0.69803923368453979
+      },
+      "Set Local Environment Vars": true
     }
   ]
 }
