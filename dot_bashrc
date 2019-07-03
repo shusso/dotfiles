@@ -144,6 +144,7 @@ alias du='du -h'
 
 # ls
 alias ll='ls -lFhG'
+alias ls='ls -G'
 alias lld=ls_dirs
 alias llh='ls -lhFG'
 alias la='ls -AhG'
@@ -260,26 +261,27 @@ function py-lint-requirements {
     pip3 install --force-reinstall pycodestyle flake8 mypy
 }
 
-function venv-setup {
-    python3 -m venv .venv
+function py-venv {
+    python3 -m venv .venv --prompt $(echo "$(basename $(pwd))")
+    py-venv-activate
 }
 
-function venv-activate {
+function py-venv-activate {
     if [ -d .venv ]; then
         source .venv/bin/activate
     fi
 }
 
-function venv-install {
+function py-venv-install {
     if [ -f requirements.txt ]; then
         pip3 install -r requirements.txt
     fi
 }
 
-function set-pyenv {
-    venv-setup
-    venv-activate
-    venv-install
+function py-venv-setup {
+    py-venv
+    py-venv-activate
+    py-venv-install
 }
 
 function py-run-checks {
