@@ -98,8 +98,11 @@ alias vg="vagrant global-status"
 
 alias c='cd ~/code/'
 alias gd="cd ~/GoogleDrive/"
+alias icloud="cd ~/icloud/"
 alias testing='cd ~/testing'
 alias org='cd ~/org'
+
+alias ssh='ssh -o TCPKeepAlive=yes -o ServerAliveInterval=4'
 
 alias p='cd -'
 alias b='cd ..'
@@ -225,11 +228,16 @@ function gcloud-instances-list {
 function gcloud-ssh {
     local user_at_node=${1}
     local project=${2}
-    local extras=""
+    local extras=${@:3}
+    local appended_extras=""
     if [ ! -z $project ]; then
-        extras+="--project ${project}"
+        appended_extras+=" --project ${project} "
     fi
-    gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --internal-ip ${user_at_node} ${extras}
+    appended_extras+=${extras}
+
+    gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --internal-ip ${user_at_node} ${appended_extras}
+    # echo Running cmd: gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --internal-ip ${user_at_node} ${appended_extras}
+
 }
 
 function gcloud-addresses {
@@ -261,27 +269,26 @@ function py-lint-requirements {
     pip3 install --force-reinstall pycodestyle flake8 mypy
 }
 
-function py-venv {
-    python3 -m venv .venv --prompt $(echo "$(basename $(pwd))")
-    py-venv-activate
+function venv-setup {
+    python3 -m venv .venv
 }
 
-function py-venv-activate {
+function venv-activate {
     if [ -d .venv ]; then
         source .venv/bin/activate
     fi
 }
 
-function py-venv-install {
+function venv-install {
     if [ -f requirements.txt ]; then
         pip3 install -r requirements.txt
     fi
 }
 
-function py-venv-setup {
-    py-venv
-    py-venv-activate
-    py-venv-install
+function set-pyenv {
+    venv-setup
+    venv-activate
+    venv-install
 }
 
 function py-run-checks {
@@ -298,7 +305,6 @@ function py-run-checks {
 function py-unset-pipenv-project {
     unset PIPENV_VENV_IN_PROJECT
 }
-
 
 function ls-dirs {
     local cmd="ls -l -d */"
