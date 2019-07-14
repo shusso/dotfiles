@@ -1,0 +1,59 @@
+#escape "^Aa"
+escape ^^^
+
+# detach on hangup
+autodetach on
+
+# emacs keybindings for navigation in copy mode
+markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
+
+# page up and page down
+bindkey -m -k kP stuff Y
+bindkey -m -k kN stuff V
+
+# special hack for C-e, since it should go *past*
+# the last char. -m means this is for copy mode only.
+bindkey -m ^e stuff "$^f"
+
+# C-g and other keys just quit copy mode. Esc does nothing.
+markkeys \033=\015=^G=^D=h=j=k=l=H=M=L=G=g=y=c=v=a=x=b=e=B=E=w
+markkeys @=\033
+
+# control arrows move by words. (set B, e, and w to F keys so that i can
+# use them to move by words, but they themselves still quit copy mode.)
+markkeys B=[:E=]:b={:e=}:w=>
+bindkey -m ^[Od stuff {  #"[[}"
+bindkey -m ^[Oc stuff ]  #"}]^f"
+
+#test uncomment for default screen-profile behaviour:
+#hardstatus string '%{= kw}[ %{= kb}%H%{= kw} ][%= %{= kw}%?%-Lw%?%{= kW}%n*%f %t%?%?%{= kw}%?%+Lw%?%?%= ][ %{r}%l%{w} ]%{w}[%{r} %d/%m/%y %C %A %{w}]%{w}'
+
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+
+#show user@host: "%{= yw}%110`%109`%111`"
+#show uptime: "%115`"
+#show cpuinfo:"%104`%103`"
+#show meminfo: "%105`%107`"
+
+# backtick 99  86400 86400 screen-profiles-status logo
+# backtick 100 3600 3600 screen-profiles-status release
+# backtick 101 10 10 screen-profiles-status updates-available
+# backtick 102 2 2 screen-profiles-status reboot-required
+# backtick 103 2 2 screen-profiles-status cpu-freq
+# backtick 104 86400 86400 screen-profiles-status cpu-count
+# backtick 105 86400 86400 screen-profiles-status mem-available
+# backtick 106 2 2 screen-profiles-status load-average
+# backtick 107 2 2 screen-profiles-status mem-used
+# backtick 108 600 600 screen-profiles-status ec2-cost
+# backtick 109 3600 3600 screen-profiles-status hostname
+# backtick 110 86400 86400 screen-profiles-status whoami
+# backtick 111 86400 86400 screen-profiles-status menu
+# backtick 112 86400 86400 screen-profiles-status arch
+# backtick 113 30 30 screen-profiles-status battery
+# backtick 114 10 10 screen-profiles-status users
+# backtick 115 60 60 screen-profiles-status uptime
+# backtick 116 2 2 screen-profiles-status processes
+# backtick 117 2 2 screen-profiles-status network-up
+# backtick 118 2 2 screen-profiles-status network-down
+# backtick 119 2 2 screen-profiles-status wifi-quality
