@@ -39,6 +39,9 @@
         ("NOT_IMPORTANT_NOT_DUE_SOON" . (:foreground "color-222" :weight normal))
         ))
 
+(defun org-mode-export-hook ()
+  (add-hook 'after-save-hook 'org-html-export-to-html t t))
+
 (defun toggle-org-html-export-on-save ()
   (interactive)
   (if (memq 'org-html-export-to-html after-save-hook)
@@ -384,6 +387,8 @@
 (setq org-log-done t)
 (setq org-agenda-window-setup 'current-window)
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+(add-hook 'org-mode-hook #'org-mode-export-hook)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
@@ -491,6 +496,10 @@
 (define-key term-mode-map (kbd "M-p") nil)
 (define-key term-raw-map (kbd "M-i") nil)
 (define-key term-mode-map (kbd "M-i") nil)
+
+;; (define-key term-raw-map (kbd "C-x o") nil)
+;; (define-key term-mode-map (kbd "C-x p") nil)
+
 (define-key term-raw-map (kbd "M-x") nil)
 (define-key term-mode-map (kbd "M-x") nil)
 (define-key term-mode-map (kbd "C-c SPC") nil)
@@ -526,8 +535,6 @@
 
 ;; grep
 (define-key grep-mode-map (kbd "M-p") nil)
-
-
 
 (global-unset-key (kbd "M-s"))
 

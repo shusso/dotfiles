@@ -71,6 +71,7 @@ alias python_2="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python2.7/
 
 ## setup prompt
 export PS1='\[$(tput setaf 11)\][\[$(tput setaf 137)\]\W\[$(tput setaf 11)\]] >\[$(tput sgr0)\] '
+alias hPS="PS1='\[\033[01;30m\]\h\[\033[00m\]:[\[\033[01;37m\]\W\[\033[00m\]] > '"
 alias sPS="PS1='[\[\033[01;33m\]\u@\h\[\033[00m\]]:\[\033[01;31m\]\W\[\033[00m\]\$ '"
 alias lPS="PS1='[\[\033[01;31m\]\w\[\033[00m\]]> '"
 
