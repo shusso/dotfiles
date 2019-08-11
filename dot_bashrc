@@ -272,12 +272,26 @@ function py-lint-requirements {
 }
 
 function py-venv-setup {
-    python3 -m venv .venv
+    local py_version=${1}
+    local venv_name=${2}
+
+    if [ -z "${py_version}" ]; then
+        py_version="python3"
+    fi
+    if [ -z "${venv_name}" ]; then
+        venv_name=$(echo "$(basename $(pwd))")
+    fi
+
+    echo "** Creating ${py_version} venv ${venv_name} **"
+
+    ${py_version} -m venv ".${venv_name}"
 }
 
 function py-venv-activate {
-    if [ -d .venv ]; then
-        source .venv/bin/activate
+    local venv_name=${1}
+
+    if [ -d ".${venv_name}" ]; then
+        source ".${venv_name}/bin/activate"
     fi
 }
 
@@ -288,8 +302,19 @@ function py-venv-install {
 }
 
 function py-venv {
-    py-venv-setup
-    py-venv-activate
+    local py_version=${1}
+    local venv_name=${2}
+
+    if [ -z "${py_version}" ]; then
+        py_version="python3"
+    fi
+
+    if [ -z "${venv_name}" ]; then
+        venv_name=$(echo "$(basename $(pwd))")
+    fi
+
+    py-venv-setup ${py_version} ${venv_name}
+    py-venv-activate ${venv_name}
     py-venv-install
 }
 
