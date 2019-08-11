@@ -273,7 +273,7 @@ function py-lint-requirements {
 
 function py-venv-setup {
     local py_version=${1}
-    local venv_name=${2}
+    local venv_name=venv #${2}
 
     if [ -z "${py_version}" ]; then
         py_version="python3"
@@ -290,8 +290,11 @@ function py-venv-setup {
 function py-venv-activate {
     local venv_name=${1}
 
-    if [ -d ".${venv_name}" ]; then
-        source ".${venv_name}/bin/activate"
+    # if [ -d ".${venv_name}" ]; then
+    #     source ".${venv_name}/bin/activate"
+    # fi
+    if [ -d .venv ]; then
+        source .venv/bin/activate
     fi
 }
 
