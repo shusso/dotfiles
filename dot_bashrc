@@ -101,6 +101,7 @@ alias c='cd ~/code/'
 alias gd="cd ~/GoogleDrive/"
 alias icloud="cd ~/icloud/"
 alias testing='cd ~/testing'
+alias scratchpad='cd ~/scratchpad'
 alias org='cd ~/org'
 
 alias ssh='ssh -o TCPKeepAlive=yes -o ServerAliveInterval=4'
@@ -270,26 +271,26 @@ function py-lint-requirements {
     pip3 install --force-reinstall pycodestyle flake8 mypy
 }
 
-function venv-setup {
+function py-venv-setup {
     python3 -m venv .venv
 }
 
-function venv-activate {
+function py-venv-activate {
     if [ -d .venv ]; then
         source .venv/bin/activate
     fi
 }
 
-function venv-install {
+function py-venv-install {
     if [ -f requirements.txt ]; then
         pip3 install -r requirements.txt
     fi
 }
 
-function set-pyenv {
-    venv-setup
-    venv-activate
-    venv-install
+function py-venv {
+    py-venv-setup
+    py-venv-activate
+    py-venv-install
 }
 
 function py-run-checks {
