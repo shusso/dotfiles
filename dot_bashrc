@@ -264,7 +264,7 @@ function py-elpy-requirements {
 
 function py-ipython-requirements {
     # python3.6 requires rlipython==0.1.1
-    pip3 install --force-reinstall ipython rlipython
+    pip3 install --force-reinstall ipython==6.5.0 rlipython==0.1.1 gnureadlines
 }
 
 function py-lint-requirements {
