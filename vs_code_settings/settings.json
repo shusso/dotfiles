@@ -24,17 +24,20 @@
     "files.exclude": {
         "**/.env": true,
         "**/dist": true,
-        "**/.git": true
+        "**/.git": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
     },
     "go.formatOnSave": false,
-    "workbench.colorTheme": "United Ubuntu",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.fontSize": 12,
     "editor.minimap.enabled": false,
     "go.gopath": "/Users/shusso/golang",
-    "editor.tabSize": 2,
+    "editor.tabSize": 4,
     "extensions.ignoreRecommendations": false,
     "workbench.panel.location": "right",
     "telemetry.enableTelemetry": false,
@@ -45,5 +48,9 @@
     "editor.cursorStyle": "block",
     "editor.formatOnPaste": true,
     "workbench.settings.editor": "json",
+    "python.jediEnabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "Monokai Dimmed",
     "workbench.startupEditor": "newUntitledFile"
 }
