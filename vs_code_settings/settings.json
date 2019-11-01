@@ -24,7 +24,11 @@
     "files.exclude": {
         "**/.env": true,
         "**/dist": true,
-        "**/.git": true
+        "**/.git": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
     },
     "go.formatOnSave": false,
     "workbench.colorTheme": "United Ubuntu",
@@ -45,5 +49,7 @@
     "editor.cursorStyle": "block",
     "editor.formatOnPaste": true,
     "workbench.settings.editor": "json",
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
