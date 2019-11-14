@@ -258,6 +258,20 @@ function gcloud-ssh {
     gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --internal-ip ${user_at_node} ${appended_extras}
 }
 
+function gcloud-scp {
+    local files=${1}
+    local where=${2}
+    local project=${3}
+    local extras=${@:4}
+    local appended_extras=""
+    if [ ! -z $project ]; then
+        appended_extras+=" --project ${project} "
+    fi
+    appended_extras+=${extras}
+
+    gcloud beta compute scp --internal-ip --ssh-key-file=${HOME}/.ssh/id_rsa ${files} ${where} ${appended_extras}
+}
+
 function gcloud-addresses {
     gcloud compute addresses list
 }
@@ -472,7 +486,7 @@ alias xg="xargs -n1"
 LESSPIPE=/usr/local/bin/src-hilite-lesspipe.sh
 export LESSOPEN="| ${LESSPIPE} %s"
 #export LESS='-R'
-export LESS='-R -i'
+export LESS='-R -i -X'
 
 alias lessl='less -N'
 
