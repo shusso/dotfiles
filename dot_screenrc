@@ -6,6 +6,9 @@ autodetach on
 
 defscrollback 50000
 
+# dont clear screen when terminating
+termcapinfo * ti=:te=
+
 # emacs keybindings for navigation in copy mode
 markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
 
