@@ -64,6 +64,7 @@ alias unset_py="unset PYTHONPATH"
 alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.7/site-packages/'"
 alias python_2="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python2.7/site-packages/'"
 
+
 #############
 ##  Alias  ##
 #############
@@ -79,6 +80,8 @@ alias reload="source ~/.bashrc"
 alias tsaver='j=0;a=1;x=1;y=1;xd=1;yd=1;while true;do for i in {1..2000} ; do if [[ $x == $LINES || $x == 0 ]]; then xd=$(( $xd *-1 )) ; fi ; if [[ $y == $COLUMNS || $y == 0 ]]; then yd=$(( $yd * -1 )) ; fi ; x=$(( $x + $xd )); y=$(( $y + $yd )); printf "\33[%s;%sH\33[48;5;%sm . \33[0m" $x $y $(( $a % 8 + 16 + $j % 223 )) ;a=$(( $a + 1 )) ; done ; x=$(( x%$COLUMNS + 1 )) ; j=$(( $j + 8 )) ;done'
 
 alias t="tmux"
+
+alias d="deactivate"
 
 export EDITOR='emacs'
 alias e='emacs'
@@ -300,10 +303,10 @@ function py-ipython-requirements {
 function py-lint-requirements {
     pip3 install --force-reinstall pycodestyle flake8 mypy
 }
+function set-pyvenv {
+    local venv_name=${1}
+    local py_version=${2}
 
-function py-venv-setup {
-    local py_version=${1}
-    local venv_name=venv #${2}
 
     if [ -z "${py_version}" ]; then
         py_version="python3"
@@ -314,41 +317,20 @@ function py-venv-setup {
 
     echo "** Creating ${py_version} venv ${venv_name} **"
 
-    ${py_version} -m venv ".${venv_name}"
+    ${py_version} -m venv "${venv_name}"
 }
 
-function py-venv-activate {
-    local venv_name=${1}
-
-    # if [ -d ".${venv_name}" ]; then
-    #     source ".${venv_name}/bin/activate"
-    # fi
-    if [ -d .venv ]; then
-        source .venv/bin/activate
+function load-pyvenv {
+    local venv_path=${1}
+    if [ -d "${venv_path}" ]; then
+        source "${venv_path}/bin/activate"
     fi
 }
 
-function py-venv-install {
+function install-pyvenv {
     if [ -f requirements.txt ]; then
         pip3 install -r requirements.txt
     fi
-}
-
-function py-venv {
-    local py_version=${1}
-    local venv_name=${2}
-
-    if [ -z "${py_version}" ]; then
-        py_version="python3"
-    fi
-
-    if [ -z "${venv_name}" ]; then
-        venv_name=$(echo "$(basename $(pwd))")
-    fi
-
-    py-venv-setup ${py_version} ${venv_name}
-    py-venv-activate ${venv_name}
-    py-venv-install
 }
 
 function py-run-checks {
