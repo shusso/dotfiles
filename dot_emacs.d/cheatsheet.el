@@ -231,6 +231,20 @@
 ;;   exit
 ;; #+END_SRC
 
+;; <s	#+BEGIN_SRC ... #+END_SRC
+;; <e	#+BEGIN_EXAMPLE ... #+END_EXAMPLE
+;; <q	#+BEGIN_QUOTE ... #+END_QUOTE
+;; <v	#+BEGIN_VERSE ... #+END_VERSE
+;; <c	#+BEGIN_CENTER ... #+END_CENTER
+;; <C	#+BEGIN_COMMENT ... #+END_COMMENT
+;; <l	#+BEGIN_EXPORT latex ... #+END_EXPORT
+;; <L	#+LATEX:
+;; <h	#+BEGIN_EXPORT html ... #+END_EXPORT
+;; <H	#+HTML:
+;; <a	#+BEGIN_EXPORT ascii ... #+END_EXPORT
+;; <A	#+ASCII:
+;; <i	#+INDEX: line
+;; <I	#+INCLUDE: line
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                   MAGIT                     ;;

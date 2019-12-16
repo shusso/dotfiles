@@ -349,8 +349,13 @@ function py-unset-pipenv-project {
 }
 
 function ls-dirs {
-    local cmd="ls -l -d */"
-    ${cmd} | awk '{ print $9}'
+    local path=$1
+    if [ -z ${path} ]; then
+        path="*/"
+    else
+        path+="*/"
+    fi
+    ls -d ${path}
 }
 
 function start-docker-dep-containers {
