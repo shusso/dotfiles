@@ -103,7 +103,7 @@
 (defun org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
   (let (org-log-done org-log-states)   ; turn off logging
-    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+    (org-todo (if (= n-not-done 0) "DONE"))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           FUNCTION end           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -211,6 +211,12 @@
 
 (require 'org)
 (require 'org-agenda)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+
+(require 'buffer-move)
 
 (require 'octave)
 
@@ -449,6 +455,13 @@
 (global-set-key (kbd "C-c f m") 'follow-mode)
 (global-set-key (kbd "C-c b b") 'balance-windows)
 
+;; buffer-move
+(global-set-key (kbd "M-n <up>")     'buf-move-up)
+(global-set-key (kbd "M-n <down>")   'buf-move-down)
+(global-set-key (kbd "M-n <left>")   'buf-move-left)
+(global-set-key (kbd "M-n <right>")  'buf-move-right)
+;; (global-set-key (kbd "<S-e-<right>")  'buf-move-right)
+
 ;; M-g = goto-line
 (global-set-key "\M-g" 'goto-line)
 
@@ -528,6 +541,8 @@
 (define-key org-mode-map (kbd "M-i") nil)
 (define-key org-mode-map (kbd "C-c SPC") nil)
 (define-key org-mode-map (kbd "C-c d") nil)
+(define-key org-mode-map (kbd "C-c .") nil)
+(define-key org-mode-map (kbd "C-c .") 'org-time-stamp)
 (define-key org-mode-map (kbd "C-c m") nil)
 (define-key org-mode-map (kbd "C-c l") 'org-store-link)
 (define-key org-mode-map (kbd "C-c C-l") 'org-insert-link)
