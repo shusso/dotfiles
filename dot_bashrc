@@ -15,8 +15,9 @@ source ~/.git-completion.bash
 ## swift package completion-tool generate-bash-script > ~/.swift-package-complete.bash
 source ~/.swift-package-complete.bash
 
-# shell completion
-eval "$(pipenv --completion)"
+# poetry
+## poetry completions bash > .poetry.bash-completion
+source ~/.poetry.bash-completion 
 
 # disable the bash session mumbo jumbo and use one history file, also
 ##               touch ~/.bash_sessions_disable
@@ -57,8 +58,10 @@ export PIPENV_VENV_IN_PROJECT=1
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 
+
+export POETRY_PATH=$HOME/poetry
 export DOTNET_PATH=/usr/local/share/dotnet
-export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$DOTNET_PATH
+export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin
 
 alias unset_py="unset PYTHONPATH"
 alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.7/site-packages/'"
@@ -472,7 +475,7 @@ alias xg="xargs -n1"
 
 LESSPIPE=/usr/local/bin/src-hilite-lesspipe.sh
 export LESSOPEN="| ${LESSPIPE} %s"
-#export LESS='-R'
+# export LESS='-R'
 export LESS='-R -i -X'
 
 alias lessl='less -N'

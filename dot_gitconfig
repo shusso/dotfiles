@@ -68,6 +68,7 @@
 	helper = store
 [core]
     ignorecase = false
+    pager = less -r
     # autocrlf = false
     # whitespace = cr-at-eol
 [push]
