@@ -115,5 +115,22 @@
         "key": "alt+f12",
         "command": "-editor.action.peekDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "shift+cmd+t",
+        "command": "-workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "shift+cmd+t",
+        "command": "java.test.explorer.run"
+    },
+    {
+        "key": "ctrl+c space",
+        "command": "extension.aceJump"
     }
+
 ]
