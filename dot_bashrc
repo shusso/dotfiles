@@ -59,7 +59,7 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 
 
-export POETRY_PATH=$HOME/poetry
+export POETRY_PATH=$HOME/.poetry
 export DOTNET_PATH=/usr/local/share/dotnet
 export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin
 
@@ -293,6 +293,22 @@ function set-cscope-py {
     find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) > cscope.files
 }
 
+function poetry-load-env {
+    source "$(poetry env info --path)/bin/activate"
+}
+
+function poetry-pip-freeze {
+    # poetry export -f requirements.txt > requirements.txt
+    local output=${1}
+    if [ -z "${output}" ]; then
+        output="requirements.txt"
+    fi
+    poetry run pip freeze > ${output}
+}
+
+function poetry-dev-deps {
+    poetry add mypy black jedi autopep8 rope flake8 ipython==6.5.0 rlipython==0.1.1 gnureadline
+}
 
 function py-elpy-requirements {
     pip3 install --force-reinstall jedi autopep8 rope flake8
@@ -325,6 +341,9 @@ function set-pyvenv {
 
 function load-pyvenv {
     local venv_path=${1}
+    if [ -z "${venv_path}" ]; then
+        venv_path=".venv"
+    fi
     if [ -d "${venv_path}" ]; then
         source "${venv_path}/bin/activate"
     fi
