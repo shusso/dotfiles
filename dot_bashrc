@@ -8,6 +8,8 @@ test -f ${HOME}/.krow.rc && source ${HOME}/.krow.rc
 ##############
 #export GOPATH=$HOME/golang
 
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
 
@@ -55,6 +57,21 @@ export PIPENV_VENV_IN_PROJECT=1
 ##  Path  ##
 ############
 
+# openssl
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+# Setting PATH for Python 3.7
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+export PATH
+
+# Setting PATH for Python 3.8
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
+
+
+
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 
@@ -62,11 +79,6 @@ export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 export POETRY_PATH=$HOME/.poetry
 export DOTNET_PATH=/usr/local/share/dotnet
 export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin
-
-alias unset_py="unset PYTHONPATH"
-alias python_3="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python3.7/site-packages/'"
-alias python_2="unset PYTHONPATH && export PYTHONPATH='/usr/local/lib/python2.7/site-packages/'"
-
 
 #############
 ##  Alias  ##
@@ -311,7 +323,7 @@ function poetry-dev-deps {
 }
 
 function py-elpy-requirements {
-    pip3 install --force-reinstall jedi autopep8 rope flake8
+    pip3 install --force-reinstall jedi autopep8 rope flake8 black yapf
 }
 
 function py-ipython-requirements {
