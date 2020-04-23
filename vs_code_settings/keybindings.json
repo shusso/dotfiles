@@ -117,6 +117,14 @@
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
     },
     {
+        "key": "alt+x",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "f1",
+        "command": "-workbench.action.showCommands"
+    },
+    {
         "key": "shift+cmd+r",
         "command": "workbench.action.reopenClosedEditor"
     },
@@ -132,5 +140,4 @@
         "key": "ctrl+c space",
         "command": "extension.aceJump"
     }
-
 ]

@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.wordWrap" : "on",
-    "python.pythonPath": "/usr/local/bin/python3",
+    "python.venvPath": "/Users/shusso/.local/share/virtualenvs/",
     "python.linting.enabled" : true,
     "python.linting.pylintEnabled": true,
     "editor.fontSize": 12,
@@ -40,7 +40,6 @@
         "**.gitignore**": true
     },
     "go.formatOnSave": false,
-    "workbench.colorTheme": "United Ubuntu",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",
@@ -60,5 +59,9 @@
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.dataScience.askForKernelRestart": false,
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "python.jediEnabled": false,
+    "center-editor-window.threeStateToggle": true
 }

@@ -50,6 +50,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PIPENV_VENV_IN_PROJECT=1
 
+export VENVS_PATH=${HOME}/.local/share/virtualenvs
+
 ## ssh options:
 ##-o TCPKeepAlive=yes -o ServerAliveInterval=4
 
@@ -349,6 +351,16 @@ function set-pyvenv {
     echo "** Creating ${py_version} venv ${venv_name} **"
 
     ${py_version} -m venv "${venv_name}"
+}
+
+function load-glob-pyvenv {
+    local py_version=${1}
+    if [ -z "${py_version}" ]; then
+        py_version="py_38"
+    fi
+    if [ -d "${VENVS_PATH}/${py_version}" ]; then
+        source "${VENVS_PATH}/${py_version}/bin/activate"
+    fi
 }
 
 function load-pyvenv {
