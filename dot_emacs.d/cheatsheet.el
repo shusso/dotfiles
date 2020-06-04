@@ -142,6 +142,7 @@
 ;; C-c C-n>        ein:worksheet-goto-next-input
 ;; C-c C-p         ein:worksheet-goto-prev-input
 ;; C-c C-o         ein:console-open
+;; C-c C-t         ein:worksheet-toggle-cell-type
 
 ;; C-c C-k         ein:worksheet-kill-cell
 ;; C-c C-l         ein:worksheet-clear-output

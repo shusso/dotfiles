@@ -62,6 +62,7 @@
        ur-subs = "!f() { git submodule foreach git ur; }; f"
        subs-master = "!f() { git submodule foreach 'git co master && git ur' ; }; f"
        mod-setup = "!f() { git subs && git subs-master; }; f"
+       ds = diff --stat
 [log]
 	date = local
 [credential]

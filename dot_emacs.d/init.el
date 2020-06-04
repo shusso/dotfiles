@@ -347,8 +347,12 @@
 ;; auto-reload files
 (global-auto-revert-mode t)
 
-(set-frame-parameter (selected-frame) 'alpha '(88 70))
-(add-to-list 'default-frame-alist '(alpha 88 70))
+;; alpha controls transparency on GUI emacs
+(set-frame-parameter (selected-frame) 'alpha '(98 98))
+(add-to-list 'default-frame-alist '(alpha 98 98))
+;; font
+(set-frame-font "Source code pro 12" nil t)
+
 
 ;; https://www.emacswiki.org/emacs/WinnerMode
 (winner-mode 1)
@@ -547,7 +551,6 @@
 (define-key org-mode-map (kbd "C-c l") 'org-store-link)
 (define-key org-mode-map (kbd "C-c C-l") 'org-insert-link)
 (global-set-key "\C-ca" 'org-agenda)
-(global-set-key (kbd "C-c .") nil)
 (global-set-key (kbd "C-c .") 'org-time-stamp)
 
 ;; grep
@@ -610,6 +613,7 @@
    (quote
     (".tox" "build" "dist" ".cask" ".ipynb_checkpoints" ".pytest_cache" ".mypy_cache" ".venv" "build" "dist" ".pyc" "__pycache__")))
  '(elpy-rpc-python-command "python3")
+ '(elpy-syntax-check-command "black")
  '(elpy-test-nose-runner-command (quote ("nosetests" "--nologcapture" "--nocapture" "-s")))
  '(elpy-test-pytest-runner-command (quote ("py.test" "--tb=short")))
  '(elpy-test-runner (quote elpy-test-pytest-runner))
@@ -713,7 +717,7 @@ static char *gnus-pointer[] = {
  '(powerline-color2 "#111111")
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" ".venv" "build" "dist" "parquet" ".pyc" "__pychache__" "resources" ".pytest_cache" ".mypy_cache" "node_modules" "vendor")))
+    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" ".env" ".venv" "build" "dist" "parquet" ".pyc" "__pychache__" "resources" ".pytest_cache" ".mypy_cache")))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
