@@ -117,14 +117,6 @@
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
     },
     {
-        "key": "alt+x",
-        "command": "workbench.action.showCommands"
-    },
-    {
-        "key": "f1",
-        "command": "-workbench.action.showCommands"
-    },
-    {
         "key": "shift+cmd+r",
         "command": "workbench.action.reopenClosedEditor"
     },
@@ -139,5 +131,31 @@
     {
         "key": "ctrl+c space",
         "command": "extension.aceJump"
+    },
+    {
+        "key": "alt+x",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "f1",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "alt+cmd+t",
+        "command": "-workbench.action.closeOtherEditors"
+    },
+    {
+        "key": "ctrl+x 1",
+        "command": "workbench.action.closeEditorsInOtherGroups"
+    },
+    {
+        "key": "alt+,",
+        "command": "editor.action.goToImplementation",
+        "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "cmd+f12",
+        "command": "-editor.action.goToImplementation",
+        "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
     }
 ]

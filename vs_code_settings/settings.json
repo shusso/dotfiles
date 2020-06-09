@@ -15,6 +15,7 @@
     "workbench.editor.showTabs": false,
     "files.insertFinalNewline": true,
     "window.zoomLevel": 0,
+    "debug.console.fontSize":14,
     "python.jupyter.defaultKernel": "Python 3",
     "python.jupyter.startupCode": [
         "%matplotlib inline"
@@ -30,14 +31,16 @@
         "**/.settings": true,
         "**/.factorypath": true,
         "**/**.pb.go": true,
-        "**.gitignore**": true
+        "**.gitignore**": true,
+        "**/vendor": true
     },
     "search.exclude": {
         "**/node_modules": true,
         "**/bower_components": true,
         "**/*.code-search": true,
         "**/**.pb.go": true,
-        "**.gitignore**": true
+        "**.gitignore**": true,
+        "**/vendor": true
     },
     "go.formatOnSave": false,
     "workbench.activityBar.visible": true,
@@ -46,7 +49,7 @@
     "terminal.integrated.fontSize": 12,
     "editor.minimap.enabled": false,
     "go.gopath": "/Users/shusso/golang",
-    "editor.tabSize": 2,
+    "editor.tabSize": 4,
     "extensions.ignoreRecommendations": false,
     "workbench.panel.location": "right",
     "telemetry.enableTelemetry": false,

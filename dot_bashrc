@@ -275,10 +275,13 @@ function gcloud-ssh {
     fi
     appended_extras+=${extras}
 
-    gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --internal-ip ${user_at_node} ${appended_extras}
+    gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --ssh-flag="-o TCPKeepAlive=yes" --internal-ip ${user_at_node} ${appended_extras}
+    # echo Running cmd: gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="ServerAliveInterval=30" --internal-ip ${user_at_node} ${appended_extras}
+
 }
 
 function gcloud-scp {
+    # todo wildcard support
     local files=${1}
     local where=${2}
     local project=${3}
@@ -293,7 +296,17 @@ function gcloud-scp {
 }
 
 function gcloud-addresses {
-    gcloud compute addresses list
+    gcloud beta compute addresses list
+}
+
+function gcloud-instances-list {
+    local project=${1}
+    local extras=""
+    if [ ! -z $project ]; then
+        extras+="--project ${project}"
+    fi
+    gcloud beta compute instances list ${extras}
+
 }
 
 function set-tags-py {
