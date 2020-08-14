@@ -181,6 +181,38 @@ alias unity="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
 alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
 
 
+function gen_autocomplete_files () {
+    local files=$_AUTO_COMP_DIR
+    local cur
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "${files}" -- ${cur}) ) # ;;
+    return 0
+}
+
+function py_gen_autocomplete_files () {
+    export _AUTO_COMP_DIR=$( find -L $HOME/scratchpad/python/* )
+    gen_autocomplete_files
+
+    unset _AUTO_COMP_DIR
+    return 0
+}
+
+function run-py {
+    local py_file=$1
+    local options=${@:1}
+    if [ ! -z $options ]; then
+        options=""
+    fi
+    load-glob-pyvenv py_37
+
+    echo "**run-py** running: ${1} with options: ${options}"
+
+    python3 ${py_file} ${options}
+
+    deactivate
+}
+
 function forever {
     local cmd=${@}
 
@@ -524,6 +556,21 @@ function git_author_stats {
     git log --author="${author}" --pretty=tformat: --numstat \
         | gawk "{ add += \$1 ; subs += \$2 ; loc += \$1 - \$2 } END { printf \"Author: ${author} added lines: %s removed lines: %s total lines: %s\n\",add,subs,loc }" -
 }
+
+#############################
+##  Generate Autocomplete  ##
+#############################
+
+# run-py
+complete -F py_gen_autocomplete_files -o filenames run-py
+
+# create-ssh-tunnel
+# -o nosort # bash4
+complete -W "user_at_host port:host:port option_flags" create-ssh-tunnel
+
+# load-glob-pyvenv
+complete -W "py_36 py_37 py_38" load-glob-pyvenv
+
 
 ############
 ##  Grep  ##
