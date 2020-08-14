@@ -87,10 +87,10 @@ export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbi
 #############
 
 ## setup prompt
-export PS1='\[$(tput setaf 11)\][\[$(tput setaf 137)\]\W\[$(tput setaf 11)\]] >\[$(tput sgr0)\] '
-alias hPS="PS1='\[\033[01;30m\]\h\[\033[00m\]:[\[\033[01;37m\]\W\[\033[00m\]] > '"
-alias sPS="PS1='[\[\033[01;33m\]\u@\h\[\033[00m\]]:\[\033[01;31m\]\W\[\033[00m\]\$ '"
-alias lPS="PS1='[\[\033[01;31m\]\w\[\033[00m\]]> '"
+export PS1='\[$(tput setaf 11)\][\[$(tput setaf 137)\]\W\[$(tput setaf 11)\]] ⤳ \[$(tput sgr0)\] '
+alias hPS="PS1='\[\033[01;30m\]\h\[\033[00m\]:[\[\033[01;37m\]\W\[\033[00m\]] ⤳  '"
+alias sPS="PS1='[\[\033[01;33m\]\u@\h\[\033[00m\]]:\[\033[01;31m\]\W\[\033[00m\]\⤳  '"
+alias lPS="PS1='[\[\033[01;31m\]\w\[\033[00m\]]⤳  '"
 
 alias reload="source ~/.bashrc"
 
@@ -181,6 +181,23 @@ alias unity="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
 alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
 
 
+function forever {
+    local cmd=${@}
+
+    echo "**forever** '${cmd}'"
+    while true; do eval ${cmd}; done
+}
+
+function create-ssh-tunnel {
+    local where=$1
+    local to=$2
+    local options=${@:3}
+
+    echo "**Create Tunnel** ssh ${where} ${options} ${to}"
+    ssh ${where} ${options} ${to}
+}
+
+
 function repeat_5 {
     local cmd=${@}
     local times=5
@@ -267,16 +284,10 @@ function gcloud-instances-list {
 
 function gcloud-ssh {
     local user_at_node=${1}
-    local project=${2}
-    local extras=${@:3}
-    local appended_extras=""
-    if [ ! -z $project ]; then
-        appended_extras+=" --project ${project} "
-    fi
-    appended_extras+=${extras}
+    local extras=${@:2}
 
-    gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --ssh-flag="-o TCPKeepAlive=yes" --internal-ip ${user_at_node} ${appended_extras}
-    # echo Running cmd: gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="ServerAliveInterval=30" --internal-ip ${user_at_node} ${appended_extras}
+    gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --ssh-flag="-o TCPKeepAlive=yes" --internal-ip ${user_at_node} ${extras}
+    # echo Running cmd: gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="ServerAliveInterval=30" --internal-ip ${user_at_node} ${extras}
 
 }
 
