@@ -191,7 +191,7 @@ function gen_autocomplete_files () {
 }
 
 function py_gen_autocomplete_files () {
-    export _AUTO_COMP_DIR=$( find -L $HOME/scratchpad/python/* )
+    export _AUTO_COMP_DIR=$( find -L $HOME/scratchpad/python/* -name *.py )
     gen_autocomplete_files
 
     unset _AUTO_COMP_DIR

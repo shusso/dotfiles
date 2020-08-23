@@ -122,8 +122,7 @@
 ;; package
 (require 'package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;;(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
@@ -200,6 +199,7 @@
 (require 'term)
 
 (require 'ein)
+(setq ein:output-area-inlined-images t)
 
 (setq print-level 1)
 (setq print-length 1)
@@ -287,12 +287,10 @@
 ;; Always end a file with a newline
 (setq require-final-newline t)
 
-;; Enable wheelmouse support by default
-(cond (window-system
-       (mwheel-install)
-))
-;;finnish language to work properly:
-;; (set-input-mode nil nil 'foo)
+;; Enable mouse support
+(require 'mouse)
+(xterm-mouse-mode t)
+(setq mouse-sel-mode t)
 
 (put 'upcase-region 'disabled nil)
 
@@ -351,8 +349,9 @@
 (set-frame-parameter (selected-frame) 'alpha '(98 98))
 (add-to-list 'default-frame-alist '(alpha 98 98))
 ;; font
+;; increase/decrease font for buffer: C-x C-+ , C-x C--
+(set-frame-font "Source code pro 13" nil t)
 (set-frame-font "Source code pro 12" nil t)
-
 
 ;; https://www.emacswiki.org/emacs/WinnerMode
 (winner-mode 1)
@@ -409,9 +408,18 @@
 ;;        KEYBINDINGS start         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; mouse scrolling up/down
+(global-set-key [mouse-4] (lambda ()
+                            (interactive)
+                            (scroll-down 1)))
+(global-set-key [mouse-5] (lambda ()
+                            (interactive)
+                            (scroll-up 1)))
+
 ;; move around in buffers
-;; (global-set-key (kbd "C-c <left>") 'windmove-left) 
+;; (global-set-key (kbd "C-x c <left>") 'windmove-left)
 ;; (global-set-key (kbd "C-c <right>") 'windmove-right)
+
 (global-set-key (kbd "C-c <up>") 'windmove-up)
 (global-set-key (kbd "C-c <down>") 'windmove-down)
 
