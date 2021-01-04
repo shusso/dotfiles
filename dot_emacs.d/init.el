@@ -123,8 +123,10 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
+;;(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages") t)
+(add-to-list 'package-archives '("orgmode". "https://orgmode.org/elpa/") t)
 
 (require 'auto-complete)
 
@@ -174,9 +176,9 @@
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
 
 ;;elpy
-(require 'elpy)
+(require 'elpy)                         ;
 (elpy-enable)
-;; http://elpy.readthedocs.io/en/latest/ide.html
+;;http://elpy.readthedocs.io/en/latest/ide.html
 
 ;; company
 (require 'company)
@@ -193,12 +195,18 @@
 
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
-;; (eval-after-load 'flycheck (cons 'python-pylint (delq 'python-pylint flycheck-checkers)))
+;;(eval-after-load 'flycheck (cons 'python-pylint (delq 'python-pylint flycheck-checkers)))
 (flycheck-add-next-checker 'python-flake8 'python-pylint)
+(setq flycheck-check-syntax-automatically '(save mode-enable))
+;; the default value was '(save idle-change new-line mode-enabled)
+
+;;(require 'flymake)
+;;(setq flymake-no-changes-timeout nil)
 
 (require 'term)
 
 (require 'ein)
+(require 'ein-output-area)
 (setq ein:output-area-inlined-images t)
 
 (setq print-level 1)
@@ -218,7 +226,31 @@
 
 (require 'buffer-move)
 
-(require 'octave)
+;; Allow automatically handing of created/expired meta data.
+;; https://stackoverflow.com/a/13285957
+(require 'org-expiry)
+;; Configure it a bit to my liking
+(setq
+  org-expiry-created-property-name "CREATED" ; Name of property when an item is created
+  org-expiry-inactive-timestamps   t         ; Don't have everything in the agenda view
+)
+
+(defun mrb/insert-created-timestamp()
+  "Insert a CREATED property using org-expiry.el for TODO entries"
+  (org-expiry-insert-created)
+  (org-back-to-heading)
+  (org-end-of-line)
+  (insert " ")
+)
+
+;; Whenever a TODO entry is created, I want a timestamp
+;; Advice org-insert-todo-heading to insert a created timestamp using org-expiry
+(defadvice org-insert-todo-heading (after mrb/created-timestamp-advice activate)
+  "Insert a CREATED property using org-expiry.el for TODO entries"
+  (mrb/insert-created-timestamp)
+)
+;; Make it active
+(ad-activate 'org-insert-todo-heading)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;            MODES end             ;;
@@ -350,8 +382,8 @@
 (add-to-list 'default-frame-alist '(alpha 98 98))
 ;; font
 ;; increase/decrease font for buffer: C-x C-+ , C-x C--
-(set-frame-font "Source code pro 13" nil t)
-(set-frame-font "Source code pro 12" nil t)
+(set-frame-font "Source code pro 15" nil t)
+;(set-frame-font "Source code pro 12" nil t)
 
 ;; https://www.emacswiki.org/emacs/WinnerMode
 (winner-mode 1)

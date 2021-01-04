@@ -63,8 +63,10 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.dataScience.askForKernelRestart": false,
     "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     "python.jediEnabled": false,
-    "center-editor-window.threeStateToggle": true
+    "center-editor-window.threeStateToggle": true,
+    "python.defaultInterpreterPath": "/Users/shusso/.local/share/virtualenvs/py_37/bin/python",
+    "python.languageServer": "Microsoft",
+    "jupyter.askForKernelRestart": false
 }
