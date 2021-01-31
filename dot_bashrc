@@ -37,23 +37,12 @@ shopt -s checkwinsize
 
 export PYTHONSTARTUP=~/.pythonrc
 
-#export LANG=fi_FI.utf8
-# for fixing the stupid konsole ctrl-q/s thingy:
-stty -ixon
-export CONFIG_SCHED_AUTOGROUP=y
-
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PYSPARK_PYTHON=python3
-
 # pipenv
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PIPENV_VENV_IN_PROJECT=1
 
 export VENVS_PATH=${HOME}/.local/share/virtualenvs
-
-## ssh options:
-##-o TCPKeepAlive=yes -o ServerAliveInterval=4
 
 ############
 ##  Path  ##
@@ -72,11 +61,8 @@ export PATH
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
 
-
-
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
-
 
 export POETRY_PATH=$HOME/.poetry
 export DOTNET_PATH=/usr/local/share/dotnet
@@ -108,7 +94,6 @@ alias editssh='e ~/.ssh/known_hosts'
 alias editreadme='e ~/README'
 alias editgit='e ~/.gitconfig'
 alias editemacs='e ~/.emacs'
-alias journal='e ~/GoogleDrive/work_log'
 
 alias view-rc='less ~/.bashrc'
 alias view-emacscheat='less ~/.emacs.d/cheatsheet.el'
@@ -116,11 +101,10 @@ alias view-emacs='less ~/.emacs.d/init.el'
 
 alias vg="vagrant global-status"
 
-alias c='cd ~/code/'
 alias gd="cd ~/GoogleDrive/"
 alias icloud="cd ~/icloud/"
 alias testing='cd ~/testing'
-alias scratchpad='cd ~/scratchpad'
+alias s='cd ~/scratchpad'
 alias org='cd ~/org'
 
 alias ssh='ssh -o TCPKeepAlive=yes -o ServerAliveInterval=4'
@@ -130,14 +114,6 @@ alias b='cd ..'
 alias bb='cd ../..'
 alias bbb='cd ../../..'
 alias bbbb='cd ../../../..'
-
-# SVN
-alias svndiff='svn diff | less'
-#svnmod:
-alias svnmod="svn status | /usr/bin/grep --color=auto -E '^M|^C|^A|^D|^R|^!'"
-alias svnlog='svn log |less'
-#svn revision for git
-alias setsvn='SVN_REV=`git svn info | grep ^Revision | cut -d\  -f2` && echo r$SVN_REV'
 
 # GIT
 alias gitp='git --no-pager'
@@ -153,16 +129,6 @@ alias ssaver="open -a /System/Library/CoreServices/ScreenSaverEngine.app"
 
 alias open-ports="sudo lsof -iTCP -sTCP:LISTEN -n -P"
 
-# idevice / adb
-#alias id_l="idevice_id -l"
-#alias ad_d="adb devices"
-#alias ad_start="adb kill-server && adb start-server"
-#alias sim_booted="echo "$(xcrun simctl list | grep -i booted | awk '{print $3}' | tr -d '(|)')""
-
-# keychain stuff
-alias list_kc="security list-keychains"
-alias unlock_kc="security unlock-keychain"
-
 alias df='df -h'
 alias du='du -h'
 
@@ -175,11 +141,6 @@ alias la='ls -AhG'
 alias lad='la -d */'
 alias l='ls -A1FG'
 alias lt='ll -t'
-
-#unity
-alias unity="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
-alias unity_logs="cd ~/Library/Logs/Unity && tail -F *"
-
 
 function gen_autocomplete_files () {
     local files=$_AUTO_COMP_DIR
