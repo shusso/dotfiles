@@ -49,24 +49,23 @@ export VENVS_PATH=${HOME}/.local/share/virtualenvs
 ############
 
 # openssl
-export PATH="/usr/local/opt/openssl/bin:$PATH"
+SSL_PATH="/usr/local/opt/openssl/bin"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
-# Setting PATH for Python 3.7
 # The original version is saved in .profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
-export PATH
+PY37_PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin"
+PY38_PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin"
+PY39_PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin"
 
-# Setting PATH for Python 3.8
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
+ANDROID_HOME=$HOME/Library/Android/sdk
+ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
 
 export POETRY_PATH=$HOME/.poetry
-export DOTNET_PATH=/usr/local/share/dotnet
-export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin
+
+DOTNET_PATH=/usr/local/share/dotnet
+LLVM_PATH=/usr/local/opt/llvm/bin/
+
+export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin:$LLVM_PATH:$SSL_PATH:$PY37_PATH:$PY38_PATH:$PY39_PATH:${PATH}
 
 #############
 ##  Alias  ##

@@ -243,14 +243,14 @@
 (setq default-tab-width 4)
 
 ;; set auto intend in C and C++ mode to 4 spaces
-(add-hook 'c-mode-hook (lambda () (setq c-basic-offset 4)))
-(add-hook 'c++-mode-hook (lambda () (setq c-basic-offset 4)))
+;; (add-hook 'c-mode-hook (lambda () (setq c-basic-offset 4))) ;
+;; (add-hook 'c++-mode-hook (lambda () (setq c-basic-offset 4)))
 (setq c-indent-level 4)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
+;; (defvaralias 'c-basic-offset 'tab-width)
+;; (defvaralias 'cperl-indent-level 'tab-width)
 
 ;; Are we running XEmacs or Emacs?
 (defvar running-xemacs (string-match "XEmacs\\|Lucid" emacs-version))
@@ -396,6 +396,7 @@
 
 
 ;; eglot
+(add-to-list 'eglot-server-programs '((c-mode) "clangd"))
 (add-hook 'python-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'c-mode-hook 'eglot-ensure)
@@ -418,9 +419,6 @@
 
 (setcdr (assq 'java-mode eglot-server-programs) #'my-eglot-eclipse-jdt-contact)
 (add-hook 'java-mode-hook 'eglot-ensure)
-
-
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
