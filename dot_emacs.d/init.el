@@ -21,10 +21,15 @@
 ;; M-x list-colors-display
 (setq org-todo-keyword-faces
       '(("TODO" . (:background "color-197" :foreground "color-229" :weight demibold :slant italic))
-        ("ONGOING" . "color-100")
-        ("ON_HOLD" . (:foreground "color-131" :weight bold))
-        ("INVALID" . (:foreground "orange" :weight bold))
-        ("BLOCKED" . (:foreground "color-124" :weight bold))
+        ("ONGOING" . (:background "color-190" :foreground "color-172" :weight demibold :slant italic))
+        ("ON_HOLD" . (:background "color-52" :weight bold))
+        ("BLOCKED" . (:background "color-166" :foreground "color-196" :weight bold))
+        ("COURSE" . (:background "color-198" :foreground "color-122" :weight bold))
+        ("IDEA" . (:background "color-202" :foreground "color-135" :weight normal))
+        ("DONE" . (:background "color-118" :foreground "color-123" :weight bold))
+        ("LATER" . (:background "color-190" :foreground "color-195" :weight bold))
+        ("INVALID" . (:background "color-192" :foreground "color-195" :weight bold))
+
         ("ON_REVIEW" . (:foreground "color-184" :weight normal))
         ("RESEARCH" . (:background "color-185" :weight bold))
         ("LEARNING" . (:foreground "color-58" :weight normal))
@@ -148,6 +153,7 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
 
+(require 'company)
 
 ;; eglot
 (require 'eglot)
@@ -421,6 +427,10 @@
 (add-hook 'java-mode-hook 'eglot-ensure)
 
 
+;; company mode
+
+(setq company-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
