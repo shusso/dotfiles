@@ -20,13 +20,13 @@
 
 ;; M-x list-colors-display
 (setq org-todo-keyword-faces
-      '(("TODO" . (:background "color-197" :foreground "color-229" :weight demibold :slant italic))
+      '(("TODO" . (:background "brightred" :foreground "brightwhite" :weight demibold :slant italic))
         ("ONGOING" . (:background "color-190" :foreground "color-172" :weight demibold :slant italic))
         ("ON_HOLD" . (:background "color-52" :weight bold))
-        ("BLOCKED" . (:background "color-166" :foreground "color-196" :weight bold))
+        ("BLOCKED" . (:background "color-166" :foreground "color-82" :weight bold))
         ("COURSE" . (:background "color-198" :foreground "color-122" :weight bold))
-        ("IDEA" . (:background "color-202" :foreground "color-135" :weight normal))
-        ("DONE" . (:background "color-118" :foreground "color-123" :weight bold))
+        ("IDEA" . (:background "color-202" :foreground "color-226" :weight normal))
+        ("DONE" . (:background "color-118" :foreground "color-124" :weight bold))
         ("LATER" . (:background "color-190" :foreground "color-195" :weight bold))
         ("INVALID" . (:background "color-192" :foreground "color-195" :weight bold))
 
@@ -82,6 +82,32 @@
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
   (let (org-log-done org-log-states)   ; turn off logging
     (org-todo (if (= n-not-done 0) "DONE"))))
+
+(defun auto-complete-for-go ()
+  "Enable auto-complete for go."
+  (auto-complete-mode 1))
+
+(defun my-go-mode-hook ()
+  "My go mode hook."
+  ; Call Gofmt before saving
+  ; (add-hook 'before-save-hook 'gofmt-before-save)
+  (setq gofmt-command "goimports")                ; gofmt uses invokes goimports
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           "go build -v && go test -v && go vet"))
+  ;; guru settings
+  (go-guru-hl-identifier-mode)                    ; highlight identifiers
+  
+  ;; Key bindings specific to go-mode
+  (local-set-key (kbd "M-.") 'godef-jump)         ; Go to definition
+  (local-set-key (kbd "M-*") 'pop-tag-mark)       ; Return from whence you came
+  (local-set-key (kbd "M-c") 'compile)            ; Invoke compiler
+  (local-set-key (kbd "M-C") 'recompile)          ; Redo most recent compile cmd
+  (local-set-key (kbd "M-\\") 'next-error)         ; Go to next error (or msg)
+  (local-set-key (kbd "M-\'") 'previous-error)     ; Go to previous error or msg
+  ;; Misc go stuff
+  (auto-complete-mode 1))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           FUNCTION end           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -155,11 +181,6 @@
 
 (require 'company)
 
-;; eglot
-(require 'eglot)
-
-(require 'pyvenv)
-
 ;; https://github.com/bbatsov/projectile
 (require 'projectile)
 (setq-default projectile-mode t)
@@ -170,11 +191,11 @@
 ;; https://github.com/abo-abo/ace-window
 (require 'ace-window)
 
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-;;(eval-after-load 'flycheck (cons 'python-pylint (delq 'python-pylint flycheck-checkers)))
-(flycheck-add-next-checker 'python-flake8 'python-pylint)
-(setq flycheck-check-syntax-automatically '(save mode-enable))
+;; (require 'flycheck)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+;; ;;(eval-after-load 'flycheck (cons 'python-pylint (delq 'python-pylint flycheck-checkers)))
+;; (flycheck-add-next-checker 'python-flake8 'python-pylint)
+;; (setq flycheck-check-syntax-automatically '(save mode-enable))
 ;; the default value was '(save idle-change new-line mode-enabled)
 
 ;;(require 'flymake)
@@ -190,6 +211,10 @@
 (setq print-length 1)
 (setq print-circle t)
 
+(require 'eglot)
+
+(require 'pyvenv)
+
 (require 'yaml-mode)
 
 (require 'markdown-mode)
@@ -197,7 +222,6 @@
 (require 'org)
 (require 'org-agenda)
 (require 'org-tempo)
-
 ;; (require 'org-bullets)
 ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 ;; '(org-bullets-bullet-list (quote ("◈" "◆" "◊" "✸")))
@@ -246,17 +270,16 @@
 
 ;; set default auto intend to 4 spaces
 ;; Note! intend for modes have to be set seperately
-(setq default-tab-width 4)
-
+;(setq default-tab-width 4)
 ;; set auto intend in C and C++ mode to 4 spaces
 ;; (add-hook 'c-mode-hook (lambda () (setq c-basic-offset 4))) ;
 ;; (add-hook 'c++-mode-hook (lambda () (setq c-basic-offset 4)))
-(setq c-indent-level 4)
+;(setq c-indent-level 4)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
-;; (defvaralias 'c-basic-offset 'tab-width)
-;; (defvaralias 'cperl-indent-level 'tab-width)
+;(defvaralias 'c-basic-offset 'tab-width)
+;(defvaralias 'cperl-indent-level 'tab-width)
 
 ;; Are we running XEmacs or Emacs?
 (defvar running-xemacs (string-match "XEmacs\\|Lucid" emacs-version))
@@ -360,8 +383,8 @@
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
-;(setq company-mode 1)
-;(add-hook 'after-init-hook 'global-company-mode)
+(setq company-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; hs-mode
 (add-hook 'prog-mode-hook #'hs-minor-mode)
@@ -426,11 +449,6 @@
 (setcdr (assq 'java-mode eglot-server-programs) #'my-eglot-eclipse-jdt-contact)
 (add-hook 'java-mode-hook 'eglot-ensure)
 
-
-;; company mode
-
-(setq company-mode 1)
-(add-hook 'after-init-hook 'global-company-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -475,9 +493,9 @@
 ;;magit
 (global-set-key (kbd "C-c m") 'magit-status)
 
-;;completions
-(global-set-key (kbd "C-j") 'dabbrev-completion)
-(global-set-key (kbd "C-o") 'dabbrev-expand)
+;; company
+;(global-set-key (kbd "C-o") 'company-complete-common)
+(define-key company-mode-map [remap indent-for-tab-command] #'company-indent-or-complete-common)
 
 ;;list all frames
 (global-set-key (kbd "C-c f f") 'select-frame-by-name)
@@ -614,7 +632,8 @@
 
 ;;(electric-indent-mode +1)
 
-
+;; so that projectile works
+;;(setq mac-option-modifier 'meta)
 
 (set-language-environment 'utf-8)
 (setq locale-coding-system 'utf-8)

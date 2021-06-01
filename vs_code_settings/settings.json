@@ -68,5 +68,11 @@
     "center-editor-window.threeStateToggle": true,
     "python.defaultInterpreterPath": "/Users/shusso/.local/share/virtualenvs/py_37/bin/python",
     "python.languageServer": "Microsoft",
-    "jupyter.askForKernelRestart": false
+    "jupyter.askForKernelRestart": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }
