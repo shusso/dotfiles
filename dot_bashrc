@@ -8,7 +8,9 @@ test -f ${HOME}/.krow.rc && source ${HOME}/.krow.rc
 ##############
 #export GOPATH=$HOME/golang
 
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+# Autocompletes
+# [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 source ~/.git-completion.bash
@@ -19,7 +21,13 @@ source ~/.swift-package-complete.bash
 
 # poetry
 ## poetry completions bash > .poetry.bash-completion
-source ~/.poetry.bash-completion 
+source ~/.poetry.bash-completion
+
+# tmux
+[ -f /opt/homebrew/etc/bash_completion.d/tmux ] && . /opt/homebrew/etc/bash_completion.d/tmux
+
+# brew
+[ -f /opt/homebrew/etc/bash_completion.d/brew ] && . /opt/homebrew/etc/bash_completion.d/brew
 
 # disable the bash session mumbo jumbo and use one history file, also
 ##               touch ~/.bash_sessions_disable
@@ -29,13 +37,13 @@ HISTSIZE=10000000
 HISTFILESIZE=20000000
 HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
-# history on all terminals everywhere (http://briancarper.net/blog/248/)
-export PROMPT_COMMAND="history -a"
+
+export PROMPT_COMMAND=log_history
 alias his="history -n; history -a"
 
 shopt -s checkwinsize
 
-export PYTHONSTARTUP=~/.pythonrc
+#export PYTHONSTARTUP=~/.pythonrc
 
 # pipenv
 export LC_ALL=en_US.UTF-8
@@ -44,13 +52,29 @@ export PIPENV_VENV_IN_PROJECT=1
 
 export VENVS_PATH=${HOME}/.local/share/virtualenvs
 
+
+# brew
+alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
+
+# arm brew
+export HOMEBREW_PREFIX=/opt/homebrew
+export HOMEBREW_PREFIX_86=/usr/local
+export HOMEBREW_REPOSITORY=/opt/homebrew
+export HOMEBREW_CELLAR=/opt/homebrew/Cellar
+BREW_BIN="/opt/homebrew/bin"
+#eval "$(/opt/homebrew/bin/brew shellenv)"
+
 ############
 ##  Path  ##
 ############
 
 # openssl
-SSL_PATH="/usr/local/opt/openssl/bin"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+SSL_PATH="${HOMEBREW_PREFIX}/opt/openssl/bin/"
+export PKG_CONFIG_PATH="${HOMEBREW_PREFIX}/opt/openssl@1.1/lib/pkgconfig"
+
+# x86
+SSL_PATH_86="/usr/local/opt/openssl/bin"
+export PKG_CONFIG_PATH_86="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 # The original version is saved in .profile.pysave
 PY37_PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin"
@@ -65,14 +89,18 @@ export POETRY_PATH=$HOME/.poetry
 DOTNET_PATH=/usr/local/share/dotnet
 LLVM_PATH=/usr/local/opt/llvm/bin/
 
-export PATH=$HOME/.bin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$HOME/.rvm/bin:$GOPATH/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin:$LLVM_PATH:$SSL_PATH:$PY37_PATH:$PY38_PATH:$PY39_PATH:${PATH}
+export PATH=$HOME/.bin:${BREW_BIN}:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$GOPATH/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin:$LLVM_PATH:$SSL_PATH:$PY37_PATH:$PY38_PATH:$PY39_PATH:${PATH}
 
 #############
 ##  Alias  ##
 #############
 
 ## setup prompt
-export PS1='\[$(tput setaf 11)\][\[$(tput setaf 137)\]\W\[$(tput setaf 11)\]] ⤳ \[$(tput sgr0)\]'
+
+export PS1="\[\033[38;5;208m\][\[$(tput sgr0)\]\[\033[38;5;136m\]\W\[$(tput sgr0)\]\[\033[38;5;208m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]⤳ \[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+alias PS1_kw="\[\033[38;5;228m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;184m\][\[$(tput sgr0)\]\[\033[38;5;100m\]\W\[$(tput sgr0)\]\[\033[38;5;184m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]> \[$(tput sgr0)\] \[$(tput sgr0)\]"
+alias PS1_old='\[$(tput setaf 11)\][\[$(tput setaf 137)\]\W\[$(tput setaf 11)\]] ⤳  \[$(tput sgr0)\]'
 alias hPS="PS1='\[\033[01;30m\]\h\[\033[00m\]:[\[\033[01;37m\]\W\[\033[00m\]] ⤳  '"
 alias sPS="PS1='[\[\033[01;33m\]\u@\h\[\033[00m\]]:\[\033[01;31m\]\W\[\033[00m\]\⤳  '"
 alias lPS="PS1='[\[\033[01;31m\]\w\[\033[00m\]]⤳  '"
@@ -140,6 +168,16 @@ alias la='ls -AhG'
 alias lad='la -d */'
 alias l='ls -A1FG'
 alias lt='ll -t'
+
+
+function log_history () {
+    history -a
+    # https://spin.atomicobject.com/2016/05/28/log-bash-history/
+    if [ "$(id -u)" -ne 0 ]; then
+        echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs-bash/bash-history-$(date "+%Y-%m-%d").log
+    fi
+}
+
 
 function gen_autocomplete_files () {
     local files=$_AUTO_COMP_DIR
