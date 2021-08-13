@@ -61,7 +61,6 @@ export HOMEBREW_PREFIX=/opt/homebrew
 export HOMEBREW_PREFIX_86=/usr/local
 export HOMEBREW_REPOSITORY=/opt/homebrew
 export HOMEBREW_CELLAR=/opt/homebrew/Cellar
-BREW_BIN="/opt/homebrew/bin"
 #eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ############
@@ -89,7 +88,12 @@ export POETRY_PATH=$HOME/.poetry
 DOTNET_PATH=/usr/local/share/dotnet
 LLVM_PATH=/usr/local/opt/llvm/bin/
 
-export PATH=$HOME/.bin:${BREW_BIN}:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:/usr/local/mysql/bin:$PATH:$ANDROID_HOME/build-tools/23.0.1/:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME:$GOPATH/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin:$LLVM_PATH:$SSL_PATH:$PY37_PATH:$PY38_PATH:$PY39_PATH:${PATH}
+# Set PATH
+export PATH=${POETRY_PATH}:${PATH}
+export PATH=${SSL_PATH}:${PATH}
+export PATH=${LLVM_PATH}:${PATH}
+export PATH=$HOME/.bin:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/lib:${HOMEBREW_PREFIX}/include:${PATH}
+# export PATH=$HOME/.bin:${BREW_BIN}:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:$PATH:$GOPATH/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin:$LLVM_PATH:$SSL_PATH:$PY37_PATH:$PY38_PATH:$PY39_PATH:${PATH}
 
 #############
 ##  Alias  ##
@@ -162,13 +166,11 @@ alias du='du -h'
 # ls
 alias ll='ls -lFhG'
 alias ls='ls -G'
-alias lld=ls_dirs
-alias llh='ls -lhFG'
 alias la='ls -AhG'
 alias lad='la -d */'
 alias l='ls -A1FG'
 alias lt='ll -t'
-
+alias lh='ls -Ap | egrep "^\..*/$"' # hidden dirs only
 
 function log_history () {
     history -a
@@ -585,8 +587,9 @@ alias xg="xargs -n1"
 ##  Man-pages|less  ##
 ######################
 
-LESSPIPE=/usr/local/bin/src-hilite-lesspipe.sh
-export LESSOPEN="| ${LESSPIPE} %s"
+LESSPIPE_x86=/usr/local/bin/src-hilite-lesspipe.sh
+LESSPIPE=/opt/homebrew/bin/lesspipe.sh
+export LESSOPEN="| ${LESSPIPE} %s" LESS_ADVANCED_PREPROCESSOR=1
 # export LESS='-R'
 export LESS='-R -i -X'
 
