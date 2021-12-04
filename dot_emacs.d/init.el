@@ -185,8 +185,10 @@
 (require 'projectile)
 (setq-default projectile-mode t)
 
-;; https://github.com/jaypei/emacs-neotree
-(require 'neotree)
+
+;; https://github.com/Alexander-Miller/treemacs
+(require 'treemacs)
+
 
 ;; https://github.com/abo-abo/ace-window
 (require 'ace-window)
@@ -449,6 +451,8 @@
 (setcdr (assq 'java-mode eglot-server-programs) #'my-eglot-eclipse-jdt-contact)
 (add-hook 'java-mode-hook 'eglot-ensure)
 
+(setq treemacs-follow-mode t)
+(setq treemacs-width 30)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -537,9 +541,11 @@
 (global-set-key (kbd "M-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "M-s") 'projectile-switch-project)
 
-;; neotree
-(global-set-key (kbd "C-c d") 'neotree-toggle)
-(global-set-key (kbd "C-c j") 'neotree-dir)
+;; treemacs
+(global-set-key (kbd "C-c d") 'treemacs)
+(global-set-key (kbd "C-c C-d") 'treemacs-extra-wide-toggle)
+
+;;(global-set-key (kdb "") 'xref-find-otherw)
 
 ;; ace-window ;;
 (global-set-key (kbd "M-i") 'ace-window)
@@ -615,22 +621,6 @@
 (define-key grep-mode-map (kbd "M-p") nil)
 
 (global-unset-key (kbd "M-s"))
-
-;; (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
-;; (defun un-indent-by-removing-4-spaces ()
-;;   "remove 4 spaces from beginning of of line"
-;;   (interactive)
-;;   (save-excursion
-;;     (save-match-data
-;;       (beginning-of-line)
-;;       ;; get rid of tabs at beginning of line
-;;       (when (looking-at "^\\s-+")
-;;         (untabify (match-beginning 0) (match-end 0)))
-;;       (when (looking-at "^    ")
-;;         (replace-match "")))))
-
-
-;;(electric-indent-mode +1)
 
 ;; so that projectile works
 ;;(setq mac-option-modifier 'meta)
