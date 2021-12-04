@@ -251,3 +251,45 @@
 ;;                   MAGIT                     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; https://github.com/magit/magit/wiki/Cheatsheet
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                    MISC                     ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; C-x v +         vc-update
+;; C-x v =         vc-diff
+;; C-x v D         vc-root-diff
+;; C-x v G         vc-ignore
+;; C-x v I         vc-log-incoming
+;; C-x v L         vc-print-root-log
+;; C-x v M         Prefix Command
+;; C-x v O         vc-log-outgoing
+;; C-x v P         vc-push
+;; C-x v a         vc-update-change-log
+;; C-x v b         vc-switch-backend
+;; C-x v d         vc-dir
+;; C-x v g         vc-annotate
+;; C-x v h         vc-region-history
+;; C-x v i         vc-register
+;; C-x v l         vc-print-log
+;; C-x v m         vc-merge
+;; C-x v r         vc-retrieve-tag
+;; C-x v s         vc-create-tag
+;; C-x v u         vc-revert
+;; C-x v v         vc-next-action
+;; C-x v x         vc-delete-file
+;; C-x v ~         vc-revision-other-window
+
+
+;; C-x t C-f       find-file-other-tab
+;; C-x t RET       tab-bar-select-tab-by-name
+;; C-x t 0         tab-close
+;; C-x t 1         tab-close-other
+;; C-x t 2         tab-new
+;; C-x t b         switch-to-buffer-other-tab
+;; C-x t d         dired-other-tab
+;; C-x t f         find-file-other-tab
+;; C-x t m         tab-move
+;; C-x t o         tab-next
+;; C-x t p         project-other-tab-command
+;; C-x t r         tab-rename
