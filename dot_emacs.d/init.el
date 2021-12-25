@@ -186,9 +186,8 @@
 (setq-default projectile-mode t)
 
 
-;; https://github.com/Alexander-Miller/treemacs
-(require 'treemacs)
-
+;; https://github.com/jaypei/emacs-neotree
+(require 'neotree)
 
 ;; https://github.com/abo-abo/ace-window
 (require 'ace-window)
@@ -238,6 +237,9 @@
   org-expiry-created-property-name "CREATED" ; Name of property when an item is created
   org-expiry-inactive-timestamps   t         ; Don't have everything in the agenda view
 )
+
+;; install quick-peek also
+(require 'org-quick-peek)
 
 (defun mrb/insert-created-timestamp()
   "Insert a CREATED property using org-expiry.el for TODO entries"
@@ -451,8 +453,6 @@
 (setcdr (assq 'java-mode eglot-server-programs) #'my-eglot-eclipse-jdt-contact)
 (add-hook 'java-mode-hook 'eglot-ensure)
 
-(setq treemacs-follow-mode t)
-(setq treemacs-width 30)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;           CUSTOMS end            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -541,9 +541,8 @@
 (global-set-key (kbd "M-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "M-s") 'projectile-switch-project)
 
-;; treemacs
-(global-set-key (kbd "C-c d") 'treemacs)
-(global-set-key (kbd "C-c C-d") 'treemacs-extra-wide-toggle)
+
+(global-set-key (kbd "C-c d") 'neotree-toggle)
 
 ;;(global-set-key (kdb "") 'xref-find-otherw)
 
