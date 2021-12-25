@@ -33,8 +33,8 @@ source ~/.poetry.bash-completion
 ##               touch ~/.bash_sessions_disable
 SHELL_SESSION_HISTORY=0
 # BASH History
-HISTSIZE=10000000
-HISTFILESIZE=20000000
+HISTSIZE=1000000
+HISTFILESIZE=2000000
 HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
@@ -50,17 +50,22 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PIPENV_VENV_IN_PROJECT=1
 
-export VENVS_PATH=${HOME}/.local/share/virtualenvs
+export VENVS_PATH=${HOME}/.virtualenvs
 
 
 # brew
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 
 # arm brew
-export HOMEBREW_PREFIX=/opt/homebrew
-export HOMEBREW_PREFIX_86=/usr/local
-export HOMEBREW_REPOSITORY=/opt/homebrew
-export HOMEBREW_CELLAR=/opt/homebrew/Cellar
+#export HOMEBREW_PREFIX_86=/usr/local
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
+export HOMEBREW_SHELLENV_PREFIX="/opt/homebrew"
+
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+
 #eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ############
@@ -92,7 +97,7 @@ LLVM_PATH=/usr/local/opt/llvm/bin/
 export PATH=${POETRY_PATH}:${PATH}
 export PATH=${SSL_PATH}:${PATH}
 export PATH=${LLVM_PATH}:${PATH}
-export PATH=$HOME/.bin:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/lib:${HOMEBREW_PREFIX}/include:${PATH}
+export PATH=$HOME/.bin:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/lib:${HOMEBREW_PREFIX}/sbin:${HOMEBREW_PREFIX}/include:${PATH}
 # export PATH=$HOME/.bin:${BREW_BIN}:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:$PATH:$GOPATH/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin:$LLVM_PATH:$SSL_PATH:$PY37_PATH:$PY38_PATH:$PY39_PATH:${PATH}
 
 #############
@@ -171,6 +176,10 @@ alias lad='la -d */'
 alias l='ls -A1FG'
 alias lt='ll -t'
 alias lh='ls -Ap | egrep "^\..*/$"' # hidden dirs only
+
+alias tree='tree -C'
+
+alias list-venvs='ls ${VENVS_PATH}'
 
 function log_history () {
     history -a
