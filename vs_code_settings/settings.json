@@ -1,10 +1,11 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.wordWrap" : "on",
-    "python.venvPath": "/Users/shusso/.local/share/virtualenvs/",
+    "editor.bracketPairColorization.enabled": true,
+    "python.venvPath": "/Users/shusso/.virtualenvs/",
     "python.linting.enabled" : true,
     "python.linting.pylintEnabled": true,
-    "editor.fontSize": 12,
+    "editor.fontSize": 13,
     "editor.fontFamily": "'Office Code Pro'",
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
@@ -14,7 +15,6 @@
     },
     "workbench.editor.showTabs": false,
     "files.insertFinalNewline": true,
-    "window.zoomLevel": 0,
     "debug.console.fontSize":14,
     "python.jupyter.defaultKernel": "Python 3",
     "python.jupyter.startupCode": [
@@ -53,6 +53,7 @@
     "extensions.ignoreRecommendations": false,
     "workbench.panel.location": "right",
     "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.editor.enablePreview": false,
@@ -63,16 +64,13 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.colorTheme": "GitHub Dark",
     "python.jediEnabled": false,
     "center-editor-window.threeStateToggle": true,
-    "python.defaultInterpreterPath": "/Users/shusso/.local/share/virtualenvs/py_37/bin/python",
-    "python.languageServer": "Microsoft",
+    "python.languageServer": "Default",
     "jupyter.askForKernelRestart": false,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ]
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "editor.inlineSuggest.enabled": true
 }

@@ -157,5 +157,18 @@
         "key": "cmd+f12",
         "command": "-editor.action.goToImplementation",
         "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "shift+cmd+j",
+        "command": "-workbench.action.search.toggleQueryDetails",
+        "when": "inSearchEditor || searchViewletFocus"
+    },
+    {
+        "key": "shift+cmd+j",
+        "command": "workbench.action.positionPanelRight"
+    },
+    {
+        "key": "ctrl+cmd+j",
+        "command": "workbench.action.positionPanelBottom"
     }
 ]
