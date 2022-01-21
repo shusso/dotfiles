@@ -169,13 +169,13 @@ alias df='df -h'
 alias du='du -h'
 
 # ls
-alias ll='ls -lFhG'
-alias ls='ls -G'
-alias la='ls -AhG'
+alias ls='ls --color=always'
+alias ll='ls -lFh --color=always'
+alias la='ls -Ah --color=always'
 alias lad='la -d */'
-alias l='ls -A1FG'
-alias lt='ll -t'
-alias lh='ls -Ap | egrep "^\..*/$"' # hidden dirs only
+alias l='ls -A1F --color=always'
+alias lt='ll -t --color=always'
+alias lh='ls -Ap --color=always | egrep "^\..*/$"' # hidden dirs only
 
 alias tree='tree -C'
 
@@ -596,10 +596,10 @@ alias xg="xargs -n1"
 ##  Man-pages|less  ##
 ######################
 
-LESSPIPE_x86=/usr/local/bin/src-hilite-lesspipe.sh
-LESSPIPE=/opt/homebrew/bin/lesspipe.sh
-export LESSOPEN="| ${LESSPIPE} %s" LESS_ADVANCED_PREPROCESSOR=1
-# export LESS='-R'
+# lesspipe stopped showing colors in terminal, use pygments instead
+#export LESSQUIET=1
+#export LESSOPEN="| /opt/homebrew/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+export LESSOPEN="| ~/.lesscolor %s"
 export LESS='-R -i -X'
 
 alias lessl='less -N'
@@ -612,7 +612,7 @@ export LESS_TERMCAP_se=$'\E[0m' # end standout-mode
 export LESS_TERMCAP_so=$'\E[38;5;246m' # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m' # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-#less with colours:
+# #less with colours:
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
