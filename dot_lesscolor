@@ -4,21 +4,32 @@
 # Style Gallery: https://help.farbox.com/pygments.html
 
 case "$1" in
-    *.el|*.awk|*.groff|*.java|*.js|*.m4|*.php|*.pl|*.pm|*.pod|*.sh|\
-    *.ad[asb]|*.asm|*.inc|*.[ch]|*.[ch]pp|*.[ch]xx|*.cc|*.hh|\
-    *.lsp|*.l|*.pas|*.p|*.xml|*.xps|*.xsl|*.axp|*.ppd|*.pov|\
-    *.diff|*.patch|*.py|*.rb|*.sql|*.ebuild|*.eclass)
-        pygmentize -f 256 -P style=dracula "$1";;
+    *.lsp|*.lisp|*.el)
+        pygmentize -f 256 -P style=dracula -l lisp "$1";;
 
-    *.bashrc|*.bash_aliases|*.bash_environment|*.profile)
+    *.py|*.pyx|*.pxi|.*pxd)
+        pygmentize -f 256 -P style=dracula -l python "$1";;
+
+    *.asm)
+        pygmentize -f 256 -P style=dracula -l asm "$1";;
+
+    *.[ch]|*.[ch]pp|*.[ch]xx|*.cc|*.hh)
+        pygmentize -f 256 -P style=dracula -l c "$1";;
+
+    *.txt)
+        pygmentize -f 256 -P style=dracula -l text "$1";;
+
+    *.json)
+        pygmentize -f 256 -P style=dracula -l json "$1";;
+
+    *.yml|*.yaml)
+        pygmentize -f 256 -P style=dracula -l yaml "$1";;
+
+    *.bashrc|*.bash_aliases|*.bash_environment|*.profile|*.conf|*.rc)
         pygmentize -f 256 -P style=dracula -l sh "$1";;
 
     *)
-        if grep -q "#\!/bin/bash" "$1" 2> /dev/null; then
-            pygmentize -f 256 -P style=dracula -l sh "$1"
-        else
-            exit 1
-        fi
+        pygmentize -f 256 -P style=dracula -l sh "$1";;
 esac
 
 exit 0
