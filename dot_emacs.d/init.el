@@ -1,3 +1,6 @@
+;; Install Packages
+(load "~/.emacs.d/init_packages.el")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;          FUNCTION start          ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -97,7 +100,7 @@
            "go build -v && go test -v && go vet"))
   ;; guru settings
   (go-guru-hl-identifier-mode)                    ; highlight identifiers
-  
+
   ;; Key bindings specific to go-mode
   (local-set-key (kbd "M-.") 'godef-jump)         ; Go to definition
   (local-set-key (kbd "M-*") 'pop-tag-mark)       ; Return from whence you came
@@ -117,41 +120,27 @@
 ;;           MODES start            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; testing
+(add-to-list 'load-path "~/.emacs.d/testing")
+
 ;; modern color theme
 ;; https://github.com/emacs-jp/replace-colorthemes
 (add-to-list 'custom-theme-load-path
              (file-name-as-directory "~/.emacs.d/color-themes"))
 ;; M-x customize-face RET hl-line RET
 
-;; package
-(require 'package)
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("marmelade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages") t)
-(add-to-list 'package-archives '("orgmode". "https://orgmode.org/elpa/") t)
-
-(require 'auto-complete)
-
-;; requires ace-jump
-;; https://github.com/winterTTr/ace-jump-mode
 (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (autoload 'ace-jump-pop-mark "ace-jump-mode" "Ace jump back" t)
 (eval-after-load "ace-jump-mode" '(ace-jump-mode-enable-mark-sync))
 
-(require 'linum)
 (setq linum-format "%4d \u2502 ")
 
 ;; to open file from remote server do the following
 ;; C-x f
 ;; old: /ssh root@_ip_:/root/
 ;; /root@_ip_:/root/
-(require 'tramp)
 (setq tramp-default-method "scp")
 
-;; slime
-(require 'slime)
 ;(setq slime-default-lisp 'sbcl)
 (setq inferior-lisp-program "sbcl")
 (slime-setup)
@@ -159,9 +148,9 @@
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
  '(add-to-list 'ac-modes 'slime-repl-mode))
-(add-hook 'lisp-mode-hook 
-         (lambda ()
-           (paredit-mode +1)))
+(add-hook 'lisp-mode-hook
+  (lambda ()
+    (paredit-mode +1)))
 
 ;; clojure + cider ;;
 (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
@@ -175,71 +164,24 @@
 ;; paredit for formatting clojure s-expressions
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
-(require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode) ;; only for clojure-mode
 
-(require 'company)
-
-;; https://github.com/bbatsov/projectile
-(require 'projectile)
 (setq-default projectile-mode t)
 
-
-;; https://github.com/jaypei/emacs-neotree
-(require 'neotree)
-
-;; https://github.com/abo-abo/ace-window
-(require 'ace-window)
-
-;; (require 'flycheck)
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
-;; ;;(eval-after-load 'flycheck (cons 'python-pylint (delq 'python-pylint flycheck-checkers)))
-;; (flycheck-add-next-checker 'python-flake8 'python-pylint)
-;; (setq flycheck-check-syntax-automatically '(save mode-enable))
-;; the default value was '(save idle-change new-line mode-enabled)
-
-;;(require 'flymake)
-;;(setq flymake-no-changes-timeout nil)
-
-(require 'term)
-
-(require 'ein)
-(require 'ein-output-area)
 (setq ein:output-area-inlined-images t)
-
 (setq print-level 1)
 (setq print-length 1)
 (setq print-circle t)
 
-(require 'eglot)
-
-(require 'pyvenv)
-
-(require 'yaml-mode)
-
-(require 'markdown-mode)
-
-(require 'org)
-(require 'org-agenda)
-(require 'org-tempo)
-;; (require 'org-bullets)
-;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;; '(org-bullets-bullet-list (quote ("◈" "◆" "◊" "✸")))
-
-(require 'buffer-move)
-
 ;; Allow automatically handing of created/expired meta data.
 ;; https://stackoverflow.com/a/13285957
-(require 'org-expiry)
+;; (require 'org-expiry)
 ;; Configure it a bit to my liking
 (setq
   org-expiry-created-property-name "CREATED" ; Name of property when an item is created
   org-expiry-inactive-timestamps   t         ; Don't have everything in the agenda view
 )
-
-;; install quick-peek also
-(require 'org-quick-peek)
 
 (defun mrb/insert-created-timestamp()
   "Insert a CREATED property using org-expiry.el for TODO entries"
@@ -272,16 +214,18 @@
 ;;          CUSTOMS start           ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; set default auto intend to 4 spaces
-;; Note! intend for modes have to be set seperately
-;(setq default-tab-width 4)
-;; set auto intend in C and C++ mode to 4 spaces
-;; (add-hook 'c-mode-hook (lambda () (setq c-basic-offset 4))) ;
-;; (add-hook 'c++-mode-hook (lambda () (setq c-basic-offset 4)))
-;(setq c-indent-level 4)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
+'(python-guess-indent nil)
+'(tab-width 4)
+
+;; Python Hook
+(add-hook 'python-mode-hook
+  (function (lambda ()
+    (setq indent-tabs-mode nil
+      tab-width 2))))
+
 ;(defvaralias 'c-basic-offset 'tab-width)
 ;(defvaralias 'cperl-indent-level 'tab-width)
 
@@ -290,7 +234,7 @@
 
 ;; Turn on font-lock mode for Emacs
 (cond ((not running-xemacs)
-       (global-font-lock-mode t)
+  (global-font-lock-mode t)
 ))
 
 ;show column numbs
@@ -347,11 +291,11 @@
 (ido-mode 1)
 
 ;; python shells
-(setq python-shell-completion-native-enable nil) 
+(setq python-shell-completion-native-enable nil)
 ;; ipython shell
 ;; disabled 14.05.20180 for corrupting ipython.sqlite
 (setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
+  python-shell-interpreter-args "-i --simple-prompt")
 
 ;; multiline editing for ipython 6.5
 ;; (setq python-shell-interpreter "ipython")
@@ -401,6 +345,15 @@
 (setq scroll-step 1)
 (set-variable 'scroll-conservatively 1000)
 (setq xterm-mouse-mode 1)
+
+
+;; Testing
+(setq confirm-kill-emacs #'yes-or-no-p)
+(setq window-resize-pixelwise t)
+(setq frame-resize-pixelwise t)
+(save-place-mode t)
+(savehist-mode t)
+(recentf-mode t)
 
 (setq print-level 1)
 (setq print-length 1)
