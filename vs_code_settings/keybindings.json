@@ -107,7 +107,7 @@
         "when": "editorHasReferenceProvider"
     },
     {
-        "key": "shift+alt+.",
+        "key": "ctrl+shift+.",
         "command": "editor.action.peekDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
     },
@@ -129,7 +129,7 @@
         "command": "java.test.explorer.run"
     },
     {
-        "key": "ctrl+c space",
+        "key": "ctrl+x space",
         "command": "extension.aceJump"
     },
     {
@@ -170,5 +170,20 @@
     {
         "key": "ctrl+cmd+j",
         "command": "workbench.action.positionPanelBottom"
+    },
+    {
+        "key": "alt+r",
+        "command": "cursorMove",
+        "args": {"to": "viewPortTop"}
+    },
+    {
+        "key": "shift+alt+,",
+        "command": "cursorTop",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+alt+.",
+        "command": "cursorBottom",
+        "when": "textInputFocus"
     }
 ]
