@@ -93,5 +93,5 @@
 (require 'org)
 (require 'org-agenda)
 (require 'org-tempo)
-(require 'org'expiry)
+(require 'org-expiry)
 (require 'mouse)

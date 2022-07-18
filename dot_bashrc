@@ -31,11 +31,11 @@ source ~/.poetry.bash-completion
 
 # disable the bash session mumbo jumbo and use one history file, also
 ##               touch ~/.bash_sessions_disable
-SHELL_SESSION_HISTORY=0
+export SHELL_SESSION_HISTORY=0
 # BASH History
-HISTSIZE=1000000
-HISTFILESIZE=2000000
-HISTCONTROL=ignoredups:ignorespace
+export HISTSIZE=1000000
+export HISTFILESIZE=2000000
+export HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 export PROMPT_COMMAND=log_history
