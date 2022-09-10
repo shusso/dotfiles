@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+
+cp dot_bashrc ~/.bashrc
+cp -r dot_emacs.d ~/.emacs.d
+cp dot_gitconfig ~/.gitconfig
+cp dot_lesscolor ~/.lesscolor
+cp dot_profile ~/.profile
+cp dot_screenrc ~/.screenrc
+cp dot_tmux.conf ~/.tmux.conf
