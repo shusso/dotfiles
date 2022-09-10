@@ -19,6 +19,10 @@ source ~/.git-completion.bash
 ## swift package completion-tool generate-bash-script > ~/.swift-package-complete.bash
 source ~/.swift-package-complete.bash
 
+# pip
+## pip completion --bash >> ~/.pip-complete.bash
+source ~/.pip-complete.bash
+
 # poetry
 ## poetry completions bash > .poetry.bash-completion
 source ~/.poetry.bash-completion
@@ -625,3 +629,4 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # e.g. source ~/.bashrc activate_venv
 #"$@"
 
+. "$HOME/.cargo/env"
