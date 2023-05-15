@@ -11,7 +11,11 @@
     "[markdown]": {
         "editor.wordWrap": "on",
         "files.trimTrailingWhitespace": false,
-        "editor.quickSuggestions": false
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
     },
     "workbench.editor.showTabs": false,
     "files.insertFinalNewline": true,
@@ -24,6 +28,7 @@
 
     "files.exclude": {
         "**/.env": true,
+        "**/.venv": true,
         "**/dist": true,
         "**/.git": true,
         "**/.classpath": true,
@@ -43,8 +48,6 @@
         "**/vendor": true
     },
     "go.formatOnSave": false,
-    "workbench.activityBar.visible": true,
-    "workbench.statusBar.visible": true,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.fontSize": 12,
     "editor.minimap.enabled": false,
@@ -64,7 +67,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.colorTheme": "GitHub Dark",
+    "workbench.colorTheme": "SynthWave '84",
     "python.jediEnabled": false,
     "center-editor-window.threeStateToggle": true,
     "python.languageServer": "Default",
@@ -73,5 +76,7 @@
         "*.ipynb": "jupyter.notebook.ipynb"
     },
     "editor.inlineSuggest.enabled": true,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "explorer.confirmDragAndDrop": false,
+    "redhat.telemetry.enabled": false
 }

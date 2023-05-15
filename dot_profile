@@ -5,3 +5,4 @@ export CLICOLOR=1
 export TERM=xterm-256color
 
 source ~/.bashrc
+. "$HOME/.cargo/env"
