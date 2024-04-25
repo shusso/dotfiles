@@ -31,16 +31,6 @@
         "when": "editorLangId == 'markdown'"
     },
     {
-        "key": "alt+d",
-        "command": "workbench.action.terminal.deleteWordRight",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+delete",
-        "command": "-workbench.action.terminal.deleteWordRight",
-        "when": "terminalFocus"
-    },
-    {
         "key": "alt+f",
         "command": "cursorWordEndRight",
         "when": "editorTextFocus"
@@ -59,16 +49,6 @@
         "key": "alt+left",
         "command": "cursorWordStartLeft",
         "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+d",
-        "command": "deleteWordRight",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+delete",
-        "command": "deleteWordRight",
-        "when": "editorTextFocus && !editorReadonly"
     },
     {
         "key": "ctrl+shift+f",
@@ -185,5 +165,28 @@
         "key": "shift+alt+.",
         "command": "cursorBottom",
         "when": "textInputFocus"
+    },
+    {
+        "key": "alt+d",
+        "command": "deleteWordRight",
+        "when": "textInputFocus || terminalFocus"
+    },
+    {
+        "key": "alt+delete",
+        "command": "-deleteWordRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+delete",
+        "command": "-deleteWordPartRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.quickchat.toggle"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "workbench.action.chat.open"
     }
 ]

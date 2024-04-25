@@ -1,7 +1,27 @@
 // Place your settings in this file to overwrite the default settings
 {
+    // Editor mumbo jumbo
     "editor.wordWrap" : "on",
     "editor.bracketPairColorization.enabled": true,
+    "workbench.editor.showTabs": "single",
+    "editor.minimap.enabled": true,
+    "editor.tabSize": 4,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.quickOpen.closeOnFocusLost": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "workbench.colorTheme": "Cyberpunk",
+    "workbench.tree.enableStickyScroll": true,
+
+    "editor.cursorStyle": "block",
+    "editor.formatOnPaste": true,
+    "editor.suggestSelection": "first",
+
+    // Python
     "python.venvPath": "/Users/shusso/.virtualenvs/",
     "python.linting.enabled" : true,
     "python.linting.pylintEnabled": true,
@@ -17,7 +37,6 @@
             "other": "off"
         }
     },
-    "workbench.editor.showTabs": false,
     "files.insertFinalNewline": true,
     "debug.console.fontSize":14,
     "python.jupyter.defaultKernel": "Python 3",
@@ -25,7 +44,8 @@
         "%matplotlib inline"
     ],
     "python.jupyter.appendResults": true,
-
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.inlineSuggest.enabled": true,
     "files.exclude": {
         "**/.env": true,
         "**/.venv": true,
@@ -47,36 +67,31 @@
         "**.gitignore**": true,
         "**/vendor": true
     },
-    "go.formatOnSave": false,
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.fontSize": 12,
-    "editor.minimap.enabled": false,
-    "go.gopath": "/Users/shusso/golang",
-    "editor.tabSize": 4,
+    "terminal.integrated.fontFamily": "'Monaco'",
     "extensions.ignoreRecommendations": false,
-    "workbench.panel.location": "right",
     "telemetry.enableTelemetry": false,
     "telemetry.telemetryLevel": "off",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.quickOpen.closeOnFocusLost": false,
-    "workbench.editor.enablePreview": false,
-    "terminal.integrated.fontFamily": "'Monaco'",
-    "editor.cursorStyle": "block",
-    "editor.formatOnPaste": true,
-    "workbench.settings.editor": "json",
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.colorTheme": "SynthWave '84",
-    "python.jediEnabled": false,
     "center-editor-window.threeStateToggle": true,
     "python.languageServer": "Default",
     "jupyter.askForKernelRestart": false,
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "editor.inlineSuggest.enabled": true,
-    "python.formatting.provider": "black",
     "explorer.confirmDragAndDrop": false,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "python.defaultInterpreterPath": "/Users/shusso/.virtualenvs/py310_arm",
+    "git.openRepositoryInParentFolders": "never",
+    "git.ignoredRepositories": [
+        "testing"
+    ],
+    "python.testing.pytestArgs": ["-v", "-s", "--color=yes", "--disable-warnings"],
+    "editor.accessibilitySupport": "off",
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "notebook.experimental.variablesView": true,
+    "security.workspace.trust.untrustedFiles": "open",
 }
