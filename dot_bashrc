@@ -84,17 +84,6 @@ export PKG_CONFIG_PATH="${HOMEBREW_PREFIX}/opt/openssl@1.1/lib/pkgconfig"
 SSL_PATH_86="/usr/local/opt/openssl/bin"
 export PKG_CONFIG_PATH_86="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
-# The original version is saved in .profile.pysave
-PY37_PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin"
-PY38_PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin"
-PY39_PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin"
-
-ANDROID_HOME=$HOME/Library/Android/sdk
-ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk-bundle
-
-export POETRY_PATH=$HOME/.poetry
-
-DOTNET_PATH=/usr/local/share/dotnet
 LLVM_PATH=/usr/local/opt/llvm/bin/
 
 # Set PATH
@@ -102,7 +91,6 @@ export PATH=${POETRY_PATH}:${PATH}
 export PATH=${SSL_PATH}:${PATH}
 export PATH=${LLVM_PATH}:${PATH}
 export PATH=$HOME/.bin:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/lib:${HOMEBREW_PREFIX}/sbin:${HOMEBREW_PREFIX}/include:${PATH}
-# export PATH=$HOME/.bin:${BREW_BIN}:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/local/sbin/:$PATH:$GOPATH/bin:$SPARK_HOME/bin:$DOTNET_PATH:$POETRY_PATH/bin:$LLVM_PATH:$SSL_PATH:$PY37_PATH:$PY38_PATH:$PY39_PATH:${PATH}
 
 #############
 ##  Alias  ##
@@ -149,7 +137,7 @@ alias docker-clean-cache='docker rmi $(docker images -a -q)'
 alias docker-build-dev='docker build -t $(echo "$(basename $(pwd))-dev") .'
 
 # start OSX screensaver
-alias ssaver="open -a /System/Library/CoreServices/ScreenSaverEngine.app"
+alias ssaver="open -b com.apple.ScreenSaver.Engine"
 
 alias open-ports="sudo lsof -iTCP -sTCP:LISTEN -n -P"
 
@@ -177,38 +165,6 @@ function log_history () {
     fi
 }
 
-function gen_autocomplete_files () {
-    local files=$_AUTO_COMP_DIR
-    local cur
-    COMPREPLY=()
-    cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "${files}" -- ${cur}) ) # ;;
-    return 0
-}
-
-function py_gen_autocomplete_files () {
-    export _AUTO_COMP_DIR=$( find -L $HOME/scratchpad/python/* -name *.py )
-    gen_autocomplete_files
-
-    unset _AUTO_COMP_DIR
-    return 0
-}
-
-function run-py {
-    local py_file=$1
-    local options=${@:1}
-    if [ ! -z $options ]; then
-        options=""
-    fi
-    load-glob-pyvenv py_37
-
-    echo "**run-py** running: ${1} with options: ${options}"
-
-    python3 ${py_file} ${options}
-
-    deactivate
-}
-
 function forever {
     local cmd=${@}
 
@@ -229,170 +185,17 @@ function repeat {
     while true; do eval '${cmd}'; sleep 1; done
 }
 
-function kubectl-edit {
-    local dep=$1
-    kubectl edit deployment/${dep}
-}
-
-function kubectl-edit {
-    local dep=$1
-    kubectl edit deployment/${dep}
-}
-
-function kubectl-connect {
-    local pod=$1
-    kubectl exec -it ${pod} -- /bin/bash
-}
-
-function kubectl-delete {
-    local pod=$1
-    kubectl delete pod ${pod}
-}
-
-function kubectl-logs {
-    local pod=$1
-    kubectl logs -f ${pod}
-}
-
-function kubectl-get-pod {
-    local name=$1
-    if [ $# -eq 0 ]; then
-        kubectl get pods
-    else
-        kubectl get pods | grep ${name}
-    fi
-}
-
-function kubectl-config {
-    kubectl config view
-}
-
-function kubectl-context {
-    kubectl config current-context
-}
-
-function kubectl-set-context {
-    local context=$1
-    kubectl config use-context ${context}
-}
-
-function kubectl-get-contexts {
-    local name=$1
-    kubectl config get-contexts ${name}
-}
-
-function gcloud-configs {
-    gcloud config configurations list
-}
-
-function gcloud-activate {
-    local name=${1}
-    gcloud config configurations activate ${name}
-}
-
-function gcloud-instances-list {
-    local project=${1}
-    local extras=""
-    if [ ! -z $project ]; then
-        extras+="--project ${project}"
-    fi
-    gcloud beta compute instances list ${extras}
-
-}
-
-function gcloud-ssh {
-    local user_at_node=${1}
-    local extras=${@:2}
-
-    gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="-ServerAliveInterval=30" --ssh-flag="-o TCPKeepAlive=yes" --internal-ip ${user_at_node} ${extras}
-    # echo Running cmd: gcloud beta compute ssh --ssh-key-file=${HOME}/.ssh/id_rsa --ssh-flag="ServerAliveInterval=30" --internal-ip ${user_at_node} ${extras}
-
-}
-
-function gcloud-scp {
-    # todo wildcard support
-    local files=${1}
-    local where=${2}
-    local project=${3}
-    local extras=${@:4}
-    local appended_extras=""
-    if [ ! -z $project ]; then
-        appended_extras+=" --project ${project} "
-    fi
-    appended_extras+=${extras}
-
-    gcloud beta compute scp --internal-ip --ssh-key-file=${HOME}/.ssh/id_rsa ${files} ${where} ${appended_extras}
-}
-
-function gcloud-addresses {
-    gcloud beta compute addresses list
-}
-
-function gcloud-instances-list {
-    local project=${1}
-    local extras=""
-    if [ ! -z $project ]; then
-        extras+="--project ${project}"
-    fi
-    gcloud beta compute instances list ${extras}
-
-}
-
-function set-tags-py {
-    echo "Set tags $(pwd)"
-    find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) | xargs ctags
-}
-
-
-function set-cscope-py {
-    echo "Set cscope $(pwd)"
-    find . ! -path '*/build/*' ! -path '*/.env/*' ! -path './src/*' -type f \( -iname '*.py' ! -iname '*test*.py' \) > cscope.files
-}
-
-function poetry-load-env {
-    source "$(poetry env info --path)/bin/activate"
-}
-
-function poetry-pip-freeze {
-    # poetry export -f requirements.txt > requirements.txt
-    local output=${1}
-    if [ -z "${output}" ]; then
-        output="requirements.txt"
-    fi
-    poetry run pip freeze > ${output}
-}
-
-function poetry-dev-deps {
-    poetry add mypy black jedi autopep8 rope flake8 ipython==6.5.0 rlipython==0.1.1 gnureadline
-}
-
 function py-elpy-requirements {
     pip3 install --force-reinstall jedi autopep8 rope flake8 black yapf
 }
 
-function py-ipython-requirements {
+function py-ipython-reqs {
     # python3.6 requires rlipython==0.1.1
     pip3 install --force-reinstall ipython==6.5.0 rlipython==0.1.1 gnureadline
 }
 
-function py-lint-requirements {
+function py-lint-reqs {
     pip3 install --force-reinstall pycodestyle flake8 mypy
-}
-function set-pyvenv {
-    local venv_name=${1}
-    local py_version=${2}
-
-
-    if [ -z "${py_version}" ]; then
-        py_version="python3"
-    fi
-    if [ -z "${venv_name}" ]; then
-        venv_name=$(echo "$(basename $(pwd))")
-    fi
-
-    echo "** Creating ${py_version} venv ${venv_name} **"
-
-    ${py_version} -m venv "${venv_name}"
 }
 
 function load-glob-pyvenv {
@@ -405,17 +208,11 @@ function load-glob-pyvenv {
     fi
 }
 
-function load-pyvenv {
-    local venv_path=${1}
-    if [ -z "${venv_path}" ]; then
-        venv_path=".venv"
-    fi
-    if [ -d "${venv_path}" ]; then
-        source "${venv_path}/bin/activate"
-    fi
+function a {
+    source "${1}bin/activate"
 }
 
-function install-pyvenv {
+function install-reqs {
     if [ -f requirements.txt ]; then
         pip3 install -r requirements.txt
     fi
@@ -431,11 +228,6 @@ function py-run-checks {
     mypy ${against}
 }
 
-
-function py-unset-pipenv-project {
-    unset PIPENV_VENV_IN_PROJECT
-}
-
 function ls-dirs {
     local path=$1
     if [ -z ${path} ]; then
@@ -444,19 +236,6 @@ function ls-dirs {
         path+="*/"
     fi
     ls -d ${path}
-}
-
-function start-docker-dep-containers {
-    local prefix=""
-    if [ $# -eq 0 ]; then
-        prefix="${PWD##*/}"
-    else
-        prefix=$1
-    fi
-
-    docker run -d --name=mongo-${prefix}  mongo:3
-    docker run -d --name=redis-${prefix} --net=container:mongo-${prefix} redis:3
-    docker run -d --name=nats-${prefix} --net=container:mongo-${prefix} nats:0.9.6
 }
 
 # find
@@ -526,10 +305,10 @@ function treeish {
         cd "$1"
     fi
     ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'
-# 1st sed: remove colons
-# 2nd sed: replace higher level folder names with dashes
-# 3rd sed: indent graph three spaces
-# 4th sed: replace first dash with a vertical bar
+    # 1st sed: remove colons
+    # 2nd sed: replace higher level folder names with dashes
+    # 3rd sed: indent graph three spaces
+    # 4th sed: replace first dash with a vertical bar
     if [ `ls -F -1 | grep "/" | wc -l` = 0 ] # check if no folders
     then
         echo " -> no sub-directories"
@@ -542,17 +321,6 @@ function git_author_stats {
     git log --author="${author}" --pretty=tformat: --numstat \
         | gawk "{ add += \$1 ; subs += \$2 ; loc += \$1 - \$2 } END { printf \"Author: ${author} added lines: %s removed lines: %s total lines: %s\n\",add,subs,loc }" -
 }
-
-#############################
-##  Generate Autocomplete  ##
-#############################
-
-# run-py
-complete -F py_gen_autocomplete_files -o filenames run-py
-
-# load-glob-pyvenv
-complete -W "py_36 py_37 py_38" load-glob-pyvenv
-
 
 ############
 ##  Grep  ##
@@ -600,5 +368,3 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # bash magic to call functions defined here
 # e.g. source ~/.bashrc activate_venv
 #"$@"
-
-. "$HOME/.cargo/env"
