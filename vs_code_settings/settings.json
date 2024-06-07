@@ -11,9 +11,6 @@
     "workbench.editor.enablePreview": false,
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
     "workbench.colorTheme": "Cyberpunk",
     "workbench.tree.enableStickyScroll": true,
 
@@ -23,8 +20,6 @@
 
     // Python
     "python.venvPath": "/Users/shusso/.virtualenvs/",
-    "python.linting.enabled" : true,
-    "python.linting.pylintEnabled": true,
     "editor.fontSize": 13,
     "editor.fontFamily": "'Office Code Pro'",
     "files.trimTrailingWhitespace": true,
@@ -71,7 +66,6 @@
     "terminal.integrated.fontSize": 12,
     "terminal.integrated.fontFamily": "'Monaco'",
     "extensions.ignoreRecommendations": false,
-    "telemetry.enableTelemetry": false,
     "telemetry.telemetryLevel": "off",
     "center-editor-window.threeStateToggle": true,
     "python.languageServer": "Default",
