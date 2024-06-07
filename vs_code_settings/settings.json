@@ -21,7 +21,7 @@
     // Python
     "python.venvPath": "/Users/shusso/.virtualenvs/",
     "editor.fontSize": 13,
-    "editor.fontFamily": "'Office Code Pro'",
+    "editor.fontFamily": "'Monaco'",
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
         "editor.wordWrap": "on",
@@ -34,12 +34,6 @@
     },
     "files.insertFinalNewline": true,
     "debug.console.fontSize":14,
-    "python.jupyter.defaultKernel": "Python 3",
-    "python.jupyter.startupCode": [
-        "%matplotlib inline"
-    ],
-    "python.jupyter.appendResults": true,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.inlineSuggest.enabled": true,
     "files.exclude": {
         "**/.env": true,
