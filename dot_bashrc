@@ -87,7 +87,6 @@ export PKG_CONFIG_PATH_86="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 LLVM_PATH=/usr/local/opt/llvm/bin/
 
 # Set PATH
-export PATH=${POETRY_PATH}:${PATH}
 export PATH=${SSL_PATH}:${PATH}
 export PATH=${LLVM_PATH}:${PATH}
 export PATH=$HOME/.bin:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/lib:${HOMEBREW_PREFIX}/sbin:${HOMEBREW_PREFIX}/include:${PATH}
@@ -98,7 +97,17 @@ export PATH=$HOME/.bin:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/lib:${HOMEBREW_
 
 ## setup prompt
 
-export PS1="\[\033[38;5;208m\][\[$(tput sgr0)\]\[\033[38;5;136m\]\W\[$(tput sgr0)\]\[\033[38;5;208m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]⤳ \[$(tput sgr0)\] \[$(tput sgr0)\]"
+## org
+#export PS1="\[\033[38;5;208m\][\[$(tput sgr0)\]\[\033[38;5;136m\]\W\[$(tput sgr0)\]\[\033[38;5;208m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]⤳ \[$(tput sgr0)\] \[$(tput sgr0)\]"
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+set_git_branch() {
+    if [ -n "$(parse_git_branch)" ]; then
+        echo "@$(parse_git_branch)"
+    fi
+}
+export PS1="╭─╼[\\[$(tput setaf 154)\]\w\[\e[0m\]](\[$(tput setaf 107)\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
 
 alias PS1_kw="\[\033[38;5;228m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;184m\][\[$(tput sgr0)\]\[\033[38;5;100m\]\W\[$(tput sgr0)\]\[\033[38;5;184m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]> \[$(tput sgr0)\] \[$(tput sgr0)\]"
 alias PS1_old='\[$(tput setaf 11)\][\[$(tput setaf 137)\]\W\[$(tput setaf 11)\]] ⤳  \[$(tput sgr0)\]'
@@ -107,8 +116,6 @@ alias sPS="PS1='[\[\033[01;33m\]\u@\h\[\033[00m\]]:\[\033[01;31m\]\W\[\033[00m\]
 alias lPS="PS1='[\[\033[01;31m\]\w\[\033[00m\]]⤳  '"
 
 alias reload="source ~/.bashrc"
-
-alias tsaver='j=0;a=1;x=1;y=1;xd=1;yd=1;while true;do for i in {1..2000} ; do if [[ $x == $LINES || $x == 0 ]]; then xd=$(( $xd *-1 )) ; fi ; if [[ $y == $COLUMNS || $y == 0 ]]; then yd=$(( $yd * -1 )) ; fi ; x=$(( $x + $xd )); y=$(( $y + $yd )); printf "\33[%s;%sH\33[48;5;%sm . \33[0m" $x $y $(( $a % 8 + 16 + $j % 223 )) ;a=$(( $a + 1 )) ; done ; x=$(( x%$COLUMNS + 1 )) ; j=$(( $j + 8 )) ;done'
 
 alias t="tmux"
 alias d="deactivate"
@@ -157,6 +164,9 @@ alias tree='tree -C'
 
 alias list-venvs='ls ${VENVS_PATH}'
 
+# terminal.app
+alias term_rand_col='osascript -e "tell application \"Terminal\" to set current settings of front window to some settings set"'
+
 function log_history () {
     history -a
     # https://spin.atomicobject.com/2016/05/28/log-bash-history/
@@ -185,36 +195,19 @@ function repeat {
     while true; do eval '${cmd}'; sleep 1; done
 }
 
-function py-elpy-requirements {
-    pip3 install --force-reinstall jedi autopep8 rope flake8 black yapf
-}
-
-function py-ipython-reqs {
-    # python3.6 requires rlipython==0.1.1
-    pip3 install --force-reinstall ipython==6.5.0 rlipython==0.1.1 gnureadline
-}
-
-function py-lint-reqs {
-    pip3 install --force-reinstall pycodestyle flake8 mypy
-}
-
-function load-glob-pyvenv {
-    local py_version=${1}
-    if [ -z "${py_version}" ]; then
-        py_version="py_38"
-    fi
-    if [ -d "${VENVS_PATH}/${py_version}" ]; then
-        source "${VENVS_PATH}/${py_version}/bin/activate"
-    fi
-}
-
 function a {
-    source "${1}bin/activate"
-}
+    # check does local venv exist if dir arg is passed
+    if [ -z "${1}" ]; then
+        if [ -d .venv ]; then
+            source .venv/bin/activate
+        fi
+    fi
+    if [ -d "${1}" ]; then
+        source "${1}/bin/activate"
+    fi
 
-function install-reqs {
-    if [ -f requirements.txt ]; then
-        pip3 install -r requirements.txt
+    if [ -d "${VENVS_PATH}/${1}" ]; then
+        source "${VENVS_PATH}/${1}/bin/activate"
     fi
 }
 
@@ -281,39 +274,6 @@ function find_fa {
     fi
     echo "Finding files matching: '${@:1:($#-1)}' and passing to command '${@:($#)}'"
     find_f "${@:1:($#-1)}" | xargs -n1 ${@:($#)}
-}
-
-
-function treetree {
-    SEDMAGIC='s;[^/]*/;|____;g;s;____|; |;g'
-
-    if [ "$#" -gt 0 ] ; then
-        dirlist="$@"
-    else
-        dirlist="."
-    fi
-
-    for x in $dirlist; do
-        find "$x" -print | sed -e "$SEDMAGIC"
-    done
-}
-
-alias treeish=treeish
-function treeish {
-    if [ "$1" != "" ]
-    then
-        cd "$1"
-    fi
-    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'
-    # 1st sed: remove colons
-    # 2nd sed: replace higher level folder names with dashes
-    # 3rd sed: indent graph three spaces
-    # 4th sed: replace first dash with a vertical bar
-    if [ `ls -F -1 | grep "/" | wc -l` = 0 ] # check if no folders
-    then
-        echo " -> no sub-directories"
-    fi
-    cd - > /dev/null 1>&1
 }
 
 function git_author_stats {

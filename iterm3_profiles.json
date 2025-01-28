@@ -1,14 +1,8 @@
 {
 "Profiles": [
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.62685638666152954,
-    "Color Space" : "Calibrated",
-    "Blue Component" : 0.45103743672370911,
-    "Alpha Component" : 1,
-    "Green Component" : 0.29604318737983704
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -428,8 +422,8 @@
   "Smart Cursor Color" : false,
   "Semantic History" : {
     "editor" : "com.sublimetext.3",
-    "text" : "",
-    "action" : "best editor"
+    "action" : "best editor",
+    "text" : ""
   },
   "Ambiguous Double Width" : false,
   "Blur Radius" : 2,
@@ -495,19 +489,19 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.62685638666152954,
+    "Color Space" : "Calibrated",
+    "Blue Component" : 0.45103743672370911,
+    "Alpha Component" : 1,
+    "Green Component" : 0.29604318737983704
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.001213683863170445,
-    "Color Space" : "Calibrated",
-    "Blue Component" : 0.61488860845565796,
-    "Alpha Component" : 1,
-    "Green Component" : 0.35047793388366699
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 0,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -931,8 +925,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "action" : "best editor",
     "text" : "",
+    "action" : "best editor",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -1009,17 +1003,19 @@
 
   ],
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 0,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.001213683863170445,
+    "Color Space" : "Calibrated",
+    "Blue Component" : 0.61488860845565796,
+    "Alpha Component" : 1,
+    "Green Component" : 0.35047793388366699
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Green Component" : 0,
-    "Red Component" : 0.69803923368453979,
-    "Blue Component" : 0.69803923368453979
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -1413,8 +1409,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "action" : "best editor",
     "text" : "",
+    "action" : "best editor",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -1479,17 +1475,17 @@
 
   ],
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Green Component" : 0,
+    "Red Component" : 0.69803923368453979,
+    "Blue Component" : 0.69803923368453979
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Green Component" : 0.30290430784225464,
-    "Blue Component" : 0.58497250080108643,
-    "Red Component" : 0.57944053411483765
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -1881,8 +1877,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "action" : "best editor",
     "text" : "",
+    "action" : "best editor",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -1947,17 +1943,17 @@
 
   ],
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Green Component" : 0.30290430784225464,
+    "Blue Component" : 0.58497250080108643,
+    "Red Component" : 0.57944053411483765
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0.69803923368453979,
-    "Red Component" : 0.69803923368453979
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 0,
+  "ASCII Ligatures" : false,
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/iterm3_profiles.json",
@@ -2304,8 +2300,8 @@
   },
   "Window Type" : 0,
   "Allow Title Reporting" : false,
-  "Use Bright Bold" : true,
   "Has Hotkey" : false,
+  "Use Bright Bold" : true,
   "HotKey Modifier Activation" : 0,
   "Cursor Text Color" : {
     "Green Component" : 0,
@@ -2349,8 +2345,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "action" : "best editor",
     "text" : "",
+    "action" : "best editor",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -2417,17 +2413,17 @@
 
   ],
   "Visual Bell" : false,
-  "ASCII Ligatures" : false,
-  "Thin Strokes" : 0,
-  "Custom Directory" : "No"
+  "Custom Directory" : "No",
+  "Ansi 5 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0.69803923368453979,
+    "Red Component" : 0.69803923368453979
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Green Component" : 0.38723450899124146,
-    "Blue Component" : 0.23795859515666962,
-    "Red Component" : 0.81733012199401855
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -2813,8 +2809,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -2869,9 +2865,13 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Green Component" : 0.38723450899124146,
+    "Blue Component" : 0.23795859515666962,
+    "Red Component" : 0.81733012199401855
+  },
+  "Set Local Environment Vars" : false
 },
 {
   "Triggers" : [
@@ -3316,8 +3316,8 @@
   },
   "Title Components" : 64,
   "Semantic History" : {
-    "action" : "best editor",
     "text" : "",
+    "action" : "best editor",
     "editor" : "com.sublimetext.3"
   },
   "Working Directory" : "\/Users\/shusso",
@@ -3389,12 +3389,8 @@
   "Initial Text" : ""
 },
 {
-  "Ansi 5 Color" : {
-    "Green Component" : 0.47450980392156861,
-    "Red Component" : 1,
-    "Blue Component" : 0.77647058823529413
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -3780,8 +3776,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -3836,13 +3832,21 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Green Component" : 0.47450980392156861,
+    "Red Component" : 1,
+    "Blue Component" : 0.77647058823529413
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Green Component" : 0.10196078568696976,
+    "Red Component" : 0.47058823704719543,
+    "Blue Component" : 0.62745100259780884
+  },
+  "Set Local Environment Vars" : false,
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -4229,8 +4233,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -4286,16 +4290,18 @@
   "Columns" : 80,
   "Visual Bell" : false,
   "Custom Directory" : "No",
-  "Ansi 5 Color" : {
-    "Green Component" : 0.10196078568696976,
-    "Red Component" : 0.47058823704719543,
-    "Blue Component" : 0.62745100259780884
-  },
-  "Set Local Environment Vars" : false
+  "Thin Strokes" : 3,
+  "ASCII Ligatures" : false
 },
 {
-  "Thin Strokes" : 0,
-  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.56470590829849243,
+    "Color Space" : "sRGB",
+    "Blue Component" : 1,
+    "Alpha Component" : 1,
+    "Green Component" : 0.42352941632270813
+  },
+  "Set Local Environment Vars" : false,
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -4714,8 +4720,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -4786,22 +4792,12 @@
   "Unicode Normalization" : 0,
   "Visual Bell" : false,
   "Custom Directory" : "No",
-  "Ansi 5 Color" : {
-    "Red Component" : 0.56470590829849243,
-    "Color Space" : "sRGB",
-    "Blue Component" : 1,
-    "Alpha Component" : 1,
-    "Green Component" : 0.42352941632270813
-  },
-  "Set Local Environment Vars" : false
+  "Thin Strokes" : 0,
+  "ASCII Ligatures" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Green Component" : 0.58823529411764708,
-    "Red Component" : 0.69803921568627447,
-    "Blue Component" : 0.77647058823529413
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -5187,8 +5183,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -5243,19 +5239,17 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Green Component" : 0.58823529411764708,
+    "Red Component" : 0.69803921568627447,
+    "Blue Component" : 0.77647058823529413
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.904876708984375,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.80398756265640259,
-    "Alpha Component" : 1,
-    "Green Component" : 0.56014925241470337
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -5673,8 +5667,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -5741,19 +5735,19 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.904876708984375,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.80398756265640259,
+    "Alpha Component" : 1,
+    "Green Component" : 0.56014925241470337
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.77254903316497803,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.86666667461395264,
-    "Alpha Component" : 1,
-    "Green Component" : 0.45490196347236633
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -6171,8 +6165,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -6239,18 +6233,19 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.77254903316497803,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.86666667461395264,
+    "Alpha Component" : 1,
+    "Green Component" : 0.45490196347236633
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.78431372549019607,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.48627450980392156,
-    "Green Component" : 0.36862745098039218
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -6652,8 +6647,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -6714,19 +6709,18 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.78431372549019607,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.48627450980392156,
+    "Green Component" : 0.36862745098039218
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.93333333730697632,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.26274511218070984,
-    "Alpha Component" : 1,
-    "Green Component" : 0.364705890417099
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 3,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -7144,8 +7138,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -7226,19 +7220,19 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 3,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.93333333730697632,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.26274511218070984,
+    "Alpha Component" : 1,
+    "Green Component" : 0.364705890417099
+  },
+  "Set Local Environment Vars" : false
 },
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.69411766529083252,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.52549022436141968,
-    "Alpha Component" : 1,
-    "Green Component" : 0.38431373238563538
-  },
-  "Set Local Environment Vars" : false,
+  "Thin Strokes" : 4,
+  "Custom Directory" : "No",
   "Working Directory" : "\/Users\/shusso",
   "Prompt Before Closing 2" : 0,
   "Dynamic Profile Filename" : "\/Users\/shusso\/Library\/Application Support\/iTerm2\/DynamicProfiles\/krow_iterm3_profiles.json",
@@ -7656,8 +7650,8 @@
   "Automatically Log" : false,
   "Smart Cursor Color" : false,
   "Semantic History" : {
-    "text" : "",
     "action" : "best editor",
+    "text" : "",
     "editor" : "com.sublimetext.3"
   },
   "Ambiguous Double Width" : false,
@@ -7738,9 +7732,15 @@
   },
   "Columns" : 80,
   "Visual Bell" : false,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 4,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.69411766529083252,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.52549022436141968,
+    "Alpha Component" : 1,
+    "Green Component" : 0.38431373238563538
+  },
+  "Set Local Environment Vars" : false
 }
 ]
 }

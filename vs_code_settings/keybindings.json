@@ -106,7 +106,7 @@
     },
     {
         "key": "shift+cmd+t",
-        "command": "java.test.explorer.run"
+        "command": "workbench.view.testing.focus"
     },
     {
         "key": "ctrl+x space",

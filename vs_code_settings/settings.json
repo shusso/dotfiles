@@ -21,7 +21,7 @@
     // Python
     "python.venvPath": "/Users/shusso/.virtualenvs/",
     "editor.fontSize": 13,
-    "editor.fontFamily": "'Monaco'",
+    "editor.fontFamily": "'office code pro'",
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
         "editor.wordWrap": "on",
@@ -82,4 +82,5 @@
     },
     "notebook.experimental.variablesView": true,
     "security.workspace.trust.untrustedFiles": "open",
+    "go.toolsManagement.autoUpdate": true,
 }
