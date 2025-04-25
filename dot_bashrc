@@ -3,10 +3,41 @@
 ##############
 test -f ${HOME}/.krow.rc && source ${HOME}/.krow.rc
 
+
+###################
+##  Bash Color  ##
+##################
+CLS_YELLOW="\033[01;33m"
+CLS_RED="\033[01;31m"
+CLS_ORANGE="\033[01;38;5;208m"
+CLS_GREEN="\033[01;32m"
+CLS_BLUE="\033[01;34m"
+CLS_PURPLE="\033[01;35m"
+CLS_CYAN="\033[01;36m"
+CLS_CLR="\033[00m"
+
+# function to print string in color
+function e_color {
+    local color=$1
+    local text=$2
+    case $color in
+        red) echo -e "${CLS_RED}${text}${CLS_CLR}" ;;
+        green) echo -e "${CLS_GREEN}${text}${CLS_CLR}" ;;
+        blue) echo -e "${CLS_BLUE}${text}${CLS_CLR}" ;;
+        orange) echo -e "${CLS_ORANGE}${text}${CLS_CLR}" ;;
+        yellow) echo -e "${CLS_YELLOW}${text}${CLS_CLR}" ;;
+        purple) echo -e "${CLS_PURPLE}${text}${CLS_CLR}" ;;
+        cyan) echo -e "${CLS_CYAN}${text}${CLS_CLR}" ;;
+        *) echo -e "${text}" ;;
+    esac
+}
+
+
+
 ##############
 ##  Common  ##
 ##############
-#export GOPATH=$HOME/golang
+
 
 # Autocompletes
 # [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
@@ -107,7 +138,12 @@ set_git_branch() {
         echo "@$(parse_git_branch)"
     fi
 }
-export PS1="╭─╼[\\[$(tput setaf 154)\]\w\[\e[0m\]](\[$(tput setaf 107)\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
+export PS1="╭─╼[\\[$(tput setaf 202)\]\w\[\e[0m\]](\[$(tput setaf 180)\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
+
+
+## testing
+
+
 
 alias PS1_kw="\[\033[38;5;228m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;184m\][\[$(tput sgr0)\]\[\033[38;5;100m\]\W\[$(tput sgr0)\]\[\033[38;5;184m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]> \[$(tput sgr0)\] \[$(tput sgr0)\]"
 alias PS1_old='\[$(tput setaf 11)\][\[$(tput setaf 137)\]\W\[$(tput setaf 11)\]] ⤳  \[$(tput sgr0)\]'
@@ -195,7 +231,26 @@ function repeat {
     while true; do eval '${cmd}'; sleep 1; done
 }
 
+function py-run {
+    local cmd="${1}"
+    shift
+    local args=("$@")
+
+    echo "Running: ${cmd} with args ${args[*]}"
+
+    # activate venv and run the command and deactivate
+    a py311
+    eval "${cmd} $(printf '%q ' "${args[@]}")"
+    deactivate
+
+}
+
+
 function a {
+    if [ -n "${VIRTUAL_ENV}" ]; then
+        echo "A virtual environment is already active: ${VIRTUAL_ENV}"
+        return 0
+    fi
     # check does local venv exist if dir arg is passed
     if [ -z "${1}" ]; then
         if [ -d .venv ]; then
