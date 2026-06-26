@@ -113,8 +113,15 @@ _host_color() {
     hash=$(hostname | cksum | cut -d' ' -f1)
     echo $((hash % 200 + 50))
 }
+# complementary color: rotate by ~half of the 200-step range used above
+_path_color() {
+    local hash
+    hash=$(hostname | cksum | cut -d' ' -f1)
+    echo $(((hash + 100) % 200 + 50))
+}
 _HOST_COLOR=$(_host_color)
-export PS1="╭─╼[\\[$(tput setaf 154)\]\w\[\e[0m\]](\[$(tput setaf ${_HOST_COLOR})\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
+_PATH_COLOR=$(_path_color)
+export PS1="╭─╼[\\[$(tput setaf ${_PATH_COLOR})\]\w\[\e[0m\]](\[$(tput setaf ${_HOST_COLOR})\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
 
 
 alias PS1_kw="\[\033[38;5;228m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;184m\][\[$(tput sgr0)\]\[\033[38;5;100m\]\W\[$(tput sgr0)\]\[\033[38;5;184m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]> \[$(tput sgr0)\] \[$(tput sgr0)\]"
@@ -433,4 +440,3 @@ export GEMINI_MODEL="${GEMINI_MODEL:-gemini-3-flash-preview}"
 # bash magic to call functions defined here
 # e.g. source ~/.bashrc activate_venv
 #"$@"
-#. "$HOME/.local/bin/env"
