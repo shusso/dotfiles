@@ -21,7 +21,7 @@
     // Python
     "python.venvPath": "/Users/shusso/.virtualenvs/",
     "editor.fontSize": 13,
-    "editor.fontFamily": "'office code pro'",
+    "editor.fontFamily": "'MD System Mono Trial Regular'",
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
         "editor.wordWrap": "on",
@@ -66,48 +66,26 @@
     "jupyter.askForKernelRestart": false,
     "explorer.confirmDragAndDrop": false,
     "redhat.telemetry.enabled": false,
-    "python.defaultInterpreterPath": "/Users/shusso/.virtualenvs/py312/bin/python",
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
     "git.openRepositoryInParentFolders": "never",
     "git.ignoredRepositories": [
         "testing"
     ],
     "python.testing.pytestArgs": ["-v", "-s", "--color=yes", "--disable-warnings"],
     "editor.accessibilitySupport": "off",
-    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "extensions.autoUpdate": "on",
     "github.copilot.enable": {
         "*": true,
         "plaintext": false,
         "markdown": false,
         "scminput": false
     },
-    "github.copilot.nextEditSuggestions.enabled": true,
-    "github.copilot.nextEditSuggestions.showInStatusBar": true,
-    "github.copilot.chat.editor.temporalContext.enabled": true,
     "notebook.experimental.variablesView": true,
     "security.workspace.trust.untrustedFiles": "open",
     "go.toolsManagement.autoUpdate": true,
-    "python.createEnvironment.trigger": "off",
-    "[dockercompose]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2,
-        "editor.autoIndent": "advanced",
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": false,
-            "strings": true
-        },
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
-    "[github-actions-workflow]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
     "terminal.integrated.stickyScroll.enabled": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
     "chat.viewSessions.orientation": "stacked",
     "http.systemCertificatesNode": true,
-    "workbench.externalBrowser": "safari",
     "geminicodeassist.project": "fair-casing-r5bll",
-    "geminicodeassist.displayInlineContextHint": false,
-    "geminicodeassist.customCommands": {
-        "add-feat": "Apply the following change to this entire file: {{args}}. Return the full updated file. No conversational filler, code only."
-    },
 }
