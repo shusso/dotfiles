@@ -3,41 +3,10 @@
 ##############
 test -f ${HOME}/.krow.rc && source ${HOME}/.krow.rc
 
-
-###################
-##  Bash Color  ##
-##################
-CLS_YELLOW="\033[01;33m"
-CLS_RED="\033[01;31m"
-CLS_ORANGE="\033[01;38;5;208m"
-CLS_GREEN="\033[01;32m"
-CLS_BLUE="\033[01;34m"
-CLS_PURPLE="\033[01;35m"
-CLS_CYAN="\033[01;36m"
-CLS_CLR="\033[00m"
-
-# function to print string in color
-function e_color {
-    local color=$1
-    local text=$2
-    case $color in
-        red) echo -e "${CLS_RED}${text}${CLS_CLR}" ;;
-        green) echo -e "${CLS_GREEN}${text}${CLS_CLR}" ;;
-        blue) echo -e "${CLS_BLUE}${text}${CLS_CLR}" ;;
-        orange) echo -e "${CLS_ORANGE}${text}${CLS_CLR}" ;;
-        yellow) echo -e "${CLS_YELLOW}${text}${CLS_CLR}" ;;
-        purple) echo -e "${CLS_PURPLE}${text}${CLS_CLR}" ;;
-        cyan) echo -e "${CLS_CYAN}${text}${CLS_CLR}" ;;
-        *) echo -e "${text}" ;;
-    esac
-}
-
-
-
 ##############
 ##  Common  ##
 ##############
-
+#export GOPATH=$HOME/golang
 
 # Autocompletes
 # [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
@@ -138,11 +107,7 @@ set_git_branch() {
         echo "@$(parse_git_branch)"
     fi
 }
-export PS1="╭─╼[\\[$(tput setaf 202)\]\w\[\e[0m\]](\[$(tput setaf 180)\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
-
-
-## testing
-
+export PS1="╭─╼[\\[$(tput setaf 154)\]\w\[\e[0m\]](\[$(tput setaf 107)\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
 
 
 alias PS1_kw="\[\033[38;5;228m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;184m\][\[$(tput sgr0)\]\[\033[38;5;100m\]\W\[$(tput sgr0)\]\[\033[38;5;184m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]> \[$(tput sgr0)\] \[$(tput sgr0)\]"
@@ -190,11 +155,9 @@ alias du='du -h'
 # ls
 alias ls='ls --color=always'
 alias ll='ls -lFh --color=always'
-alias la='ls -Ah --color=always'
-alias lad='la -d */'
-alias l='ls -A1F --color=always'
-alias lt='ll -t --color=always'
-alias lh='ls -Ap --color=always | egrep "^\..*/$"' # hidden dirs only
+alias l='ls -l1F --color=always'
+alias la='ls -lA1Fh --color=always'
+alias lla='ls -lAFh --color=always'
 
 alias tree='tree -C'
 
@@ -208,6 +171,8 @@ function log_history () {
     # https://spin.atomicobject.com/2016/05/28/log-bash-history/
     if [ "$(id -u)" -ne 0 ]; then
         echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs-bash/bash-history-$(date "+%Y-%m-%d").log
+        # duplicate to icloud w hostname
+         echo "$(date "+%Y-%m-%d.%H:%M:%S") $(hostname) $(pwd) $(history 1)" >> ~/icloud/dots/logs-bash/bash-history-$(date "+%Y-%m-%d").log
     fi
 }
 
@@ -231,26 +196,7 @@ function repeat {
     while true; do eval '${cmd}'; sleep 1; done
 }
 
-function py-run {
-    local cmd="${1}"
-    shift
-    local args=("$@")
-
-    echo "Running: ${cmd} with args ${args[*]}"
-
-    # activate venv and run the command and deactivate
-    a py311
-    eval "${cmd} $(printf '%q ' "${args[@]}")"
-    deactivate
-
-}
-
-
 function a {
-    if [ -n "${VIRTUAL_ENV}" ]; then
-        echo "A virtual environment is already active: ${VIRTUAL_ENV}"
-        return 0
-    fi
     # check does local venv exist if dir arg is passed
     if [ -z "${1}" ]; then
         if [ -d .venv ]; then
@@ -380,6 +326,104 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+##############
+##  GEMINI  ##
+##############
+function g_models {
+    echo "gemini-3.1-pro-preview"
+    echo "gemini-3-flash-preview"
+    echo "gemini-3.1-flash-lite-preview"
+    echo "gemini-2.5-pro"
+    echo "gemini-2.5-flash"
+    echo "gemini-2.5-flash-lite"
+}
+
+## GEMINI HELPERS
+# Usage: g_apply "add logging" main.py
+g_apply() {
+    local prompt="$1"
+    local file="$2"
+    cat "$file" | gemini -m "$GEMINI_MODEL" "$prompt"
+}
+
+# Usage: g_refactor "refactor to use async" main.py
+g_refactor() {
+    local prompt="$1"
+    local file="$2"
+    local tmp_file=$(mktemp)
+
+    cat "$file" | gemini -m "$GEMINI_MODEL" "$prompt. Return ONLY the code." > "$tmp_file"
+
+    echo "--- Diff for $file ---"
+    diff -u "$file" "$tmp_file"
+
+    read -p "Apply changes? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        mv "$tmp_file" "$file"
+    else
+        rm "$tmp_file"
+    fi
+}
+
+# Usage: g_explain main.py
+g_explain() {
+    local target="${1:-/dev/stdin}"
+    cat "$target" | gemini -m "$GEMINI_MODEL" "Explain what this does in 2 concise sentences."
+}
+
+# Usage: g_commit
+g_commit() {
+    local msg=$(git diff --cached | gemini -m "$GEMINI_MODEL" "Write a concise, conventional commit message for these changes. Return ONLY the message.")
+    git commit -m "$msg"
+}
+
+# Usage: g_fix main.py "add a timeout parameter to the request call"
+g_fix() {
+  local file=$1
+  local task=$2
+  gemini -m "$GEMINI_MODEL" --yolo -p "Update $file: $task. Output ONLY the modified code. No conversation."
+}
+
+# Fast feature adder for specific files
+# Usage: g_add_to main.py "add a retry decorator to the fetch function"
+g_add_to() {
+    local file=$1
+    local feature=$2
+    gemini -m "$GEMINI_MODEL" --yolo -p "File: $file. Feature: $feature. Rewrite the file with this feature. Use concise logic. Code only."
+}
+
+# Usage: g_ask main.py "what methods are defined here?"
+g_ask() {
+    local file="$1"
+    local question="$2"
+    cat "$file" | gemini -m "$GEMINI_MODEL" "Analyze the following file and answer this question: $question"
+}
+# Interactive model selection
+# Usage: g_select
+g_select() {
+    local models=($(g_models))
+    echo "Select a Gemini model:"
+    PS3="Enter choice [1-${#models[@]}]: "
+    select opt in "${models[@]}" "Quit"; do
+        if [[ "$opt" == "Quit" ]]; then
+            echo "Selection cancelled."
+            break
+        elif [[ -n "$opt" ]]; then
+            export GEMINI_MODEL="$opt"
+            echo "GEMINI_MODEL set to: $GEMINI_MODEL"
+            break
+        else
+            echo "Invalid option $REPLY"
+        fi
+    done
+}
+
+# Set default model if not already set
+export GEMINI_MODEL="${GEMINI_MODEL:-gemini-3-flash-preview}"
+
+
 # bash magic to call functions defined here
 # e.g. source ~/.bashrc activate_venv
 #"$@"
+. "$HOME/.local/bin/env"
