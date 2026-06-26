@@ -426,4 +426,4 @@ export GEMINI_MODEL="${GEMINI_MODEL:-gemini-3-flash-preview}"
 # bash magic to call functions defined here
 # e.g. source ~/.bashrc activate_venv
 #"$@"
-. "$HOME/.local/bin/env"
+#. "$HOME/.local/bin/env"
