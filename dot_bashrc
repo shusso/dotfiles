@@ -107,7 +107,14 @@ set_git_branch() {
         echo "@$(parse_git_branch)"
     fi
 }
-export PS1="╭─╼[\\[$(tput setaf 154)\]\w\[\e[0m\]](\[$(tput setaf 107)\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
+# derive a stable per-host color (range 50-249) from a hash of the hostname
+_host_color() {
+    local hash
+    hash=$(hostname | cksum | cut -d' ' -f1)
+    echo $((hash % 200 + 50))
+}
+_HOST_COLOR=$(_host_color)
+export PS1="╭─╼[\\[$(tput setaf 154)\]\w\[\e[0m\]](\[$(tput setaf ${_HOST_COLOR})\]\h\[\e[0m\])\n╰─\[$(tput setaf 91)\]\$(set_git_branch)\[\e[0m\] ⤳ "
 
 
 alias PS1_kw="\[\033[38;5;228m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;184m\][\[$(tput sgr0)\]\[\033[38;5;100m\]\W\[$(tput sgr0)\]\[\033[38;5;184m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;228m\]> \[$(tput sgr0)\] \[$(tput sgr0)\]"
