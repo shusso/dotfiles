@@ -1,5 +1,10 @@
 {
   "model": "Gemini 4 Argon (High)",
+  "statusLine": {
+  	"type": "command",
+  	"command": "~/mono/dotfiles/dot_gemini/antigravity-cli/statusline.sh",
+  	"enabled": true
+  },
   "permissions": {
     "allow": [
       "command(make build)"
