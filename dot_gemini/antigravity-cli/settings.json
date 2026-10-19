@@ -1,0 +1,11 @@
+{
+  "model": "Gemini 4 Argon (High)",
+  "permissions": {
+    "allow": [
+      "command(make build)"
+    ]
+  },
+  "trustedWorkspaces": [
+    "/Users/shusso/mono/swift/WorkTimer"
+  ]
+}

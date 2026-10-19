@@ -1,0 +1,28 @@
+{
+  "general": {
+    "previewFeatures": true,
+    "preferredEditor": "vscode"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "footer": {
+      "items": [
+        "workspace",
+        "git-branch",
+        "model-name",
+        "quota",
+        "context-used",
+        "token-count"
+      ]
+    },
+    "theme": "Shades Of Purple"
+  },
+  "ide": {
+    "hasSeenNudge": true,
+    "enabled": true
+  }
+}
