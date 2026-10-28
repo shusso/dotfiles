@@ -6,7 +6,5 @@ export TERM=xterm-256color
 
 source ~/.bashrc
 
-. "$HOME/.local/bin/env"
-
 # Added by Antigravity CLI installer
 export PATH="/Users/shusso/.local/bin:$PATH"

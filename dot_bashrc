@@ -23,10 +23,6 @@ source ~/.swift-package-complete.bash
 ## pip completion --bash >> ~/.pip-complete.bash
 source ~/.pip-complete.bash
 
-# poetry
-## poetry completions bash > .poetry.bash-completion
-source ~/.poetry.bash-completion
-
 # tmux
 [ -f /opt/homebrew/etc/bash_completion.d/tmux ] && . /opt/homebrew/etc/bash_completion.d/tmux
 
@@ -317,7 +313,8 @@ alias xg="xargs -n1"
 #export LESSOPEN="| /opt/homebrew/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 #export LESSOPEN="| ~/.lesscolor %s"
 export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
-export LESSCOLORIZER="source-highlight"
+# lesspipe >= 2.2x has no markdown renderer; source-highlight can't do md, bat can (brew install bat)
+export LESSCOLORIZER="bat"
 export LESS_ADVANCED_PREPROCESSOR=1
 export LESS='-R -i -X'
 
